@@ -91,6 +91,9 @@ extension HexColor on Color {
       '${blue.toRadixString(16).padLeft(2, '0')}';
 }
 
+const Color Primary = Color(0xFF191970);
+const Color Orange = Color(0xFFFF9912);
+
 const Color seaweed = const Color(0xff17d292);
 const Color pale_grey = const Color(0xffeef1f7);
 const Color squash = const Color(0xfff09b23);
