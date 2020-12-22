@@ -6,6 +6,9 @@ import 'package:masterstudy_app/data/models/AppSettings.dart';
 import 'package:masterstudy_app/main.dart';
 import 'package:masterstudy_app/ui/bloc/profile/profile_state.dart';
 import 'package:masterstudy_app/ui/screen/courses/courses_screen.dart';
+import 'package:masterstudy_app/ui/screen/custom/login.dart';
+import 'package:masterstudy_app/ui/screen/custom/login_register.dart';
+import 'package:masterstudy_app/ui/screen/custom/profile.dart';
 import 'package:masterstudy_app/ui/screen/favorites/favorites_screen.dart';
 import 'package:masterstudy_app/ui/screen/home/home_screen.dart';
 import 'package:masterstudy_app/ui/screen/home_simple/home_simple_screen.dart';
@@ -163,6 +166,7 @@ class MainScreenState extends State<MainScreenWidget> {
                                     //   'Edit Profile >',
                                     //   style: new TextStyle(color: Colors.white),
                                     // ),
+
                                     RichText(
                                       text: TextSpan(
                                         children: [
@@ -276,11 +280,19 @@ class MainScreenState extends State<MainScreenWidget> {
                             // Navigator.of(context).pushNamed(
                             //   // ProfileScreen,
                             // );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => ProfileScreen(null)),
+                            // );
+
+                            // press: () {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProfileScreen(null)),
-                            );
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfileScreen_Custom()));
+                            // },
                             // ProfileScreen(() {
                             //   setState(() {
                             //     _selectedIndex = 1;
@@ -317,7 +329,6 @@ class MainScreenState extends State<MainScreenWidget> {
                             this.setState(() {
                               // screen = 0;
                             });
-                            Navigator.pop(context);
                           },
                         ),
                         new ListTile(
@@ -335,7 +346,11 @@ class MainScreenState extends State<MainScreenWidget> {
                             this.setState(() {
                               // screen = 0;
                             });
-                            Navigator.pop(context);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Login_Register_Custom()));
                           },
                         ),
                         new Expanded(

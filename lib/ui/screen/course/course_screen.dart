@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
 import 'package:masterstudy_app/theme/theme.dart';
@@ -139,6 +140,11 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                     (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
                     SliverAppBar(
+                      leading: IconButton(
+                        icon: SvgPicture.asset(
+                            'assets/icons/arrow_back_appbar.svg'),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
                       backgroundColor: Primary,
                       title: Text(
                         title,
@@ -178,7 +184,7 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                         //   },
                         // ),
                         IconButton(
-                          icon: Icon(Icons.search),
+                          icon: SvgPicture.asset("assets/icons/search.svg"),
                           onPressed: () {
                             Navigator.of(context).pushNamed(
                                 SearchDetailScreen.routeName,
@@ -310,12 +316,15 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                                                 );
                                               },
                                               child: CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                (state is LoadedCourseState)
-                                                    ? state.courseDetailResponse
-                                                        .author.avatar_url
-                                                    : "",
-                                              )),
+                                                backgroundImage: NetworkImage(
+                                                  (state is LoadedCourseState)
+                                                      ? state
+                                                          .courseDetailResponse
+                                                          .author
+                                                          .avatar_url
+                                                      : "",
+                                                ),
+                                              ),
                                             )
                                           ],
                                         ),

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -120,6 +122,11 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
 
                       return <Widget>[
                         SliverAppBar(
+                          leading: IconButton(
+                            icon: SvgPicture.asset(
+                                'assets/icons/arrow_back_appbar.svg'),
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
                           title: Text(
                             title,
                             textScaleFactor: 1.0,
@@ -133,13 +140,13 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                           // <--- this will make the appbar disappear on scrolling down
                           snap: false,
                           actions: <Widget>[
-                            Visibility(
-                              visible: isTeacher,
-                              child: IconButton(
-                                icon: Icon(Icons.share),
-                                onPressed: () {},
-                              ),
-                            ),
+                            // Visibility(
+                            //   visible: isTeacher,
+                            //   child: IconButton(
+                            //     icon: Icon(Icons.share),
+                            //     onPressed: () {},
+                            //   ),
+                            // ),
                             Visibility(
                               visible: false,
                               child: IconButton(
@@ -148,10 +155,10 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.search),
+                              icon: SvgPicture.asset("assets/icons/search.svg"),
                               onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed(SearchDetailScreen.routeName,
+                                Navigator.of(context).pushNamed(
+                                    SearchDetailScreen.routeName,
                                     arguments: SearchDetailScreenArgs(""));
                               },
                             ),
@@ -160,7 +167,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                               ? ColoredTabBar(
                                   Colors.white,
                                   TabBar(
-                                    indicatorColor: mainColorA,
+                                    indicatorColor: Blue1,
                                     tabs: _getTabs(state),
                                   ),
                                 )
@@ -170,6 +177,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                               centerTitle: true,
                               background: SafeArea(
                                 child: Container(
+                                  color: Primary,
                                   child: Center(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -193,7 +201,9 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                                         Visibility(
                                           visible: isTeacher,
                                           child: Text(
-                                            isTeacher ? _bloc.account.meta.position : "",
+                                            isTeacher
+                                                ? _bloc.account.meta.position
+                                                : "",
                                             textScaleFactor: 1.0,
                                             style: TextStyle(
                                                 color: Colors.white
@@ -210,9 +220,9 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                                                   MainAxisAlignment.center,
                                               children: <Widget>[
                                                 RatingBar(
-                                                  initialRating:
-                                                      _bloc.account.rating
-                                                          .average.toDouble(),
+                                                  initialRating: _bloc
+                                                      .account.rating.average
+                                                      .toDouble(),
                                                   minRating: 0,
                                                   direction: Axis.horizontal,
                                                   allowHalfRating: true,
@@ -246,59 +256,75 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                                           padding: const EdgeInsets.only(
                                               top: 25.0, bottom: 50),
                                           child: Container(
-                                            width: MediaQuery.of(context).size.width / 3,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3,
                                             child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: <Widget>[
-                                                if (_bloc.account.meta.facebook != "")
+                                                if (_bloc.account.meta
+                                                        .facebook !=
+                                                    "")
                                                   Padding(
-                                                    padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                                                    padding: EdgeInsets.only(
+                                                        left: 5.0, right: 5.0),
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        _launchURL(_bloc.account.meta.facebook);
+                                                        _launchURL(_bloc.account
+                                                            .meta.facebook);
                                                       },
                                                       child: SizedBox(
-                                                          width: 20,
-                                                          height: 20,
+                                                          width: 32,
+                                                          height: 32,
                                                           child: SvgPicture.asset(
-                                                              "assets/icons/ico_fb.svg",
-                                                              color: Colors.white
-                                                          )
-                                                      ),
+                                                              "assets/icons/social_facebook_circle.svg",
+                                                              color: Colors
+                                                                  .white)),
                                                     ),
                                                   ),
-                                                if (_bloc.account.meta.twitter != "")
+                                                // if (_bloc
+                                                //         .account.meta.twitter !=
+                                                //     "")
+                                                //   Padding(
+                                                //     padding: EdgeInsets.only(
+                                                //         left: 5.0, right: 5.0),
+                                                //     child: GestureDetector(
+                                                //       onTap: () {
+                                                //         _launchURL(_bloc.account
+                                                //             .meta.twitter);
+                                                //       },
+                                                //       child: SizedBox(
+                                                //           width: 20,
+                                                //           height: 20,
+                                                //           child: SvgPicture.asset(
+                                                //               "assets/icons/ico_twit.svg",
+                                                //               color: Colors
+                                                //                   .white)),
+                                                //     ),
+                                                //   ),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                if (_bloc.account.meta
+                                                        .instagram !=
+                                                    "")
                                                   Padding(
-                                                    padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                                                    padding: EdgeInsets.only(
+                                                        left: 5.0, right: 5.0),
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        _launchURL(_bloc.account.meta.twitter);
+                                                        _launchURL(_bloc.account
+                                                            .meta.instagram);
                                                       },
                                                       child: SizedBox(
-                                                          width: 20,
-                                                          height: 20,
+                                                          width: 32,
+                                                          height: 32,
                                                           child: SvgPicture.asset(
-                                                            "assets/icons/ico_twit.svg",
-                                                              color: Colors.white
-                                                            )
-                                                      ),
-                                                    ),
-                                                  ),
-                                                if (_bloc.account.meta.instagram != "")
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        _launchURL(_bloc.account.meta.instagram);
-                                                      },
-                                                      child: SizedBox(
-                                                          width: 20,
-                                                          height: 20,
-                                                          child:SvgPicture.asset(
-                                                            "assets/icons/ico_insta.svg",
-                                                            color: Colors.white
-                                                            )
-                                                      ),
+                                                              "assets/icons/social_instagram_circle.svg",
+                                                              color: Colors
+                                                                  .white)),
                                                     ),
                                                   ),
                                               ],
@@ -323,7 +349,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
     );
   }
 
-  _launchURL(String url) async{
+  _launchURL(String url) async {
     await launch(url);
   }
 
@@ -334,8 +360,10 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(32.0),
-              child: Text(_bloc.account.meta.description,
-                textScaleFactor: 1.0,),
+              child: Text(
+                _bloc.account.meta.description,
+                textScaleFactor: 1.0,
+              ),
             ),
             ListView.builder(
               itemCount: state.courses.length,
@@ -352,28 +380,27 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                   reviews = item.rating.total;
                 }
                 return GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(
-                      context,
-                      CourseScreen.routeName,
-                      arguments: CourseScreenArgs(item),
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-                    child: _buildCard(
+                    onTap: () {
+                      Navigator.pushNamed(
                         context,
-                        item.images.full,
-                        item.categories_object.first,
-                        "${item.title}",
-                        rating,
-                        reviews,
-                        item.price.price,
-                        item.price.old_price,
-                        item.price.free
-                    ),
-                  )
-                );
+                        CourseScreen.routeName,
+                        arguments: CourseScreenArgs(item),
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: 20.0, right: 20.0, bottom: 20.0),
+                      child: _buildCard(
+                          context,
+                          item.images.full,
+                          item.categories_object.first,
+                          "${item.title}",
+                          rating,
+                          reviews,
+                          item.price.price,
+                          item.price.old_price,
+                          item.price.free),
+                    ));
               },
             ),
           ],
@@ -381,8 +408,10 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
       } else {
         return Padding(
           padding: const EdgeInsets.all(32.0),
-          child: Text(_bloc.account.meta.description,
-            textScaleFactor: 1.0,),
+          child: Text(
+            _bloc.account.meta.description,
+            textScaleFactor: 1.0,
+          ),
         );
       }
     } else
@@ -398,9 +427,19 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
       if (state.isTeacher) {
         tabs.addAll([
           Tab(
-            text: localizations.getLocalization("profile_bio_tab"),
+            // text: localizations.getLocalization("profile_bio_tab"),
+            child: Text(
+              'ဆရာမ အကြောင်း',
+              style: TextStyle(color: Colors.black, fontSize: 11),
+            ),
           ),
-          Tab(text: localizations.getLocalization("profile_courses_tab")),
+          Tab(
+            // text: localizations.getLocalization("profile_courses_tab")
+            child: Text(
+              'သင်ခန်းစာများ',
+              style: TextStyle(color: Colors.black, fontSize: 11),
+            ),
+          ),
         ]);
       }
     }
@@ -408,8 +447,8 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
     return tabs;
   }
 
-  _buildCard(context, image, Category category, title, stars, reviews, price, oldPrice, free) {
-
+  _buildCard(context, image, Category category, title, stars, reviews, price,
+      oldPrice, free) {
     var unescape = new HtmlUnescape();
 
     return SizedBox(
@@ -487,9 +526,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                           Icons.star,
                           color: Colors.amber,
                         ),
-                        onRatingUpdate: (rating) {
-
-                        },
+                        onRatingUpdate: (rating) {},
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),

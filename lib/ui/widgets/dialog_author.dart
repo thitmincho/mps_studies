@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:masterstudy_app/main.dart';
 import 'package:masterstudy_app/theme/theme.dart';
 import 'package:masterstudy_app/ui/bloc/course/bloc.dart';
@@ -160,7 +161,7 @@ class DialogAuthorWidget extends StatelessWidget {
                   padding: EdgeInsets.only(right: 10.0),
                   child: MaterialButton(
                       height: 36,
-                      color: mainColor,
+                      color: Primary,
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
@@ -170,10 +171,9 @@ class DialogAuthorWidget extends StatelessWidget {
                         );
                       },
                       child: Text(
-                          localizations.getLocalization("profile_button"),
+                        localizations.getLocalization("profile_button"),
                         textScaleFactor: 1.0,
-                      )
-                    ),
+                      )),
                 ),
                 if (state.courseDetailResponse.author.meta.facebook != "")
                   Padding(
@@ -186,25 +186,24 @@ class DialogAuthorWidget extends StatelessWidget {
                       child: SizedBox(
                           width: 36,
                           height: 36,
-                          child: Image(
-                              image: AssetImage('assets/icons/soc_fb.png'))),
+                          child: SvgPicture.asset('assets/icons/facebook.svg')),
                     ),
                   ),
-                if (state.courseDetailResponse.author.meta.twitter != "")
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        _launchURL(
-                            state.courseDetailResponse.author.meta.twitter);
-                      },
-                      child: SizedBox(
-                          width: 36,
-                          height: 36,
-                          child: Image(
-                              image: AssetImage('assets/icons/soc_twit.png'))),
-                    ),
-                  ),
+                // if (state.courseDetailResponse.author.meta.twitter != "")
+                //   Padding(
+                //     padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                //     child: GestureDetector(
+                //       onTap: () {
+                //         _launchURL(
+                //             state.courseDetailResponse.author.meta.twitter);
+                //       },
+                //       child: SizedBox(
+                //           width: 36,
+                //           height: 36,
+                //           child: Image(
+                //               image: AssetImage('assets/icons/soc_twit.png'))),
+                //     ),
+                //   ),
                 if (state.courseDetailResponse.author.meta.instagram != "")
                   Padding(
                     padding: EdgeInsets.only(left: 5.0, right: 5.0),
@@ -216,8 +215,8 @@ class DialogAuthorWidget extends StatelessWidget {
                       child: SizedBox(
                           width: 36,
                           height: 36,
-                          child: Image(
-                              image: AssetImage('assets/icons/soc_insta.png'))),
+                          child:
+                              SvgPicture.asset('assets/icons/instagram.svg')),
                     ),
                   ),
               ],

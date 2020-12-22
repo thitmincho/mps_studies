@@ -92,7 +92,14 @@ extension HexColor on Color {
 }
 
 const Color Primary = Color(0xFF191970);
+const Color Primary3 = Color(0xFFE2E2ED);
+
 const Color Orange = Color(0xFFFF9912);
+const Color Yellow = Color(0xFFFFD700);
+
+const Color Blue1 = Color(0xFF3D59AB);
+const Color Blue2 = Color(0xFF3B7CB9);
+
 const Color Gray1 = Color(0xFF333333);
 const Color Gray3 = Color(0xFF828282);
 
