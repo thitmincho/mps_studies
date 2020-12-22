@@ -48,8 +48,10 @@ class PlansScreenWidgetState extends State<PlansScreenWidget> {
           backgroundColor: HexColor.fromHex("#F3F5F9"),
           appBar: AppBar(
             centerTitle: true,
+            backgroundColor: Primary,
             title: Text(
-              localizations.getLocalization("membership_plans"),
+              // localizations.getLocalization("membership_plans"),
+              "Check Out",
               textScaleFactor: 1.0,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
@@ -69,23 +71,26 @@ class PlansScreenWidgetState extends State<PlansScreenWidget> {
 
   _buildList(List<UserPlansBean> plans) {
     return ListView.builder(
-        itemCount: plans.length,
+        // itemCount: plans.length,
+        itemCount: 1,
         itemBuilder: (context, index) {
           var item = plans[index];
-          return PlanWidget(item,onTap: (){
-            _openCheckoutScreen(item);
-          },);
+          return PlanWidget(
+            item,
+            onTap: () {
+              _openCheckoutScreen(item);
+            },
+          );
         });
   }
 
-  _openCheckoutScreen(UserPlansBean plansBean){
-    var future =  Navigator.pushNamed(
+  _openCheckoutScreen(UserPlansBean plansBean) {
+    var future = Navigator.pushNamed(
       context,
       WebCheckoutScreen.routeName,
-      arguments:
-      WebCheckoutScreenArgs(plansBean.button.url),
+      arguments: WebCheckoutScreenArgs(plansBean.button.url),
     );
-    future.then((value){
+    future.then((value) {
       Navigator.pop(context);
     });
   }
@@ -95,78 +100,115 @@ class PlanWidget extends StatelessWidget {
   final UserPlansBean plansBean;
   final VoidCallback onTap;
 
-  const PlanWidget(this.plansBean,{@required this.onTap}) : super();
+  const PlanWidget(this.plansBean, {@required this.onTap}) : super();
+  Widget _myListView(BuildContext context) {
+    return ListView(
+      children: ListTile.divideTiles(
+        context: context,
+        tiles: [
+          ListTile(
+            title: Text('Sun'),
+          ),
+          ListTile(
+            title: Text('Moon'),
+          ),
+          ListTile(
+            title: Text('Star'),
+          ),
+        ],
+      ).toList(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 220,
-        child: Card(
-          elevation: 3,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+      child: Column(
+          // height: 220,
+          children: [
+            Container(
+              child: Card(
+                elevation: 3,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Text(
-                        plansBean.name,
-                        textScaleFactor: 1.0,
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: HexColor.fromHex("2A3045").withOpacity(0.8)),
-                      ),
-                      Text(
-                        "\$" + plansBean.initial_payment.toString(),
-                        textScaleFactor: 1.0,
-                        style: TextStyle(
-                          fontSize: 40,
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            // Image >>>>>>>>>>>>>>>>>>>>>>>>
+                            Visibility(
+                                visible: plansBean.billing_amount != 0,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "ဈေးနှုန်း - ",
+                                      // "\$" +
+                                      // plansBean.billing_amount.toString() +
+                                      // " ${localizations.getLocalization("plan_per_month")}",
+                                      textScaleFactor: 1.0,
+
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: HexColor.fromHex("2A3045")
+                                              .withOpacity(0.8)),
+                                    ),
+                                    Text(
+                                      "၆၀၀၀ ကျပ်",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )),
+
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 8.0),
+                            //   child: SizedBox(
+                            //     width: 120,
+                            //     child: MaterialButton(
+                            //       minWidth: double.infinity,
+                            //       color: secondColor,
+                            //       onPressed: onTap,
+                            //       child: Text(
+                            //         plansBean.button?.text ?? "GET NOW",
+                            //         textScaleFactor: 1.0,
+                            //       ),
+                            //       textColor: Colors.white,
+                            //     ),
+                            //   ),
+                            // )
+                          ],
                         ),
                       ),
-                      Visibility(
-                          visible: plansBean.billing_amount != 0,
-                          child: Text(
-                            "\$" +
-                                plansBean.billing_amount.toString() +
-                                " ${localizations.getLocalization("plan_per_month")}",
-                            textScaleFactor: 1.0,
-                            style: TextStyle(
-                                color: HexColor.fromHex("2A3045")
-                                    .withOpacity(0.8)),
-                          )),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: SizedBox(
-                          width: 120,
-                          child: MaterialButton(
-                            minWidth: double.infinity,
-                            color: secondColor,
-                            onPressed: onTap,
-                            child: Text(plansBean.button?.text ?? "GET NOW",
-                              textScaleFactor: 1.0,),
-                            textColor: Colors.white,
-                          ),
-                        ),
+                      Flexible(
+                        // child: _buildWebView(plansBean.features),
+                        child: _buildWebView(
+                            "<p>Public Policy</p><br/><h5>Lerem ipsum amet, adipicigin elit, consectetur docter.</h5>"),
+                        flex: 1,
                       )
                     ],
                   ),
                 ),
-                Flexible(
-                  child: _buildWebView(plansBean.features),
-                  flex: 1,
-                )
-              ],
+              ),
             ),
+            _myListView(context),
+          ]
+
+          // child: Column(
+          //   children: <Widget>[
+          //
+          //   ],
+          // ),
+          // // child:
           ),
-        ),
-      ),
     );
   }
 
@@ -176,7 +218,6 @@ class PlanWidget extends StatelessWidget {
       children: <Widget>[
         Html(
           data: description,
-
         ),
       ],
     );

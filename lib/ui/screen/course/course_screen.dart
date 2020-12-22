@@ -134,254 +134,248 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
             length: 3,
             child: Scaffold(
               body: NestedScrollView(
-                  controller: _scrollController,
-                  headerSliverBuilder:
-                      (BuildContext context, bool innerBoxIsScrolled) {
-                    return <Widget>[
-                      SliverAppBar(
-                        title: Text(
-                          title,
-                          textScaleFactor: 1.0,
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                        expandedHeight:
-                            MediaQuery.of(context).size.height / kef,
-                        floating: false,
-                        pinned: true,
-                        snap: false,
-                        actions: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.share),
-                            onPressed: () {
-                              if (state is LoadedCourseState)
-                                Share.share(state.courseDetailResponse.url);
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.favorite),
-                            color: _favIcoColor,
-                            onPressed: () {
-                              setState(() {
-                                _favIcoColor =
-                                    (_isFav) ? Colors.white : Colors.red;
-                                _isFav = (_isFav) ? false : true;
-                              });
+                controller: _scrollController,
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    SliverAppBar(
+                      backgroundColor: Primary,
+                      title: Text(
+                        title,
+                        textScaleFactor: 1.0,
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      expandedHeight: MediaQuery.of(context).size.height / kef,
+                      floating: false,
+                      pinned: true,
+                      snap: false,
+                      actions: <Widget>[
+                        // IconButton(
+                        //   icon: Icon(Icons.share),
+                        //   onPressed: () {
+                        //     if (state is LoadedCourseState)
+                        //       Share.share(state.courseDetailResponse.url);
+                        //   },
+                        // ),
+                        // IconButton(
+                        //   icon: Icon(Icons.favorite),
+                        //   color: _favIcoColor,
+                        //   onPressed: () {
+                        //     setState(() {
+                        //       _favIcoColor =
+                        //           (_isFav) ? Colors.white : Colors.red;
+                        //       _isFav = (_isFav) ? false : true;
+                        //     });
 
-                              if (state is LoadedCourseState) {
-                                if (state.courseDetailResponse.is_favorite) {
-                                  _bloc.add(DeleteFromFavorite(
-                                      widget.coursesBean.id));
-                                } else {
-                                  _bloc.add(
-                                      AddToFavorite(widget.coursesBean.id));
-                                }
-                              }
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {
-                              Navigator.of(context).pushNamed(
-                                  SearchDetailScreen.routeName,
-                                  arguments: SearchDetailScreenArgs(""));
-                            },
-                          ),
-                        ],
-                        bottom: ColoredTabBar(
-                            Colors.white,
-                            TabBar(
-                              indicatorColor: mainColorA,
-                              tabs: [
-                                Tab(
-                                  text: localizations
-                                      .getLocalization("course_overview_tab"),
-                                ),
-                                Tab(
-                                    text: localizations.getLocalization(
-                                        "course_curriculum_tab")),
-                                Tab(
-                                    text: localizations
-                                        .getLocalization("course_faq_tab")),
-                              ],
-                            )),
-                        flexibleSpace: FlexibleSpaceBar(
-                          collapseMode: CollapseMode.parallax,
-                          background: Container(
-                              child: Stack(
-                            children: <Widget>[
-                              Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: widget.coursesBean.images.small,
-                                    child: FadeInImage.memoryNetwork(
-                                      image:
-                                          "${widget.coursesBean.images.small}",
-                                      fit: BoxFit.cover,
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              kef,
-                                      placeholder: kTransparentImage,
-                                    ),
-                                  ),
-                                ],
+                        //     if (state is LoadedCourseState) {
+                        //       if (state.courseDetailResponse.is_favorite) {
+                        //         _bloc.add(
+                        //             DeleteFromFavorite(widget.coursesBean.id));
+                        //       } else {
+                        //         _bloc.add(AddToFavorite(widget.coursesBean.id));
+                        //       }
+                        //     }
+                        //   },
+                        // ),
+                        IconButton(
+                          icon: Icon(Icons.search),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(
+                                SearchDetailScreen.routeName,
+                                arguments: SearchDetailScreenArgs(""));
+                          },
+                        ),
+                      ],
+                      bottom: ColoredTabBar(
+                          Colors.white,
+                          TabBar(
+                            indicatorColor: mainColorA,
+                            tabs: [
+                              Tab(
+                                text: "ခြုံငုံသုံးသပ်ချက်",
+                                // localizations.getLocalization("course_overview_tab"),
                               ),
-                              FadeTransition(
-                                opacity: _fadeInFadeOut,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: mainColor.withOpacity(0.5)),
-                                ),
+                              Tab(
+                                text: "သင်ရိုးညွှန်းတမ်း",
+                                // text: localizations.getLocalization(
+                                // "course_curriculum_tab")
                               ),
-                              FadeTransition(
-                                opacity: _fadeInFadeOut,
-                                child: Container(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20, right: 20),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 0.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: <Widget>[
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: <Widget>[
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.pushNamed(
-                                                        context,
-                                                        CategoryDetailScreen
-                                                            .routeName,
-                                                        arguments:
-                                                            CategoryDetailScreenArgs(
-                                                                widget
-                                                                    .coursesBean
-                                                                    .categories_object[0]),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      unescape.convert(widget
-                                                          .coursesBean
-                                                          .categories_object[0]
-                                                          .name),
-                                                      textScaleFactor: 1.0,
-                                                      style: TextStyle(
-                                                          color: Colors.white
-                                                              .withOpacity(0.5),
-                                                          fontSize: 16),
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.keyboard_arrow_right,
-                                                    color: Colors.white
-                                                        .withOpacity(0.5),
-                                                  )
-                                                ],
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  showDialog(
-                                                    context: context,
-                                                    barrierDismissible: false,
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        DialogAuthorWidget(
-                                                            state),
-                                                  );
-                                                },
-                                                child: CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                  (state is LoadedCourseState)
-                                                      ? state
-                                                          .courseDetailResponse
-                                                          .author
-                                                          .avatar_url
-                                                      : "",
-                                                )),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 8.0),
-                                          child: Container(
-                                            height: 140,
-                                            child: Text(
-                                              unescape.convert(
-                                                  widget.coursesBean.title),
-                                              textScaleFactor: 1.0,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 40),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 32.0, right: 16.0),
-                                          child: Row(
-                                            children: <Widget>[
-                                              RatingBar(
-                                                initialRating: widget
-                                                    .coursesBean.rating.average
-                                                    .toDouble(),
-                                                minRating: 0,
-                                                allowHalfRating: true,
-                                                direction: Axis.horizontal,
-                                                tapOnlyMode: true,
-                                                glow: false,
-                                                ignoreGestures: true,
-                                                itemCount: 5,
-                                                itemSize: 19,
-                                                itemBuilder: (context, _) =>
-                                                    Icon(
-                                                  Icons.star,
-                                                  color: Colors.amber,
-                                                ),
-                                                onRatingUpdate: (rating) {},
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child: Text(
-                                                  "${widget.coursesBean.rating.average.toDouble()} (${widget.coursesBean.rating.total} review)",
-                                                  textScaleFactor: 1.0,
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.white
-                                                          .withOpacity(0.5)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
+                              Tab(
+                                text: "အမေးများသောမေးခွန်းများ",
+                                // text: localizations
+                                //     .getLocalization("course_faq_tab")
+                              ),
                             ],
                           )),
-                        ),
-                      )
-                    ];
-                  },
-                  body: AnimatedSwitcher(
+                      flexibleSpace: FlexibleSpaceBar(
+                        collapseMode: CollapseMode.parallax,
+                        background: Container(
+                            child: Stack(
+                          children: <Widget>[
+                            Stack(
+                              children: <Widget>[
+                                Hero(
+                                  tag: widget.coursesBean.images.small,
+                                  child: FadeInImage.memoryNetwork(
+                                    image: "${widget.coursesBean.images.small}",
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context).size.width,
+                                    height: MediaQuery.of(context).size.height /
+                                        kef,
+                                    placeholder: kTransparentImage,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            FadeTransition(
+                              opacity: _fadeInFadeOut,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: mainColor.withOpacity(0.5)),
+                              ),
+                            ),
+                            FadeTransition(
+                              opacity: _fadeInFadeOut,
+                              child: Container(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 0.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.pushNamed(
+                                                      context,
+                                                      CategoryDetailScreen
+                                                          .routeName,
+                                                      arguments:
+                                                          CategoryDetailScreenArgs(
+                                                              widget.coursesBean
+                                                                  .categories_object[0]),
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                    unescape.convert(widget
+                                                        .coursesBean
+                                                        .categories_object[0]
+                                                        .name),
+                                                    textScaleFactor: 1.0,
+                                                    style: TextStyle(
+                                                        color: Colors.white
+                                                            .withOpacity(0.5),
+                                                        fontSize: 16),
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.keyboard_arrow_right,
+                                                  color: Colors.white
+                                                      .withOpacity(0.5),
+                                                )
+                                              ],
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  barrierDismissible: false,
+                                                  builder: (BuildContext
+                                                          context) =>
+                                                      DialogAuthorWidget(state),
+                                                );
+                                              },
+                                              child: CircleAvatar(
+                                                  backgroundImage: NetworkImage(
+                                                (state is LoadedCourseState)
+                                                    ? state.courseDetailResponse
+                                                        .author.avatar_url
+                                                    : "",
+                                              )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: Container(
+                                          height: 140,
+                                          child: Text(
+                                            unescape.convert(
+                                                widget.coursesBean.title),
+                                            textScaleFactor: 1.0,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 40),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 32.0, right: 16.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            RatingBar(
+                                              initialRating: widget
+                                                  .coursesBean.rating.average
+                                                  .toDouble(),
+                                              minRating: 0,
+                                              allowHalfRating: true,
+                                              direction: Axis.horizontal,
+                                              tapOnlyMode: true,
+                                              glow: false,
+                                              ignoreGestures: true,
+                                              itemCount: 5,
+                                              itemSize: 19,
+                                              itemBuilder: (context, _) => Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              onRatingUpdate: (rating) {},
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Text(
+                                                "${widget.coursesBean.rating.average.toDouble()} (${widget.coursesBean.rating.total} review)",
+                                                textScaleFactor: 1.0,
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.white
+                                                        .withOpacity(0.5)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )),
+                      ),
+                    )
+                  ];
+                },
+                body: AnimatedSwitcher(
                     duration: Duration(milliseconds: 150),
-                  child: _buildBody(state)),
-                  ),
+                    child: _buildBody(state)),
+              ),
               bottomNavigationBar: _buildBottom(state),
             ),
           );
@@ -404,10 +398,9 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
           FaqWidget(state.courseDetailResponse),
         ],
       );
-    if(state is ErrorCourseState){
-      return LoadingErrorWidget((){
+    if (state is ErrorCourseState) {
+      return LoadingErrorWidget(() {
         _bloc.add(FetchEvent(widget.coursesBean.id));
-
       });
     }
     return Center(
@@ -443,22 +436,22 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             _buildPrice(state),
-            MaterialButton(
-              height: 40,
-              color: mainColor,
-              onPressed: () {
-                if (state is LoadedCourseState) {
-                  if (!state.courseDetailResponse.has_access) {
-                    if (_bloc.selectedPaymetId == -1) {
-                      _bloc.add(AddToCart(state.courseDetailResponse.id));
-                    } else {
-                      _bloc.add(UsePlan(state.courseDetailResponse.id));
-                    }
-                  }
-                }
-              },
-              child: setUpButtonChild(state),
-            )
+            // MaterialButton(
+            //   height: 40,
+            //   color: mainColor,
+            //   onPressed: () {
+            //     if (state is LoadedCourseState) {
+            //       if (!state.courseDetailResponse.has_access) {
+            //         if (_bloc.selectedPaymetId == -1) {
+            //           _bloc.add(AddToCart(state.courseDetailResponse.id));
+            //         } else {
+            //           _bloc.add(UsePlan(state.courseDetailResponse.id));
+            //         }
+            //       }
+            //     }
+            //   },
+            //   child: setUpButtonChild(state),
+            // )
           ],
         ),
       ),
@@ -473,6 +466,7 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
+                // "အသင်းဝင်ရန်",
                 localizations.getLocalization("course_free_price"),
                 textScaleFactor: 1.0,
               ),
@@ -481,9 +475,8 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
           );
         } else {
           String selectedPlan;
-          if (_bloc.selectedPaymetId == -1)
-            selectedPlan =
-                "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}";
+          if (_bloc.selectedPaymetId == -1) selectedPlan = "အသင်းဝင်မယ်";
+          // "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}";
           if (state.userPlans.isNotEmpty) {
             state.userPlans.forEach((value) {
               if (int.parse(value.subscription_id) == _bloc.selectedPaymetId)

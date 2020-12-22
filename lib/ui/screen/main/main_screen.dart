@@ -4,11 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:masterstudy_app/data/models/AppSettings.dart';
 import 'package:masterstudy_app/main.dart';
+import 'package:masterstudy_app/ui/bloc/profile/profile_state.dart';
 import 'package:masterstudy_app/ui/screen/courses/courses_screen.dart';
 import 'package:masterstudy_app/ui/screen/favorites/favorites_screen.dart';
 import 'package:masterstudy_app/ui/screen/home/home_screen.dart';
 import 'package:masterstudy_app/ui/screen/home_simple/home_simple_screen.dart';
+import 'package:masterstudy_app/ui/screen/orders/orders.dart';
 import 'package:masterstudy_app/ui/screen/profile/profile_screen.dart';
+import 'package:masterstudy_app/ui/screen/profile_edit/profile_edit_screen.dart';
 import 'package:masterstudy_app/ui/screen/search/search_screen.dart';
 
 import '../../../theme/theme.dart';
@@ -115,6 +118,7 @@ class MainScreenState extends State<MainScreenWidget> {
                       children: <Widget>[
                         new Container(
                           height: 130,
+                          // padding: EdgeInsets.zero,
                           child: UserAccountsDrawerHeader(
                             margin: EdgeInsets.zero,
                             decoration: BoxDecoration(
@@ -268,10 +272,34 @@ class MainScreenState extends State<MainScreenWidget> {
                             ),
                           ),
                           onTap: () {
-                            this.setState(() {
-                              // screen = 0;
-                            });
-                            Navigator.pop(context);
+                            // ProfileState pstate = new Proi
+                            // Navigator.of(context).pushNamed(
+                            //   // ProfileScreen,
+                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfileScreen(null)),
+                            );
+                            // ProfileScreen(() {
+                            //   setState(() {
+                            //     _selectedIndex = 1;
+                            //   });
+                            // });
+                            // print("hi");
+                            // this.setState(() {
+                            // });
+                            // Navigator.of(context).pushReplacementNamed(
+                            //     ProfileEditScreen.routeName);
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => ProfileScreen(() {
+                            //               setState(() {
+                            //                 _selectedIndex = 1;
+                            //               });
+                            //             })));
+                            // Navigator.pop(context);
                           },
                         ),
                         new ListTile(

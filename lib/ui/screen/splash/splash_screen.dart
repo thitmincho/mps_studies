@@ -93,11 +93,11 @@ class SplashWidgetState extends State<SplashWidget> {
       );
 
     if (state is CloseSplash) {
-      //   if (state.isSigned) {
-      //     openMainPage(state.appSettings.options);
-      //   } else {
-      //     openAuthPage(state.appSettings.options);
-      //   }
+      // if (state.isSigned) {
+      //   openMainPage(state.appSettings.options);
+      // } else {
+      //   openAuthPage(state.appSettings.options);
+      // }
       // //   String imgUrl = "";
       //   String postsCount = "";
       //   if (state.appSettings != null) {
@@ -216,13 +216,34 @@ class SplashWidgetState extends State<SplashWidget> {
                 )
               : InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        child: HomeSimpleScreen(),
-                      ),
-                    );
+                    // SchedulerBinding.instance.addPostFrameCallback((_) {
+                    //   Future.delayed(const Duration(milliseconds: 2000), () {
+                    //     Navigator.of(context).pushReplacementNamed(
+                    //         AuthScreen.routeName,
+                    //         arguments:
+                    //             AuthScreenArgs(state.appSettings.options));
+                    //   });
+                    // });
+                    SchedulerBinding.instance.addPostFrameCallback((_) {
+                      // Future.delayed(const Duration(milliseconds: 2000), () {
+                      Navigator.of(context).pushReplacementNamed(
+                          MainScreen.routeName,
+                          arguments: MainScreenArgs(state.appSettings.options));
+                      // });
+                    });
+
+                    // if (state.isSigned) {
+                    //   openMainPage(state.appSettings.options);
+                    // } else {
+                    //   openAuthPage(state.appSettings.options);
+                    // }
+                    // Navigator.push(
+                    //   context,
+                    //   PageTransition(
+                    //     type: PageTransitionType.fade,
+                    //     child: HomeSimpleScreen(),
+                    //   ),
+                    // );
                   },
                   child: Container(
                     height: 50,

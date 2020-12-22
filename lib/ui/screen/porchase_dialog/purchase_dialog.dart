@@ -43,46 +43,70 @@ class PurchaseDialogState extends State<PurchaseDialog> {
   _buildPrices(LoadedCourseState state) {
     List<Widget> list = List();
     list.add(_buildDefaultItem(
-        (selectedId == -1),
-        localizations.getLocalization("one_time_payment"),
-        "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}",
-        state.courseDetailResponse.price.price, () {
+        (selectedId == 1),
+        // localizations.getLocalization("one_time_payment"),
+        "Premium Course",
+        // "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}",
+        "၆ လ - ၆၀၀၀ ကျပ်",
+        "",
+        // state.courseDetailResponse.price.price,
+        () {
       setState(() {
-        selectedId = -1;
+        selectedId = 1;
       });
     }));
 
-    if (state.userPlans.isNotEmpty) {
-      state.userPlans.forEach((value) {
-        list.add(_buildPriceItem(
-            (selectedId == int.parse(value.subscription_id)),
-            localizations.getLocalization("enroll_with_membership"),
-            value.name,
-            value.quotas_left, () {
-          setState(() {
-            selectedId = int.parse(value.subscription_id);
-          });
-        }));
+    list.add(_buildDefaultItem(
+        (selectedId == 2),
+        // localizations.getLocalization("one_time_payment"),
+        "Premium Course",
+        // "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}",
+        "၁ နှစ် - ၁၀၀၀၀ ကျပ်",
+        "",
+        // state.courseDetailResponse.price.price,
+        () {
+      setState(() {
+        selectedId = 2;
       });
-    } else if (_bloc.availablePlans.isNotEmpty) {
-      _bloc.availablePlans.forEach((value) {
-        list.add(_buildPriceItem(
-            (selectedId == int.parse(value.id)),
-            "${localizations.getLocalization("available_in_plan")} \"${value.name}\"",
-            value.name,
-            value.quotas_left, () {
-          setState(() {
-            selectedId = int.parse(value.id);
-          });
-        }));
-      });
-    }
+    }));
+    // list.add(
+    //     _buildPriceItem(false, "Premium Course", "၁ နှစ် - ၁၀၀၀၀ ကျပ်", "", () {
+    //   setState(() {
+    //     selectedId = 1;
+    //   });
+    // }));
+
+    // if (state.userPlans.isNotEmpty) {
+    //   state.userPlans.forEach((value) {
+    //     list.add(_buildPriceItem(
+    //         (selectedId == int.parse(value.subscription_id)),
+    //         localizations.getLocalization("enroll_with_membership"),
+    //         value.name,
+    //         value.quotas_left, () {
+    //       setState(() {
+    //         selectedId = int.parse(value.subscription_id);
+    //       });
+    //     }));
+    //   });
+    // } else if (_bloc.availablePlans.isNotEmpty) {
+    //   _bloc.availablePlans.forEach((value) {
+    //     list.add(_buildPriceItem(
+    //         (selectedId == int.parse(value.id)),
+    //         "${localizations.getLocalization("available_in_plan")} \"${value.name}\"",
+    //         value.name,
+    //         value.quotas_left, () {
+    //       setState(() {
+    //         selectedId = int.parse(value.id);
+    //       });
+    //     }));
+    //   });
+    // }
     list.add(
       Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: MaterialButton(
           minWidth: double.infinity,
-          color: mainColor,
+          color: Orange,
           onPressed: () {
             if (state is LoadedCourseState && state.userPlans.isNotEmpty) {
               _bloc.add(PaymentSelectedEvent(
@@ -95,8 +119,8 @@ class PurchaseDialogState extends State<PurchaseDialog> {
                 var future = Navigator.of(context).pushNamed(
                   PlansScreen.routeName,
                 );
-                future.then((value){
-                  Navigator.pop(context,"update");
+                future.then((value) {
+                  Navigator.pop(context, "update");
                 });
               } else {
                 _bloc.add(PaymentSelectedEvent(
@@ -141,8 +165,7 @@ class PurchaseDialogState extends State<PurchaseDialog> {
                   children: <Widget>[
                     Icon(
                       selected ? Icons.check_circle : Icons.panorama_fish_eye,
-                      color:
-                          selected ? secondColor : Colors.grey,
+                      color: selected ? Orange : Colors.grey,
                       size: 40,
                     ),
                     Padding(
@@ -173,12 +196,11 @@ class PurchaseDialogState extends State<PurchaseDialog> {
                   child: Center(
                       child: Text(
                     "$value",
-                        textScaleFactor: 1.0,
+                    textScaleFactor: 1.0,
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: secondColor
-                    ),
+                        color: secondColor),
                   )),
                 )
               ],
@@ -203,8 +225,7 @@ class PurchaseDialogState extends State<PurchaseDialog> {
                   children: <Widget>[
                     Icon(
                       selected ? Icons.check_circle : Icons.panorama_fish_eye,
-                      color:
-                          selected ? secondColor : Colors.grey,
+                      color: selected ? secondColor : Colors.grey,
                       size: 40,
                     ),
                     Padding(
@@ -245,15 +266,12 @@ class PurchaseDialogState extends State<PurchaseDialog> {
                           style: TextStyle(
                               fontSize: 26,
                               fontWeight: FontWeight.bold,
-                              color: secondColor
-                          ),
+                              color: secondColor),
                         ),
                         Text(
                           localizations.getLocalization("plan_count_left"),
                           textScaleFactor: 1.0,
-                          style: TextStyle(
-                              fontSize: 9, color: secondColor
-                          ),
+                          style: TextStyle(fontSize: 9, color: secondColor),
                         )
                       ],
                     )),

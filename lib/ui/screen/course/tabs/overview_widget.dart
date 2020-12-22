@@ -25,7 +25,8 @@ class OverviewWidget extends StatefulWidget {
   }
 }
 
-class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAliveClientMixin{
+class _OverviewWidgetState extends State<OverviewWidget>
+    with AutomaticKeepAliveClientMixin {
   bool descTextShowFlag = false;
   bool reviewTextShowFlag = false;
   bool annoncementTextShowFlag = false;
@@ -60,7 +61,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                      value.label,
+                                    value.label,
                                     textScaleFactor: 1.0,
                                   ),
                                 )
@@ -89,7 +90,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
               padding: const EdgeInsets.only(top: 20.0),
               child: new MaterialButton(
                 minWidth: double.infinity,
-                color: mainColor,
+                color: Primary,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     ReviewWriteScreen.routeName,
@@ -98,13 +99,14 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
                   );
                 },
                 child: Text(
-                  localizations.getLocalization("write_review_button"),
+                  "သုံးသပ်ချက်ပေးရန်",
+                  // localizations.getLocalization("write_review_button"),
                   textScaleFactor: 1.0,
                 ),
                 textColor: Colors.white,
               ),
             ),
-            _buildReviewList( widget.reviewResponse.posts ),
+            _buildReviewList(widget.reviewResponse.posts),
           ],
         ),
       ),
@@ -147,7 +149,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
         ),
       ]),
       Padding(
-        padding: const EdgeInsets.only(top:8.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: InkWell(
           onTap: () {
             setState(() {
@@ -159,14 +161,12 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
             children: <Widget>[
               descTextShowFlag
                   ? Text(
-                    localizations.getLocalization("show_less_button"),
-                textScaleFactor: 1.0,
+                      localizations.getLocalization("show_less_button"),
+                      textScaleFactor: 1.0,
                       style: TextStyle(color: mainColor),
                     )
-                  : Text(
-                  localizations.getLocalization("show_more_button"),
-                  textScaleFactor: 1.0,
-                  style: TextStyle(color: mainColor))
+                  : Text(localizations.getLocalization("show_more_button"),
+                      textScaleFactor: 1.0, style: TextStyle(color: mainColor))
             ],
           ),
         ),
@@ -193,8 +193,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: Text(
-                  localizations.getLocalization("annoncement_title"),
+              child: Text(localizations.getLocalization("annoncement_title"),
                   textScaleFactor: 1.0,
                   style: Theme.of(context)
                       .primaryTextTheme
@@ -225,7 +224,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: InkWell(
               onTap: () {
                 setState(() {
@@ -237,13 +236,13 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
                 children: <Widget>[
                   annoncementTextShowFlag
                       ? Text(
-                    localizations.getLocalization("show_less_button"),
-                    textScaleFactor: 1.0,
+                          localizations.getLocalization("show_less_button"),
+                          textScaleFactor: 1.0,
                           style: TextStyle(color: mainColor),
                         )
                       : Text(localizations.getLocalization("show_more_button"),
-                      textScaleFactor: 1.0,
-                      style: TextStyle(color: mainColor))
+                          textScaleFactor: 1.0,
+                          style: TextStyle(color: mainColor))
                 ],
               ),
             ),
@@ -323,8 +322,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
                               color: Colors.amber,
                             );
                           },
-                          onRatingUpdate: (rating) {
-                          },
+                          onRatingUpdate: (rating) {},
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
@@ -346,7 +344,6 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
   }
 
   _buildStatRow(stars, double progress, count) {
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
       child: Row(
@@ -402,40 +399,40 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
               var item = reviews[index];
               return _buildReviewItem(item);
             }),
-        (reviews.length != 1) ?
-        InkWell(
-          onTap: () {
-            setState(() {
-              reviewsListShowItems == 1
-                  ? reviewsListShowItems = reviews.length
-                  : reviewsListShowItems = 1;
-            });
-          },
-          child: Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                reviewsListShowItems != 1
-                    ? Text(
-                  localizations.getLocalization("show_less_button"),
-                  textScaleFactor: 1.0,
-                  style: TextStyle(color: mainColor),
-                )
-                    : Text(localizations.getLocalization("show_more_button"),
-                    textScaleFactor: 1.0,
-                    style: TextStyle(color: mainColor))
-              ],
-            ),
-          ),
-        )
+        (reviews.length != 1)
+            ? InkWell(
+                onTap: () {
+                  setState(() {
+                    reviewsListShowItems == 1
+                        ? reviewsListShowItems = reviews.length
+                        : reviewsListShowItems = 1;
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      reviewsListShowItems != 1
+                          ? Text(
+                              localizations.getLocalization("show_less_button"),
+                              textScaleFactor: 1.0,
+                              style: TextStyle(color: mainColor),
+                            )
+                          : Text(
+                              localizations.getLocalization("show_more_button"),
+                              textScaleFactor: 1.0,
+                              style: TextStyle(color: mainColor))
+                    ],
+                  ),
+                ),
+              )
             : Center()
       ],
     );
   }
 
   _buildReviewItem(ReviewBean review) {
-
     return Padding(
       padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
       child: Container(
@@ -508,9 +505,7 @@ class _OverviewWidgetState extends State<OverviewWidget> with AutomaticKeepAlive
                       ),
                     ],
                   ),
-                  Html(
-                    data: review.content
-                  ),
+                  Html(data: review.content),
                 ],
               ))),
     );
