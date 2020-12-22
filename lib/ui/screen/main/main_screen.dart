@@ -98,130 +98,243 @@ class MainScreenState extends State<MainScreenWidget> {
         title: SvgPicture.asset('assets/icons/MPS-Logo.svg'),
         actions: [IconButton(icon: search, onPressed: null)],
       ),
-      drawer: Drawer(
-        child: LayoutBuilder(
-          builder: (context, constraint) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraint.maxHeight),
-                child: IntrinsicHeight(
-                  child: Column(
-                    children: <Widget>[
-                      new UserAccountsDrawerHeader(
-                          margin: EdgeInsets.zero,
-                          // padding: EdgeInsets.zero,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/drawer_header.jpg")),
-                          ),
-                          accountEmail: Text(''),
-                          accountName: Row(
-                            children: <Widget>[
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(50),
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor:
+              Primary, //This will change the drawer background to blue.
+          //other styles
+        ),
+        child: Drawer(
+          child: LayoutBuilder(
+            builder: (context, constraint) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraint.maxHeight),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      children: <Widget>[
+                        new Container(
+                          height: 130,
+                          child: UserAccountsDrawerHeader(
+                            margin: EdgeInsets.zero,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/drawer_header.jpg")),
+                            ),
+                            accountEmail: Text(''),
+                            accountName: Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(50),
+                                      ),
                                     ),
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/user.png")),
                                   ),
-                                  image: DecorationImage(
-                                      image:
-                                          AssetImage("assets/images/user.png")),
                                 ),
-                              ),
-                              SizedBox(width: 20),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    'Maxart Olivia',
-                                    style: new TextStyle(
-                                      color: Colors.blueGrey[50],
-                                      // textBaseline: TextAlign.left,
+                                SizedBox(width: 20),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      'Maxart Olivia',
+                                      style: new TextStyle(
+                                        color: Colors.white,
+                                        // textBaseline: TextAlign.left,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    '+95 9 123 456 789',
-                                    style: new TextStyle(
-                                        color: Colors.blueGrey[50]),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
-                      new ListTile(
-                        title: new Text('ပင်မစာမျက်နှာ'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 1;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('အပ်နှံထားသောအတန်းများ'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('ကျွန်ုပ်အကြောင်း'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('ဆက်သွယ်ရန်'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('ပြင်ဆင်ရန်'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('ဝေမျှမည်'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new ListTile(
-                        title: new Text('ထွက်ခွာရန်'),
-                        onTap: () {
-                          this.setState(() {
-                            // screen = 0;
-                          });
-                          Navigator.pop(context);
-                        },
-                      ),
-                      new Divider(),
-                    ],
+                                    Text(
+                                      '+95 9 123 456 789',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    // Text(
+                                    //   'Edit Profile >',
+                                    //   style: new TextStyle(color: Colors.white),
+                                    // ),
+                                    RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: "Edit Profile",
+                                            style: new TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          WidgetSpan(
+                                            child: SvgPicture.asset(
+                                                "assets/icons/chevron_right.svg"),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        new ListTile(
+                          // contentPadding: EdgeInsets.all(0),
+                          leading:
+                              SvgPicture.asset("assets/icons/sidebar_home.svg"),
+                          title: new Text(
+                            'ပင်မစာမျက်နှာ',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 1;
+                            });
+                            Navigator.pop(context);
+                          },
+                          // shape: ,
+                        ),
+                        new ListTile(
+                          leading:
+                              SvgPicture.asset("assets/icons/sidebar_book.svg"),
+                          title: new Text(
+                            'အပ်နှံထားသောအတန်းများ',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new ListTile(
+                          leading: SvgPicture.asset(
+                              "assets/icons/sidebar_group.svg"),
+                          title: new Text(
+                            'ကျွန်ုပ်အကြောင်း',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new ListTile(
+                          leading: SvgPicture.asset(
+                              "assets/icons/sidebar_contact.svg"),
+                          title: new Text(
+                            'ဆက်သွယ်ရန်',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new ListTile(
+                          leading: SvgPicture.asset(
+                              "assets/icons/sidebar_setting.svg"),
+                          title: new Text(
+                            'ပြင်ဆင်ရန်',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new ListTile(
+                          leading: SvgPicture.asset(
+                              "assets/icons/sidebar_share.svg"),
+                          title: new Text(
+                            'ဝေမျှမည်',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new ListTile(
+                          leading: SvgPicture.asset(
+                              "assets/icons/sidebar_logoff.svg"),
+                          title: new Text(
+                            'ထွက်ခွာရန်',
+                            style: TextStyle(
+                              fontFamily: 'Pyidaungsu',
+                              color: Colors.white,
+                              fontSize: 13.0,
+                            ),
+                          ),
+                          onTap: () {
+                            this.setState(() {
+                              // screen = 0;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                        new Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              width: 40,
+                              height: 35,
+                              margin:
+                                  new EdgeInsets.symmetric(horizontal: 20.0),
+                              child: RaisedButton(
+                                  color: Orange,
+                                  onPressed: () {},
+                                  textColor: Colors.white,
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: SvgPicture.asset(
+                                      "assets/icons/arrow_back.svg")),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
       body: AnimatedSwitcher(
@@ -238,14 +351,6 @@ class MainScreenState extends State<MainScreenWidget> {
           BottomNavigationBarItem(
               icon: _buildIcon("assets/icons/tab_blog.svg", "ဆောင်းပါးများ", 2),
               title: SizedBox.shrink()),
-          // BottomNavigationBarItem(
-          //     icon: _buildIcon("assets/icons/ms_nav_fav.svg",
-          //         localizations.getLocalization("favorites_bottom_nav"), 3),
-          //     title: SizedBox.shrink()),
-          // BottomNavigationBarItem(
-          //     icon: _buildIcon("assets/icons/ms_nav_profile.svg",
-          //         localizations.getLocalization("profile_bottom_nav"), 4),
-          //     title: SizedBox.shrink()),
         ],
         selectedFontSize: 0,
         currentIndex: _selectedIndex,
