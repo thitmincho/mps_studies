@@ -192,16 +192,28 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                             indicatorColor: mainColorA,
                             tabs: [
                               Tab(
-                                text: "ခြုံငုံသုံးသပ်ချက်",
+                                child: Text("ခြုံငုံသုံးသပ်ချက်",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Pyidaungsu",
+                                        fontSize: 11)),
                                 // localizations.getLocalization("course_overview_tab"),
                               ),
                               Tab(
-                                text: "သင်ရိုးညွှန်းတမ်း",
+                                child: Text("သင်ရိုးညွှန်းတမ်း",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Pyidaungsu",
+                                        fontSize: 11)),
                                 // text: localizations.getLocalization(
                                 // "course_curriculum_tab")
                               ),
                               Tab(
-                                text: "အမေးများသောမေးခွန်းများ",
+                                child: Text("အမေးများသောမေးခွန်းများ",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: "Pyidaungsu",
+                                        fontSize: 11)),
                                 // text: localizations
                                 //     .getLocalization("course_faq_tab")
                               ),
@@ -466,7 +478,6 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                // "အသင်းဝင်ရန်",
                 localizations.getLocalization("course_free_price"),
                 textScaleFactor: 1.0,
               ),
@@ -505,13 +516,35 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
               });
             },
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Text(
-                  selectedPlan,
-                  textScaleFactor: 1.0,
+                Container(
+                  width: 300,
+                  // height: 5,
+                  padding: const EdgeInsets.all(0),
+                  decoration: BoxDecoration(border: Border.all(color: Orange)),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          selectedPlan,
+                          textScaleFactor: 1.0,
+                          style: TextStyle(
+                            color: Orange,
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        color: Orange,
+                        child: Icon(Icons.arrow_drop_down, color: Colors.white),
+                      )
+                    ],
+                  ),
                 ),
-                Icon(Icons.arrow_drop_down)
               ],
             ),
           );

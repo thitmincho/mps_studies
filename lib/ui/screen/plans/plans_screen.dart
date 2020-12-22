@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
 import 'package:masterstudy_app/main.dart';
 import 'package:masterstudy_app/theme/theme.dart';
@@ -124,91 +125,117 @@ class PlanWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-          // height: 220,
-          children: [
-            Container(
-              child: Card(
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Flexible(
-                        flex: 1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            // Image >>>>>>>>>>>>>>>>>>>>>>>>
-                            Visibility(
-                                visible: plansBean.billing_amount != 0,
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "ဈေးနှုန်း - ",
-                                      // "\$" +
-                                      // plansBean.billing_amount.toString() +
-                                      // " ${localizations.getLocalization("plan_per_month")}",
-                                      textScaleFactor: 1.0,
-
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: HexColor.fromHex("2A3045")
-                                              .withOpacity(0.8)),
-                                    ),
-                                    Text(
-                                      "၆၀၀၀ ကျပ်",
-                                      textScaleFactor: 1.0,
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                )),
-
-                            // Padding(
-                            //   padding: const EdgeInsets.only(top: 8.0),
-                            //   child: SizedBox(
-                            //     width: 120,
-                            //     child: MaterialButton(
-                            //       minWidth: double.infinity,
-                            //       color: secondColor,
-                            //       onPressed: onTap,
-                            //       child: Text(
-                            //         plansBean.button?.text ?? "GET NOW",
-                            //         textScaleFactor: 1.0,
-                            //       ),
-                            //       textColor: Colors.white,
-                            //     ),
-                            //   ),
-                            // )
-                          ],
+      child: Column(children: [
+        Container(
+          child: Card(
+            elevation: 3,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 10, top: 20, right: 10, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Image.asset("assets/images/course_checkout.jpg"),
+                        // Visibility(
+                        //     visible: plansBean.billing_amount != 1,
+                        SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      Flexible(
-                        // child: _buildWebView(plansBean.features),
-                        child: _buildWebView(
-                            "<p>Public Policy</p><br/><h5>Lerem ipsum amet, adipicigin elit, consectetur docter.</h5>"),
-                        flex: 1,
-                      )
-                    ],
+                        Row(
+                          children: [
+                            Text(
+                              "ဈေးနှုန်း - ",
+                              // "\$" +
+                              // plansBean.billing_amount.toString() +
+                              // " ${localizations.getLocalization("plan_per_month")}",
+                              textScaleFactor: 1.0,
+
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: HexColor.fromHex("2A3045")
+                                      .withOpacity(0.8)),
+                            ),
+                            Text(
+                              "၆၀၀၀ ကျပ်",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        )
+                        // ),  )
+                      ],
+                    ),
                   ),
-                ),
+                  Flexible(
+                      // child: _buildWebView(plansBean.features),
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "Public Policy",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Gray3,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Lorem ipsum amet, adipiscing elit. consectetur dolor",
+                            style: TextStyle(
+                                fontSize: 17,
+                                color: Gray1,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      )
+                      // _buildWebView(
+                      //     "<p>Public Policy</p><br/><h5>Lerem ipsum amet, adipicigin elit, consectetur docter.</h5>"),
+                      )
+                ],
               ),
             ),
-            _myListView(context),
-          ]
-
-          // child: Column(
-          //   children: <Widget>[
-          //
-          //   ],
-          // ),
-          // // child:
           ),
+        ),
+        Container(
+          child: Card(
+            elevation: 3,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 10, top: 20, right: 10, bottom: 20),
+              child: Column(children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.radio_button_on),
+                  title: Text('kbz pay'.toUpperCase()),
+                  trailing: Image.asset("assets/images/KBZ_pay.png",
+                      width: 72, height: 39, fit: BoxFit.cover),
+                ),
+                ListTile(
+                  leading: Icon(Icons.radio_button_off),
+                  title: Text('Visa card'.toUpperCase()),
+                  trailing: Image.asset("assets/images/visacard.png",
+                      width: 53, height: 29, fit: BoxFit.cover),
+                ),
+                ListTile(
+                  leading: Icon(Icons.radio_button_off),
+                  title: Text('Master card'.toUpperCase()),
+                  trailing: Image.asset("assets/images/mastercard.png",
+                      width: 47, height: 28, fit: BoxFit.cover),
+                ),
+              ]),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 

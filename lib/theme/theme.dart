@@ -93,6 +93,8 @@ extension HexColor on Color {
 
 const Color Primary = Color(0xFF191970);
 const Color Orange = Color(0xFFFF9912);
+const Color Gray1 = Color(0xFF333333);
+const Color Gray3 = Color(0xFF828282);
 
 const Color seaweed = const Color(0xff17d292);
 const Color pale_grey = const Color(0xffeef1f7);
