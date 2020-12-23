@@ -73,7 +73,7 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
     super.initState();
     animation = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 700),
+      duration: Duration(milliseconds: 1000),
     );
     _fadeInFadeOut = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(

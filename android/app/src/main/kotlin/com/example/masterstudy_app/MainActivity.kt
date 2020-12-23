@@ -1,4 +1,4 @@
-package com.example.masterstudy_app
+package com.dd.mpstudies
 
 import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
