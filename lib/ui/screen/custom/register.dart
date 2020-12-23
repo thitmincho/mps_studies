@@ -41,94 +41,93 @@ class _RegisterScreenState extends State<RegisterScreen_Custom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/login_bg.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              SizedBox(
-                height: 50,
-              ),
-              SvgPicture.asset("assets/icons/login_logo.svg"),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "MPS",
-                    style: TextStyle(
-                        fontSize: 21,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        letterSpacing: 1),
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "မှ ကြိုဆိုပါသည်။",
-                    style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        letterSpacing: 1),
-                  )
-                ],
-              ),
-              SizedBox(height: 40),
-              _buildTextField('ဖုန်းနံပါတ်'),
-              SizedBox(height: 20),
-              Button_One(
-                text: 'ဝင်ရောက်ရန်'.toUpperCase(),
-                press: () {
-                  Navigator.push(
-                      this.context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileScreen_Custom()));
-                },
-              ),
-              SizedBox(height: 150),
-              _facebookButton(),
-              Column(
-                children: <Widget>[
-                  Container(
-                    width: 190,
-                    child: Text(
-                      "Cooperation with",
-                      style: GoogleFonts.poppins(
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Container(
-                    width: 190,
-                    child: Text(
-                      "Konard Adenauer Stiftung",
-                      style: GoogleFonts.poppins(
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  )
-                ],
-              )
-            ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/login_bg.jpg"),
+            fit: BoxFit.cover,
           ),
         ),
-      ],
-    ));
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            SizedBox(
+              height: 50,
+            ),
+            SvgPicture.asset("assets/icons/login_logo.svg"),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "MPS",
+                  style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      letterSpacing: 1),
+                ),
+                SizedBox(width: 10),
+                Text(
+                  "မှ ကြိုဆိုပါသည်။",
+                  style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      letterSpacing: 1),
+                )
+              ],
+            ),
+            SizedBox(height: 40),
+            _buildTextField('ဖုန်းနံပါတ်'),
+            SizedBox(height: 20),
+            Button_One(
+              text: 'ဝင်ရောက်ရန်'.toUpperCase(),
+              press: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+                // Navigator.push(
+                //     this.context,
+                //     MaterialPageRoute(
+                //         builder: (context) => ProfileScreen_Custom()));
+              },
+            ),
+            SizedBox(height: 150),
+            _facebookButton(),
+            Column(
+              children: <Widget>[
+                Container(
+                  width: 190,
+                  child: Text(
+                    "Cooperation with",
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Container(
+                  width: 190,
+                  child: Text(
+                    "Konard Adenauer Stiftung",
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildTextField(String title) {

@@ -37,59 +37,58 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: HexColor.fromHex("#F3F5F9"),
-        // appBar: AppBar(
-        //   title: Text(
-        //     localizations.getLocalization("search_title"),
-        //     textScaleFactor: 1.0,
-        //     style: TextStyle(color: Colors.white),
-        //   ),
-        //   bottom: PreferredSize(
-        //       preferredSize: const Size.fromHeight(kToolbarHeight + 16),
-        //       child: Padding(
-        //         padding: const EdgeInsets.only(bottom: 16.0, left: 2, right: 2),
-        //         child: InkWell(
-        //           onTap: () {
-        //             Navigator.of(context).pushNamed(
-        //                 SearchDetailScreen.routeName,
-        //                 arguments: SearchDetailScreenArgs(""));
-        //           },
-        //           child: new Card(
-        //             shape: RoundedRectangleBorder(
-        //               borderRadius: BorderRadius.circular(2.0),
-        //             ),
-        //             elevation: 4,
-        //             color: Colors.white,
-        //             child: Padding(
-        //               padding: const EdgeInsets.all(4.0),
-        //               child: new Container(
-        //                 padding: EdgeInsets.all(8.0),
-        //                 child: new Column(
-        //                   children: <Widget>[
-        //                     new Row(
-        //                       children: <Widget>[
-        //                         new Expanded(
-        //                             child: new Text(
-        //                           localizations
-        //                               .getLocalization("search_bar_title"),
-        //                           textScaleFactor: 1.0,
-        //                           style: TextStyle(
-        //                               color: Colors.black.withOpacity(0.5)),
-        //                         )),
-        //                         Icon(
-        //                           Icons.search,
-        //                           color: Colors.grey,
-        //                         ),
-        //                       ],
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       )),
-        // ),
-
+        appBar: AppBar(
+          title: Text(
+            localizations.getLocalization("search_title"),
+            textScaleFactor: 1.0,
+            style: TextStyle(color: Colors.white),
+          ),
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(kToolbarHeight + 16),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 16.0, left: 2, right: 2),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                        SearchDetailScreen.routeName,
+                        arguments: SearchDetailScreenArgs(""));
+                  },
+                  child: new Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(2.0),
+                    ),
+                    elevation: 4,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: new Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: new Column(
+                          children: <Widget>[
+                            new Row(
+                              children: <Widget>[
+                                new Expanded(
+                                    child: new Text(
+                                  localizations
+                                      .getLocalization("search_bar_title"),
+                                  textScaleFactor: 1.0,
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5)),
+                                )),
+                                Icon(
+                                  Icons.search,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )),
+        ),
         body: BlocBuilder<SearchScreenBloc, SearchScreenState>(
           // ignore: missing_return
           builder: (context, state) {
@@ -118,26 +117,26 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Visibility(
-          //   visible: state.popularSearch.isNotEmpty,
-          //   child: Padding(
-          //       padding: const EdgeInsets.only(top: 30.0, left: 30.0),
-          //       child: Text(localizations.getLocalization("popular_searchs"),
-          //           textScaleFactor: 1.0,
-          //           style: Theme.of(context)
-          //               .primaryTextTheme
-          //               .headline
-          //               .copyWith(color: dark, fontStyle: FontStyle.normal))),
-          // ),
-          // _buildChips(state),
-          // Padding(
-          //     padding: const EdgeInsets.only(top: 30.0, left: 30.0),
-          //     child: Text(localizations.getLocalization("new_courses"),
-          //         textScaleFactor: 1.0,
-          //         style: Theme.of(context)
-          //             .primaryTextTheme
-          //             .headline
-          //             .copyWith(color: dark, fontStyle: FontStyle.normal))),
+          Visibility(
+            visible: state.popularSearch.isNotEmpty,
+            child: Padding(
+                padding: const EdgeInsets.only(top: 30.0, left: 30.0),
+                child: Text(localizations.getLocalization("popular_searchs"),
+                    textScaleFactor: 1.0,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline
+                        .copyWith(color: dark, fontStyle: FontStyle.normal))),
+          ),
+          _buildChips(state),
+          Padding(
+              padding: const EdgeInsets.only(top: 30.0, left: 30.0),
+              child: Text(localizations.getLocalization("new_courses"),
+                  textScaleFactor: 1.0,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline
+                      .copyWith(color: dark, fontStyle: FontStyle.normal))),
           _buildCourses(state)
         ],
       ),
@@ -146,13 +145,13 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
 
   _buildCourses(LoadedSearchScreenState state) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+      padding: const EdgeInsets.only(left: 22.0, right: 22.0),
       child: Container(
         child: StaggeredGridView.countBuilder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 1,
-          staggeredTileBuilder: (_) => StaggeredTile.fit(1),
+          crossAxisCount: 4,
+          staggeredTileBuilder: (_) => StaggeredTile.fit(2),
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
           padding: const EdgeInsets.all(2.0),

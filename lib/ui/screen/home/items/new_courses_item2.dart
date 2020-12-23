@@ -9,11 +9,11 @@ import 'package:masterstudy_app/theme/theme.dart';
 import 'package:masterstudy_app/ui/screen/category_detail/category_detail_screen.dart';
 import 'package:masterstudy_app/ui/screen/course/course_screen.dart';
 
-class NewCoursesWidget extends StatelessWidget {
+class NewCoursesWidget2 extends StatelessWidget {
   final String title;
   final List<CoursesBean> courses;
 
-  NewCoursesWidget(
+  NewCoursesWidget2(
     this.title,
     this.courses, {
     Key key,
@@ -28,11 +28,11 @@ class NewCoursesWidget extends StatelessWidget {
             children: <Widget>[
               Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+                // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
                 child: Padding(
                     padding: const EdgeInsets.only(
                         top: 20.0, left: 15.0, bottom: 20),
-                    child: Text("Current Affairs",
+                    child: Text("Categories",
                         textScaleFactor: 1.0,
                         style: Theme.of(context)
                             .primaryTextTheme
@@ -50,11 +50,11 @@ class NewCoursesWidget extends StatelessWidget {
 
   _buildList(context) {
     return Container(
-      decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+      // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
       child: Padding(
         padding: const EdgeInsets.only(top: 0.0, bottom: 20),
         child: ConstrainedBox(
-          constraints: new BoxConstraints(minHeight: 420, maxHeight: 450),
+          constraints: new BoxConstraints(minHeight: 300, maxHeight: 350),
           // child: ListView(
           //   padding: const EdgeInsets.all(8.0),
           //   scrollDirection: Axis.horizontal,
@@ -162,7 +162,12 @@ class NewCoursesWidget extends StatelessWidget {
               //     ),
               //   ),
               // ),
-
+              Image.network(
+                image,
+                width: 320,
+                height: 160,
+                fit: BoxFit.cover,
+              ),
               Container(
                 height: 60,
                 child: Padding(
@@ -177,117 +182,109 @@ class NewCoursesWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                // height: 100,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10.0, left: 16.0, right: 16.0, bottom: 5),
-                  child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed,",
-                    textScaleFactor: 1.0,
-                    maxLines: 3,
-                    style: TextStyle(fontSize: 16, color: dark),
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 0, left: 16.0, right: 16.0, bottom: 10),
-                  child: Text(
-                    "Continue Reading",
-                    textScaleFactor: 1.0,
-                    // maxLines: ,
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
-                  ),
-                ),
-              ),
-              // Text("Continue Reading"),
-              Image.network(
-                image,
-                width: 320,
-                height: 160,
-                fit: BoxFit.cover,
-              ),
-              Container(
-                decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10, left: 16.0, right: 16.0, bottom: 10),
-                  child: Text(
-                    "250 Likes, 50 Comments, 10 Share",
-                    textScaleFactor: 1.0,
-                    // maxLines: ,
-                    style: TextStyle(fontSize: 16, color: Gray1),
-                  ),
-                ),
-              ),
+
+              // Container(
+              //   decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+              //   width: MediaQuery.of(context).size.width,
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(
+              //         top: 10, left: 16.0, right: 16.0, bottom: 10),
+              //     child: Text(
+              //       "250 Likes, 50 Comments, 10 Share",
+              //       textScaleFactor: 1.0,
+              //       // maxLines: ,
+              //       style: TextStyle(fontSize: 16, color: Gray1),
+              //     ),
+              //   ),
+              // ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 5, left: 16.0, right: 16.0),
                 child: Divider(
-                  color: HexColor.fromHex("#fff"),
+                  color: Colors.grey[300],
                   thickness: 1.3,
                 ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: SvgPicture.asset(
-                      "assets/icons/heart.svg",
-                      color: Colors.red,
-                    ),
-                  ),
-                  Expanded(
-                    child: SvgPicture.asset(
-                      "assets/icons/message.svg",
-                      color: Colors.orange,
-                    ),
-                  ),
-                  Expanded(
-                    child: SvgPicture.asset(
-                      "assets/icons/share.svg",
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
-              )
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: SvgPicture.asset(
+              //         "assets/icons/heart.svg",
+              //         color: Colors.red,
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: SvgPicture.asset(
+              //         "assets/icons/message.svg",
+              //         color: Colors.orange,
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: SvgPicture.asset(
+              //         "assets/icons/share.svg",
+              //         color: Colors.green,
+              //       ),
+              //     ),
+              //   ],
+              // )
               //
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 0.0, left: 15.0, right: 16.0),
+                child: Row(
+                  children: <Widget>[
+                    RatingBar(
+                      initialRating: stars,
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      tapOnlyMode: true,
+                      glow: false,
+                      allowHalfRating: true,
+                      ignoreGestures: true,
+                      itemCount: 5,
+                      itemSize: 19,
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        // "${stars} (${reviews})",
+                        "၄.၀ (၅ ဦး)",
+                        textScaleFactor: 1.0,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(color: Orange),
+                // width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(left: 15),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 0, left: 10.0, right: 10.0, bottom: 0),
+                  child: Text(
+                    "သင်ယူရန်",
+                    textScaleFactor: 1.0,
+                    // maxLines: ,
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
+              // Container(
+              //   child: Text("သင်ယူရန်"),
+              // )
               // Padding(
-              //   padding:
-              //       const EdgeInsets.only(top: 16.0, left: 15.0, right: 16.0),
-              //   child: Row(
-              //     children: <Widget>[
-              //       RatingBar(
-              //         initialRating: stars,
-              //         minRating: 0,
-              //         direction: Axis.horizontal,
-              //         tapOnlyMode: true,
-              //         glow: false,
-              //         allowHalfRating: true,
-              //         ignoreGestures: true,
-              //         itemCount: 5,
-              //         itemSize: 19,
-              //         itemBuilder: (context, _) => Icon(
-              //           Icons.star,
-              //           color: Colors.amber,
-              //         ),
-              //         onRatingUpdate: (rating) {
-              //           print(rating);
-              //         },
-              //       ),
-              //       Padding(
-              //         padding: const EdgeInsets.only(left: 8.0),
-              //         child: Text(
-              //           "${stars} (${reviews})",
-              //           textScaleFactor: 1.0,
-              //           style: TextStyle(fontSize: 16),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              //   padding: null,
+              //   child: Text("သင်ယူရန်"),
+              // )
               // _buildPrice(context, price, oldPrice, free)
             ],
           ),

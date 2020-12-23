@@ -5,11 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:masterstudy_app/data/models/AppSettings.dart';
 import 'package:masterstudy_app/main.dart';
 import 'package:masterstudy_app/ui/bloc/profile/profile_state.dart';
+import 'package:masterstudy_app/ui/screen/course/course_screen.dart';
 import 'package:masterstudy_app/ui/screen/courses/courses_screen.dart';
 import 'package:masterstudy_app/ui/screen/custom/login.dart';
 import 'package:masterstudy_app/ui/screen/custom/login_register.dart';
 import 'package:masterstudy_app/ui/screen/custom/profile.dart';
 import 'package:masterstudy_app/ui/screen/favorites/favorites_screen.dart';
+import 'package:masterstudy_app/ui/screen/home/course_screen2.dart';
 import 'package:masterstudy_app/ui/screen/home/home_screen.dart';
 import 'package:masterstudy_app/ui/screen/home_simple/home_simple_screen.dart';
 import 'package:masterstudy_app/ui/screen/orders/orders.dart';
@@ -346,6 +348,7 @@ class MainScreenState extends State<MainScreenWidget> {
                             this.setState(() {
                               // screen = 0;
                             });
+                            Navigator.pop(context);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -417,11 +420,9 @@ class MainScreenState extends State<MainScreenWidget> {
             ? HomeSimpleScreen()
             : HomeScreen();
       case 1:
-        return CoursesScreen(() {
-          setState(() {
-            _selectedIndex = 0;
-          });
-        });
+        return (widget.optionsBean?.app_view ?? true)
+            ? HomeSimpleScreen()
+            : CourseScreen2();
       case 2:
         return SearchScreen();
       case 3:

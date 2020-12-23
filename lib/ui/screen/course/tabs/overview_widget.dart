@@ -44,6 +44,26 @@ class _OverviewWidgetState extends State<OverviewWidget>
             //Meta
             Column(
               children: widget.response.meta.map((value) {
+                String label = "";
+                switch (value.label) {
+                  case "Enrolled":
+                    label = "စာရင်းသွင်း";
+                    break;
+                  case "Duration":
+                    label = "အတန်းကြာချိန်";
+                    break;
+                  case "Lectures":
+                    label = "ပို့ချချက်";
+                    break;
+                  case "Video":
+                    label = "ဗွီဒီယို";
+                    break;
+                  case "Level":
+                    label = "သင်ခန်းစာအဆင့်";
+                    break;
+                    defalut:
+                    label = "errro";
+                }
                 return Column(
                   children: <Widget>[
                     InkWell(
@@ -61,7 +81,8 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    value.label,
+                                    // value.label,
+                                    label,
                                     textScaleFactor: 1.0,
                                   ),
                                 )
@@ -84,7 +105,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
                 );
               }).toList(),
             ),
-            _buildAnnoncement(widget.response.announcement),
+            // _buildAnnoncement(widget.response.announcement),
             _buildReviewsStat(widget.response.rating),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
@@ -118,10 +139,13 @@ class _OverviewWidgetState extends State<OverviewWidget>
 
   _buildDescription() {
     double webContainerHeight;
+    String decription =
+        "<p style='font-size:55px'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed, malesuada a lorem. Aliquam pulvinar sem vitae maximus imperdiet. Ut mattis mi tortor, sed mollis augue tristique sed. In suscipit sodales tellus, eu dapibus dolor. Pellentesque vel erat sapien. Donec et massa in erat sodales accumsan. Donec at tortor ligula. Cras euismod volutpat auctor. Vivamus vitae placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed consequat viverra dapibus. Maecenas ac ipsum quis sem blandit aliquet. Cras eget placerat nisi. Duis ut quam in nisl pellentesque ultrices ut eget leo. Sed in semper risus. Aenean ultrices vel nisi id molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras sagittis non nulla vel molestie. Duis mollis ornare velit, eget rutrum odio rutrum non. Etiam convallis justo justo, a lacinia tortor euismod non. Nunc tempus hendrerit nibh at vulputate. Curabitur eu placerat mauris, id placerat velit. Praesent rutrum vulputate leo scelerisque gravida. Duis nulla massa, aliquet eget aliquet sit amet, vehicula quis nunc. Nulla nulla odio, malesuada non lorem at, placerat varius nunc.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vitae vulputate purus. Sed sit amet magna lacinia, semper enim sed, rutrum leo. Nam a quam velit. Nam velit metus, luctus ac volutpat eget, interdum id felis. Etiam semper justo vitae viverra dignissim. Donec rutrum enim vitae libero facilisis, vel venenatis magna scelerisque. Aenean eget metus feugiat, lacinia odio ut, rutrum quam. Aliquam eget fringilla lacus.</p>";
     if (descriptionHeight != null && descTextShowFlag) {
-      webContainerHeight = descriptionHeight;
+      // webContainerHeight = descriptionHeight;
+      webContainerHeight = 1000;
     } else {
-      webContainerHeight = 160;
+      webContainerHeight = 100;
     }
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
@@ -132,7 +156,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
           child: WebView(
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl:
-                'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(widget.response.description))}',
+                'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(decription))}',
             onPageFinished: (some) async {
               double height = double.parse(
                   await _descriptionWebViewController.evaluateJavascript(
@@ -263,12 +287,11 @@ class _OverviewWidgetState extends State<OverviewWidget>
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: Text(localizations.getLocalization("reviews_title"),
+              child: Text("သုံးသပ်ချက်များ",
+                  // localizations.getLocalization("reviews_title"),
                   textScaleFactor: 1.0,
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .title
-                      .copyWith(color: dark, fontStyle: FontStyle.normal)),
+                  style: Theme.of(context).primaryTextTheme.title.copyWith(
+                      color: dark, fontWeight: FontWeight.bold, fontSize: 20)),
             )
           ],
         ),
@@ -350,6 +373,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
         children: <Widget>[
           Text(
             "$stars ${localizations.getLocalization("stars_count")}",
+            // "ကြယ် $stars ပွင့်",
             textScaleFactor: 1.0,
             style: TextStyle(
                 color: HexColor.fromHex("#777777"),

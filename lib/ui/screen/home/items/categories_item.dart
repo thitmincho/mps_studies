@@ -12,95 +12,140 @@ class CategoriesWidget extends StatelessWidget {
   final String title;
 
   CategoriesWidget(
-      this.title,
+    this.title,
     this.categories, {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return (categories.length != 0) ? Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-            padding: const EdgeInsets.only(top: 30.0, left: 30.0),
-            child: Text(title,
-                textScaleFactor: 1.0,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .title
-                    .copyWith(color: dark, fontStyle: FontStyle.normal))),
-        _buildList(context)
-      ],
-    ) : Center();
+    return (categories.length != 0)
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 15.0),
+                  child: Text("သင်ခန်းစာများ",
+                      textScaleFactor: 1.0,
+                      style: Theme.of(context).primaryTextTheme.title.copyWith(
+                            color: dark,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ))),
+              _buildList(context)
+            ],
+          )
+        : Center();
   }
 
   _buildList(context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
       child: ConstrainedBox(
-        constraints: new BoxConstraints(minHeight: 120, maxHeight: 160),
-        child: new ListView.builder(
-          itemCount: categories.length,
-          itemBuilder: (context, index) {
-            var item = categories[index];
-            var padding = (index == 0) ? 20.0 : 0.0;
-            var color =
-                (item.color != null) ? HexColor.fromHex(item.color) : dark;
-
-            return GestureDetector(
-              onTap: (){
+        constraints: new BoxConstraints(minHeight: 100, maxHeight: 130),
+        child: ListView(
+          padding: const EdgeInsets.all(5.0),
+          scrollDirection: Axis.horizontal,
+          children: [
+            GestureDetector(
+              onTap: () {
                 Navigator.pushNamed(
                   context,
                   CategoryDetailScreen.routeName,
-                  arguments: CategoryDetailScreenArgs(item),
+                  // arguments: CategoryDetailScreenArgs(item),
                 );
               },
               child: Padding(
-                padding: EdgeInsets.only(left: padding),
-                child: _buildRow(item.image, color, item.name),
+                padding: EdgeInsets.only(left: 5),
+                child: _buildRow("", Colors.green, "Political Studies"),
               ),
-            );
-          },
-          padding: const EdgeInsets.all(8.0),
-          scrollDirection: Axis.horizontal,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  CategoryDetailScreen.routeName,
+                  // arguments: CategoryDetailScreenArgs(item),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.only(left: 5),
+                child: _buildRow("", Colors.blue, "Social Studies"),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  CategoryDetailScreen.routeName,
+                  // arguments: CategoryDetailScreenArgs(item),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.only(left: 5),
+                child: _buildRow("", Colors.orange, "Professional Development"),
+              ),
+            )
+          ],
         ),
+        // child: new ListView.builder(
+        //   itemCount: categories.length,
+        //   itemBuilder: (context, index) {
+        //     var item = categories[index];
+        //     var padding = (index == 0) ? 20.0 : 0.0;
+        //     var color =
+        //         (item.color != null) ? HexColor.fromHex(item.color) : dark;
+
+        //     return GestureDetector(
+        //       onTap: (){
+        //         Navigator.pushNamed(
+        //           context,
+        //           CategoryDetailScreen.routeName,
+        //           arguments: CategoryDetailScreenArgs(item),
+        //         );
+        //       },
+        //       child: Padding(
+        //         padding: EdgeInsets.only(left: padding),
+        //         child: _buildRow(item.image, color, item.name),
+        //       ),
+        //     );
+        //   },
+        //   padding: const EdgeInsets.all(8.0),
+        //   scrollDirection: Axis.horizontal,
+        // ),
       ),
     );
   }
 
   _buildRow(String imgUrl, color, title) {
-
     var unescape = new HtmlUnescape();
     var imgFormat = (imgUrl != null && imgUrl != "") ? imgUrl.split(".") : null;
 
     return Card(
         color: color,
         child: new Container(
-          width: 140,
-          height: 140,
+          width: 160,
+          height: 100,
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 (imgFormat != null)
-                  ?
-                  SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: (imgFormat.last == 'svg') ? SvgPicture.asset(
-                          imgUrl,
-                          color: HexColor.fromHex("#FFFFFF")
-                      ) : Image.network(
-                        imgUrl,
-                        width: double.infinity,
+                    ? SizedBox(
+                        width: 50,
                         height: 50,
-                        fit: BoxFit.cover,
-                      )
-                  )
-                : Center(),
+                        child: (imgFormat.last == 'svg')
+                            ? SvgPicture.asset(imgUrl,
+                                color: HexColor.fromHex("#FFFFFF"))
+                            : Image.network(
+                                imgUrl,
+                                width: double.infinity,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ))
+                    : Center(),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
                   child: Text(

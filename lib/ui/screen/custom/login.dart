@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:masterstudy_app/ui/screen/custom/account_settings.dart';
+// import 'package:masterstudy_app/ui/screen/custom/account_settings.dart';
 import 'package:masterstudy_app/ui/screen/custom/profile.dart';
 import 'package:masterstudy_app/ui/screen/custom/utils/button_three.dart';
 import 'package:masterstudy_app/ui/screen/custom/utils/button_two.dart';
@@ -43,8 +43,7 @@ class _LoginScreenState extends State<LoginScreen_Custom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(children: <Widget>[
-      Container(
+      body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/login_bg.jpg"),
@@ -92,17 +91,19 @@ class _LoginScreenState extends State<LoginScreen_Custom> {
             Button_One(
               text: 'ဝင်ရောက်ရန်'.toUpperCase(),
               press: () {
-                Navigator.push(
-                    this.context,
-                    MaterialPageRoute(
-                        builder: (context) => ProfileScreen_Custom()));
+                // Navigator.push(
+                //     this.context,
+                //     MaterialPageRoute(
+                //         builder: (context) => ProfileScreen_Custom()));
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
               },
             ),
             Text(
               "သင်၏လျို့ဝှက်နံပါတ် ကိုမေ့နေပါသလား?",
               style: TextStyle(fontSize: 15, color: Yellow, letterSpacing: 1),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 30),
             _facebookButton(),
             Column(
               children: <Widget>[
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen_Custom> {
           ],
         ),
       ),
-    ]));
+    );
   }
 
   Widget _buildTextField(String title) {

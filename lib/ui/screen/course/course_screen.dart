@@ -287,14 +287,14 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                                                     );
                                                   },
                                                   child: Text(
-                                                    unescape.convert(widget
-                                                        .coursesBean
-                                                        .categories_object[0]
-                                                        .name),
+                                                    // unescape.convert(widget
+                                                    //     .coursesBean
+                                                    //     .categories_object[0]
+                                                    //     .name),
+                                                    "သင်တန်းအမျိုးအစား",
                                                     textScaleFactor: 1.0,
                                                     style: TextStyle(
-                                                        color: Colors.white
-                                                            .withOpacity(0.5),
+                                                        color: Colors.white,
                                                         fontSize: 16),
                                                   ),
                                                 ),
@@ -335,12 +335,13 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                                         child: Container(
                                           height: 140,
                                           child: Text(
-                                            unescape.convert(
-                                                widget.coursesBean.title),
+                                            // unescape.convert(
+                                            //     widget.coursesBean.title),
+                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                                             textScaleFactor: 1.0,
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 40),
+                                                fontSize: 25),
                                           ),
                                         ),
                                       ),
@@ -371,12 +372,12 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                                               padding: const EdgeInsets.only(
                                                   left: 8.0),
                                               child: Text(
-                                                "${widget.coursesBean.rating.average.toDouble()} (${widget.coursesBean.rating.total} review)",
+                                                // "${widget.coursesBean.rating.average.toDouble()} (${widget.coursesBean.rating.total} review)",
+                                                "၄.၀ (၅ ဦး)",
                                                 textScaleFactor: 1.0,
                                                 style: TextStyle(
                                                     fontSize: 16,
-                                                    color: Colors.white
-                                                        .withOpacity(0.5)),
+                                                    color: Colors.white),
                                               ),
                                             ),
                                           ],
@@ -454,7 +455,7 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _buildPrice(state),
             // MaterialButton(
