@@ -50,11 +50,11 @@ class CategoriesWidget extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  CategoryDetailScreen.routeName,
-                  // arguments: CategoryDetailScreenArgs(item),
-                );
+                // Navigator.pushNamed(
+                //   context,
+                //   CategoryDetailScreen.routeName,
+                //   // arguments: CategoryDetailScreenArgs(item),
+                // );
               },
               child: Padding(
                 padding: EdgeInsets.only(left: 5),
@@ -63,11 +63,11 @@ class CategoriesWidget extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  CategoryDetailScreen.routeName,
-                  // arguments: CategoryDetailScreenArgs(item),
-                );
+                // Navigator.pushNamed(
+                //   context,
+                //   CategoryDetailScreen.routeName,
+                //   // arguments: CategoryDetailScreenArgs(item),
+                // );
               },
               child: Padding(
                 padding: EdgeInsets.only(left: 5),
@@ -76,11 +76,11 @@ class CategoriesWidget extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  CategoryDetailScreen.routeName,
-                  // arguments: CategoryDetailScreenArgs(item),
-                );
+                // Navigator.pushNamed(
+                //   context,
+                //   CategoryDetailScreen.routeName,
+                //   // arguments: CategoryDetailScreenArgs(item),
+                // );
               },
               child: Padding(
                 padding: EdgeInsets.only(left: 5),
