@@ -61,17 +61,18 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    // value.label,
-                                    "စာရင်းသွင်း",
-                                    textScaleFactor: 1.0,
-                                  ),
+                                      // value.label,
+                                      "စာရင်းသွင်း",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(fontSize: 15)),
                                 )
                               ],
                             ),
                             Text(
                               "၁၀၀၀ ယောက်",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -96,17 +97,18 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    // value.label,
-                                    "အတန်းကြာချိန်",
-                                    textScaleFactor: 1.0,
-                                  ),
+                                      // value.label,
+                                      "အတန်းကြာချိန်",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(fontSize: 15)),
                                 )
                               ],
                             ),
                             Text(
                               "၇ နာရီ",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -131,17 +133,18 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    // value.label,
-                                    "ပို့ချချက်",
-                                    textScaleFactor: 1.0,
-                                  ),
+                                      // value.label,
+                                      "ပို့ချချက်",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(fontSize: 15)),
                                 )
                               ],
                             ),
                             Text(
                               "၃ ပိုင်း",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -166,17 +169,18 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    // value.label,
-                                    "ဗွီဒိယို",
-                                    textScaleFactor: 1.0,
-                                  ),
+                                      // value.label,
+                                      "ဗွီဒိယို",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(fontSize: 15)),
                                 )
                               ],
                             ),
                             Text(
                               "၃ နာရီ",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -201,17 +205,18 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
-                                    // value.label,
-                                    "သင်ခန်းစာအဆင့်",
-                                    textScaleFactor: 1.0,
-                                  ),
+                                      // value.label,
+                                      "သင်ခန်းစာအဆင့်",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(fontSize: 15)),
                                 )
                               ],
                             ),
                             Text(
                               "အလယ်အလတ်",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -238,11 +243,10 @@ class _OverviewWidgetState extends State<OverviewWidget>
                     arguments: ReviewWriteScreenArgs(null, null),
                   );
                 },
-                child: Text(
-                  "သုံးသပ်ချက်ပေးရန်",
-                  // localizations.getLocalization("write_review_button"),
-                  textScaleFactor: 1.0,
-                ),
+                child: Text("သုံးသပ်ချက်ပေးရန်",
+                    // localizations.getLocalization("write_review_button"),
+                    textScaleFactor: 1.0,
+                    style: TextStyle(fontSize: 17)),
                 textColor: Colors.white,
               ),
             ),
@@ -409,8 +413,8 @@ class _OverviewWidgetState extends State<OverviewWidget>
               child: Text("သုံးသပ်ချက်များ",
                   // localizations.getLocalization("reviews_title"),
                   textScaleFactor: 1.0,
-                  style: Theme.of(context).primaryTextTheme.title.copyWith(
-                      color: dark, fontWeight: FontWeight.bold, fontSize: 20)),
+                  style: TextStyle(
+                      color: Gray2, fontWeight: FontWeight.w700, fontSize: 19)),
             )
           ],
         ),

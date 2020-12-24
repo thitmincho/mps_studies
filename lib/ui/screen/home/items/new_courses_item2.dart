@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:myanmar_political_studies/data/models/category.dart';
 import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
@@ -29,11 +30,13 @@ class NewCoursesWidget2 extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
           child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 15.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text("Categories",
                   textScaleFactor: 1.0,
-                  style: Theme.of(context).primaryTextTheme.title.copyWith(
-                      color: dark, fontSize: 22, fontWeight: FontWeight.bold))),
+                  style: GoogleFonts.roboto(
+                      color: Gray1,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500))),
         ),
         _buildList(context)
       ],
@@ -43,7 +46,7 @@ class NewCoursesWidget2 extends StatelessWidget {
   _buildList(context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(top: 0.0, bottom: 20),
+        padding: const EdgeInsets.only(top: 5.0, bottom: 10),
         child: ConstrainedBox(
           constraints: new BoxConstraints(minHeight: 300, maxHeight: 350),
           child: ListView(
@@ -189,7 +192,8 @@ class NewCoursesWidget2 extends StatelessWidget {
     var unescape = new HtmlUnescape();
 
     return SizedBox(
-      width: 300,
+      width: 310,
+      height: 315,
       child: Card(
         borderOnForeground: true,
         elevation: 3,
@@ -200,8 +204,8 @@ class NewCoursesWidget2 extends StatelessWidget {
             children: <Widget>[
               Image.network(
                 image,
-                width: 320,
-                height: 160,
+                width: 310,
+                height: 150,
                 fit: BoxFit.cover,
               ),
               Container(
@@ -213,21 +217,24 @@ class NewCoursesWidget2 extends StatelessWidget {
                     unescape.convert(title),
                     textScaleFactor: 1.0,
                     maxLines: 2,
-                    style: TextStyle(
-                        fontSize: 18, color: dark, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.roboto(
+                        fontSize: 17,
+                        color: Gray1,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5, left: 16.0, right: 16.0),
+                padding:
+                    const EdgeInsets.only(top: 10, left: 16.0, right: 16.0),
                 child: Divider(
-                  color: Colors.grey[300],
-                  thickness: 1.3,
+                  color: Gray5,
+                  thickness: 1,
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 0.0, left: 15.0, right: 16.0),
+                    const EdgeInsets.only(top: 15.0, left: 15.0, right: 16.0),
                 child: Row(
                   children: <Widget>[
                     RatingBar(
@@ -242,7 +249,7 @@ class NewCoursesWidget2 extends StatelessWidget {
                       itemSize: 19,
                       itemBuilder: (context, _) => Icon(
                         Icons.star,
-                        color: Colors.amber,
+                        color: Orange,
                       ),
                       onRatingUpdate: (rating) {
                         print(rating);
@@ -254,24 +261,28 @@ class NewCoursesWidget2 extends StatelessWidget {
                         // "${stars} (${reviews})",
                         "၄.၀ (၅ ဦး)",
                         textScaleFactor: 1.0,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: "Pyidaungsu",
+                            fontSize: 11,
+                            color: Gray1),
                       ),
                     ),
                   ],
                 ),
               ),
               Container(
-                decoration: BoxDecoration(color: Orange),
+                decoration: BoxDecoration(
+                    color: Orange, borderRadius: BorderRadius.circular(2)),
                 // width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(left: 15),
+                margin: EdgeInsets.only(left: 15, top: 15),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 0, left: 10.0, right: 10.0, bottom: 0),
+                      top: 0, left: 4.0, right: 4.0, bottom: 0),
                   child: Text(
                     "သင်ယူရန်",
                     textScaleFactor: 1.0,
                     // maxLines: ,
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 11, color: Colors.white),
                   ),
                 ),
               ),

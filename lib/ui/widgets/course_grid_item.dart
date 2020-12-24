@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
 import 'package:myanmar_political_studies/theme/theme.dart';
@@ -43,7 +44,11 @@ class CourseGridItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Card(
-          elevation: 3,
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Gray5, width: 1),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 15.0),
             child: Column(
@@ -53,15 +58,15 @@ class CourseGridItem extends StatelessWidget {
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 20.0, left: 16.0, right: 16.0),
+                        top: 17.0, left: 16.0, right: 16.0),
                     child: Text(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                       textScaleFactor: 1.0,
                       maxLines: 2,
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: dark,
-                          fontWeight: FontWeight.w600),
+                      style: GoogleFonts.roboto(
+                          fontSize: 15,
+                          color: Gray2,
+                          fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -69,24 +74,24 @@ class CourseGridItem extends StatelessWidget {
                   // height: 100,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 10.0, left: 16.0, right: 16.0, bottom: 5),
+                        left: 16.0, right: 16.0, bottom: 5),
                     child: Text(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed,",
                       textScaleFactor: 1.0,
                       maxLines: 3,
-                      style: TextStyle(fontSize: 16, color: dark),
+                      style: GoogleFonts.roboto(fontSize: 13, color: Gray2),
                     ),
                   ),
                 ),
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 0, left: 16.0, right: 16.0, bottom: 10),
+                        top: 0, left: 16.0, right: 16.0, bottom: 12),
                     child: Text(
                       "Continue Reading",
                       textScaleFactor: 1.0,
                       // maxLines: ,
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                      style: GoogleFonts.roboto(fontSize: 13, color: Blue1),
                     ),
                   ),
                 ),
@@ -94,20 +99,20 @@ class CourseGridItem extends StatelessWidget {
                 Image.network(
                   "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
                   width: MediaQuery.of(context).size.width,
-                  height: 160,
+                  height: 175,
                   fit: BoxFit.cover,
                 ),
                 Container(
-                  decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+                  decoration: BoxDecoration(color: Gray5),
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 10, left: 16.0, right: 16.0, bottom: 10),
+                        top: 13, left: 16.0, right: 16.0, bottom: 13),
                     child: Text(
                       "250 Likes, 50 Comments, 10 Share",
                       textScaleFactor: 1.0,
                       // maxLines: ,
-                      style: TextStyle(fontSize: 16, color: Gray1),
+                      style: GoogleFonts.roboto(fontSize: 11, color: Gray2),
                     ),
                   ),
                 ),
@@ -125,19 +130,19 @@ class CourseGridItem extends StatelessWidget {
                     Expanded(
                       child: SvgPicture.asset(
                         "assets/icons/heart.svg",
-                        color: Colors.red,
+                        color: Red,
                       ),
                     ),
                     Expanded(
                       child: SvgPicture.asset(
                         "assets/icons/message.svg",
-                        color: Colors.orange,
+                        color: Orange,
                       ),
                     ),
                     Expanded(
                       child: SvgPicture.asset(
                         "assets/icons/share.svg",
-                        color: Colors.green,
+                        color: Green,
                       ),
                     ),
                   ],
