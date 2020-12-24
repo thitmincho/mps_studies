@@ -26,7 +26,7 @@ class _CurriculumWidgetState extends State<CurriculumWidget>
         _buildSection("အခန်း ၁", "နိဒါန်း"),
         _buildLesson(context, "သင်ခန်းစာ ဗီဒီယိုဖိုင်", "video"),
         _buildLesson(context, "သင်ခန်းစာ အကြောင်းအရာ", "text"),
-        _buildSection("အခန်း ၂", "နိဒါန်း"),
+        _buildSection("အခန်း ၂", "သင်ခန်းစာအမည်"),
         _buildLesson(context, "သင်ခန်းစာ ဗီဒီယိုဖိုင်", "video"),
         _buildLesson(context, "သင်ခန်းစာ အကြောင်းအရာ", "text"),
         _buildLesson(context, "သင်ခန်းစာ အသံဖိုင်", "stream"),
@@ -62,13 +62,15 @@ class _CurriculumWidgetState extends State<CurriculumWidget>
           Text(
             title,
             textScaleFactor: 1.0,
-            style: TextStyle(color: HexColor.fromHex("#AAAAAA")),
+            style: TextStyle(
+                fontFamily: "Pyidaungsu", color: HexColor.fromHex("#AAAAAA")),
           ),
           Text(
             label,
             textScaleFactor: 1.0,
             style: TextStyle(
                 color: HexColor.fromHex("#273044"),
+                fontFamily: "Pyidaungsu",
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
           ),
@@ -133,13 +135,12 @@ class _CurriculumWidgetState extends State<CurriculumWidget>
                 flex: 6,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: Text(
-                    title,
-                    textScaleFactor: 1.0,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
-                  ),
+                  child: Text(title,
+                      textScaleFactor: 1.0,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
+                      style: TextStyle(fontFamily: "Pyidaungsu", fontSize: 15)),
                 ),
               ),
               // (false)

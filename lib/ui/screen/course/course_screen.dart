@@ -237,6 +237,7 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
                                               "သင်တန်းအမျိုးအစား",
                                               textScaleFactor: 1.0,
                                               style: TextStyle(
+                                                  fontFamily: "Pyidaungsu",
                                                   color: Colors.white,
                                                   fontSize: 16),
                                             ),

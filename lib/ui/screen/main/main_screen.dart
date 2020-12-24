@@ -83,8 +83,10 @@ class MainScreenState extends State<MainScreenWidget> {
                 ),
                 Text(text,
                     textScaleFactor: 1.0,
-                    style:
-                        TextStyle(fontSize: 12, color: _getItemColor(index))),
+                    style: TextStyle(
+                        fontFamily: "Pyidaungsu",
+                        fontSize: 12,
+                        color: _getItemColor(index))),
               ],
             ),
             onTap: () => _onItemTapped(index),
