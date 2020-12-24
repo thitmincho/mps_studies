@@ -167,14 +167,14 @@ class _OverviewWidgetState extends State<OverviewWidget>
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
                                     // value.label,
-                                    "၃ နာရီ",
+                                    "ဗွီဒိယို",
                                     textScaleFactor: 1.0,
                                   ),
                                 )
                               ],
                             ),
                             Text(
-                              "၁၀၀၀ ယောက်",
+                              "၃ နာရီ",
                               textScaleFactor: 1.0,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             )
