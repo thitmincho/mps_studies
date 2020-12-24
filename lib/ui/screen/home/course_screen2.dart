@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/ui/bloc/home/bloc.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/ui/bloc/home/bloc.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 
 import '../../../theme/theme.dart';
 import 'items/categories_item.dart';

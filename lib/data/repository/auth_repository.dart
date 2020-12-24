@@ -1,6 +1,6 @@
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/auth.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/models/auth.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthRepository {
@@ -53,7 +53,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future logout() async{
+  Future logout() async {
     _sharedPreferences.setString("apiToken", "");
   }
 }

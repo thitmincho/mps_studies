@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/search_detail/search_detail_screen.dart';
-import 'package:masterstudy_app/ui/bloc/home_simple/bloc.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/search_detail/search_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/bloc/home_simple/bloc.dart';
 
-import 'package:masterstudy_app/ui/widgets/course_grid_item.dart';
+import 'package:myanmar_political_studies/ui/widgets/course_grid_item.dart';
 
 import '../../../theme/theme.dart';
 import '../../widgets/course_grid_item.dart';
@@ -28,21 +28,24 @@ class _HomeSimpleScreenState extends State<HomeSimpleScreen> {
   @override
   void initState() {
     super.initState();
-    _bloc = BlocProvider.of<HomeSimpleBloc>(context)..add(FetchHomeSimpleEvent());
+    _bloc = BlocProvider.of<HomeSimpleBloc>(context)
+      ..add(FetchHomeSimpleEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor.fromHex("F3F5F9"),
+        backgroundColor: HexColor.fromHex("F3F5F9"),
         appBar: AppBar(
           bottom: PreferredSize(
               preferredSize: const Size.fromHeight(26),
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 10.0, left: 10, right: 10),
+                padding:
+                    const EdgeInsets.only(bottom: 10.0, left: 10, right: 10),
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).pushNamed(SearchDetailScreen.routeName,
+                    Navigator.of(context).pushNamed(
+                        SearchDetailScreen.routeName,
                         arguments: SearchDetailScreenArgs(""));
                   },
                   child: new Card(
@@ -61,11 +64,12 @@ class _HomeSimpleScreenState extends State<HomeSimpleScreen> {
                               children: <Widget>[
                                 new Expanded(
                                     child: new Text(
-                                      localizations.getLocalization("search_bar_title"),
-                                      textScaleFactor: 1.0,
-                                      style: TextStyle(
-                                          color: Colors.black.withOpacity(0.5)),
-                                    )),
+                                  localizations
+                                      .getLocalization("search_bar_title"),
+                                  textScaleFactor: 1.0,
+                                  style: TextStyle(
+                                      color: Colors.black.withOpacity(0.5)),
+                                )),
                                 Icon(
                                   Icons.search,
                                   color: Colors.grey,
@@ -95,7 +99,8 @@ class _HomeSimpleScreenState extends State<HomeSimpleScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(top: 25.0, left: 30.0, right: 30.0, bottom: 10.0),
+                padding: const EdgeInsets.only(
+                    top: 25.0, left: 30.0, right: 30.0, bottom: 10.0),
                 child: Text(localizations.getLocalization("new_courses_title"),
                     textScaleFactor: 1.0,
                     style: Theme.of(context)

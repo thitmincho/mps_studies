@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/AppSettings.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
-import 'package:masterstudy_app/data/repository/auth_repository.dart';
-import 'package:masterstudy_app/data/repository/home_repository.dart';
-import 'package:masterstudy_app/main.dart';
+import 'package:myanmar_political_studies/data/models/AppSettings.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/repository/auth_repository.dart';
+import 'package:myanmar_political_studies/data/repository/home_repository.dart';
+import 'package:myanmar_political_studies/main.dart';
 
 import './bloc.dart';
 

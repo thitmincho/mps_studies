@@ -2,27 +2,27 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/AddToCartResponse.dart';
-import 'package:masterstudy_app/data/models/AppSettings.dart';
-import 'package:masterstudy_app/data/models/AssignmentResponse.dart';
-import 'package:masterstudy_app/data/models/FinalResponse.dart';
-import 'package:masterstudy_app/data/models/InstructorsResponse.dart';
-import 'package:masterstudy_app/data/models/LessonResponse.dart';
-import 'package:masterstudy_app/data/models/OrdersResponse.dart';
-import 'package:masterstudy_app/data/models/PopularSearchesResponse.dart';
-import 'package:masterstudy_app/data/models/QuestionAddResponse.dart';
-import 'package:masterstudy_app/data/models/QuestionsResponse.dart';
-import 'package:masterstudy_app/data/models/QuizResponse.dart';
-import 'package:masterstudy_app/data/models/ReviewAddResponse.dart';
-import 'package:masterstudy_app/data/models/ReviewResponse.dart';
-import 'package:masterstudy_app/data/models/account.dart';
-import 'package:masterstudy_app/data/models/auth.dart';
-import 'package:masterstudy_app/data/models/category.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/data/models/curriculum.dart';
-import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
+import 'package:myanmar_political_studies/data/models/AddToCartResponse.dart';
+import 'package:myanmar_political_studies/data/models/AppSettings.dart';
+import 'package:myanmar_political_studies/data/models/AssignmentResponse.dart';
+import 'package:myanmar_political_studies/data/models/FinalResponse.dart';
+import 'package:myanmar_political_studies/data/models/InstructorsResponse.dart';
+import 'package:myanmar_political_studies/data/models/LessonResponse.dart';
+import 'package:myanmar_political_studies/data/models/OrdersResponse.dart';
+import 'package:myanmar_political_studies/data/models/PopularSearchesResponse.dart';
+import 'package:myanmar_political_studies/data/models/QuestionAddResponse.dart';
+import 'package:myanmar_political_studies/data/models/QuestionsResponse.dart';
+import 'package:myanmar_political_studies/data/models/QuizResponse.dart';
+import 'package:myanmar_political_studies/data/models/ReviewAddResponse.dart';
+import 'package:myanmar_political_studies/data/models/ReviewResponse.dart';
+import 'package:myanmar_political_studies/data/models/account.dart';
+import 'package:myanmar_political_studies/data/models/auth.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/data/models/curriculum.dart';
+import 'package:myanmar_political_studies/data/models/purchase/UserPlansResponse.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
 
 @provide
 @singleton

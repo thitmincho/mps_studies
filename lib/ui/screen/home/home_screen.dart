@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/ui/bloc/home/bloc.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/ui/bloc/home/bloc.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 
 import '../../../theme/theme.dart';
 import 'items/categories_item.dart';
@@ -55,38 +55,41 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _buildBody(context, state) {
-    if (state is LoadedHomeState) {
-      return ListView.builder(
-          itemCount: state.layout.length,
-          itemBuilder: (context, index) {
-            var item = state.layout[index];
-            switch (item.id) {
-              // case 3:
-              //   return TrendingWidget(true, item.name, state.coursesTranding);
-              // case 4:
-              //   return TopInstructorsWidget(item.name, state.instructors);
-              case 1:
-                return CategoriesWidget(item.name, state.categoryList);
-              case 2:
-                return NewCoursesWidget(item.name, state.coursesNew);
-              // case 5:
-              //   return TrendingWidget(false, item.name, state.coursesFree);
-              default:
-              // return CategoriesWidget(item.name, state.categoryList);
-              // return NewCoursesWidget(item.name, state.coursesNew);
-            }
-          });
-    }
-    if (state is InitialHomeState) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    }
+    // if (state is LoadedHomeState) {
+    return ListView(
+      children: [CategoriesWidget("item.name"), NewCoursesWidget("item.name")],
+    );
+    // ListView.builder(
+    //     itemCount: state.layout.length,
+    //     itemBuilder: (context, index) {
+    //       var item = state.layout[index];
+    //       switch (item.id) {
+    //         // case 3:
+    //         //   return TrendingWidget(true, item.name, state.coursesTranding);
+    //         // case 4:
+    //         //   return TopInstructorsWidget(item.name, state.instructors);
+    //         case 1:
+    //           return CategoriesWidget(item.name, state.categoryList);
+    //         // case 2:
+    //         // return NewCoursesWidget(item.name, state.coursesNew);
+    //         // case 5:
+    //         //   return TrendingWidget(false, item.name, state.coursesFree);
+    //         default:
+    //         // return CategoriesWidget(item.name, state.categoryList);
+    //         // return NewCoursesWidget(item.name, state.coursesNew);
+    //       }
+    //     });
+    // }
+    // if (state is InitialHomeState) {
+    //   return Center(
+    //     child: CircularProgressIndicator(),
+    //   );
+    // }
 
-    if (state is ErrorHomeState) {
-      return LoadingErrorWidget(() {
-        _bloc.add(FetchEvent());
-      });
-    }
+    // if (state is ErrorHomeState) {
+    //   return LoadingErrorWidget(() {
+    //     _bloc.add(FetchEvent());
+    //   });
+    // }
   }
 }

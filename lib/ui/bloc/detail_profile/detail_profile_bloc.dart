@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/account.dart';
-import 'package:masterstudy_app/data/repository/account_repository.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/models/account.dart';
+import 'package:myanmar_political_studies/data/repository/account_repository.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
 
 import './bloc.dart';
 

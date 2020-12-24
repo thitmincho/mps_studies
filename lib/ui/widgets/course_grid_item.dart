@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/category_detail/category_detail_screen.dart';
-import 'package:masterstudy_app/ui/screen/course/course_screen.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/course/course_screen.dart';
 
 class CourseGridItem extends StatelessWidget {
   final CoursesBean coursesBean;

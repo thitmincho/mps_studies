@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masterstudy_app/theme/theme.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
 
 import '../../main.dart';
 
@@ -21,8 +21,6 @@ class LoadingErrorWidget extends StatelessWidget {
 //      onPressed: onRetry,
 //    ));
 
-
-
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -41,7 +39,7 @@ class LoadingErrorWidget extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(top:8.0),
+            padding: const EdgeInsets.only(top: 8.0),
             child: MaterialButton(
               height: 40,
               color: mainColor,

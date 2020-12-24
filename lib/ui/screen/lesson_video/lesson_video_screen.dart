@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/lesson_video/bloc.dart';
-import 'package:masterstudy_app/ui/screen/assignment/assignment_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_stream/lesson_stream_screen.dart';
-import 'package:masterstudy_app/ui/screen/questions/questions_screen.dart';
-import 'package:masterstudy_app/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
-import 'package:masterstudy_app/ui/screen/text_lesson/text_lesson_screen.dart';
-import 'package:masterstudy_app/ui/screen/user_course_locked/user_course_locked_screen.dart';
-import 'package:masterstudy_app/ui/screen/video_screen/video_screen.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/lesson_video/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/assignment/assignment_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_stream/lesson_stream_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/questions/questions_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/text_lesson/text_lesson_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/user_course_locked/user_course_locked_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/video_screen/video_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -260,7 +260,7 @@ class _LessonVideoScreenState extends State<_LessonVideoScreenWidget> {
                                     borderRadius:
                                         new BorderRadius.circular(30.0),
                                   ),
-                                  onPressed: () async{
+                                  onPressed: () async {
                                     //_buildVideoPopup(state);
                                     if (Platform.isIOS) {
                                       _launchURL(state.lessonResponse.video);
@@ -557,9 +557,11 @@ class _LessonVideoScreenState extends State<_LessonVideoScreenWidget> {
       );
     }
   }
-  _launchURL(String url) async{
+
+  _launchURL(String url) async {
     await launch(url);
   }
+
   _buildButtonChild(LessonVideoState state) {
     if (state is InitialLessonVideoState)
       return SizedBox(

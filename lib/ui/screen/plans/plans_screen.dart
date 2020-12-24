@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/plans/bloc.dart';
-import 'package:masterstudy_app/ui/screen/web_checkout/web_checkout_screen.dart';
+import 'package:myanmar_political_studies/data/models/purchase/UserPlansResponse.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/plans/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/web_checkout/web_checkout_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlansScreen extends StatelessWidget {
@@ -214,19 +214,19 @@ class PlanWidget extends StatelessWidget {
                   left: 10, top: 20, right: 10, bottom: 20),
               child: Column(children: <Widget>[
                 ListTile(
-                  leading: Icon(Icons.radio_button_on),
+                  leading: Icon(Icons.radio_button_checked),
                   title: Text('kbz pay'.toUpperCase()),
                   trailing: Image.asset("assets/images/KBZ_pay.png",
                       width: 72, height: 39, fit: BoxFit.cover),
                 ),
                 ListTile(
-                  leading: Icon(Icons.radio_button_off),
+                  leading: Icon(Icons.radio_button_unchecked),
                   title: Text('Visa card'.toUpperCase()),
                   trailing: Image.asset("assets/images/visacard.png",
                       width: 53, height: 29, fit: BoxFit.cover),
                 ),
                 ListTile(
-                  leading: Icon(Icons.radio_button_off),
+                  leading: Icon(Icons.radio_button_unchecked),
                   title: Text('Master card'.toUpperCase()),
                   trailing: Image.asset("assets/images/mastercard.png",
                       width: 47, height: 28, fit: BoxFit.cover),

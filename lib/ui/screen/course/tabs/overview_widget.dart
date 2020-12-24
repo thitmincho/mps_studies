@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:masterstudy_app/data/models/ReviewResponse.dart';
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/course/meta_icon.dart';
-import 'package:masterstudy_app/ui/screen/review_write/review_write_screen.dart';
+import 'package:myanmar_political_studies/data/models/ReviewResponse.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/course/meta_icon.dart';
+import 'package:myanmar_political_studies/ui/screen/review_write/review_write_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../main.dart';
@@ -41,30 +41,10 @@ class _OverviewWidgetState extends State<OverviewWidget>
           children: <Widget>[
             //Description
             _buildDescription(),
-            //Meta
+            // //Meta
             Column(
-              children: widget.response.meta.map((value) {
-                String label = "";
-                switch (value.label) {
-                  case "Enrolled":
-                    label = "စာရင်းသွင်း";
-                    break;
-                  case "Duration":
-                    label = "အတန်းကြာချိန်";
-                    break;
-                  case "Lectures":
-                    label = "ပို့ချချက်";
-                    break;
-                  case "Video":
-                    label = "ဗွီဒီယို";
-                    break;
-                  case "Level":
-                    label = "သင်ခန်းစာအဆင့်";
-                    break;
-                    defalut:
-                    label = "errro";
-                }
-                return Column(
+              children: [
+                Column(
                   children: <Widget>[
                     InkWell(
                       onTap: () {},
@@ -76,22 +56,162 @@ class _OverviewWidgetState extends State<OverviewWidget>
                             Row(
                               children: <Widget>[
                                 MetaIcon(
-                                  value.type,
+                                  "current_students",
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: Text(
                                     // value.label,
-                                    label,
+                                    "စာရင်းသွင်း",
                                     textScaleFactor: 1.0,
                                   ),
                                 )
                               ],
                             ),
                             Text(
-                              value.text,
+                              "၁၀၀၀ ယောက်",
                               textScaleFactor: 1.0,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 2,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                MetaIcon(
+                                  "duration",
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    // value.label,
+                                    "အတန်းကြာချိန်",
+                                    textScaleFactor: 1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Text(
+                              "၇ နာရီ",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 2,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                MetaIcon(
+                                  "curriculum",
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    // value.label,
+                                    "ပို့ချချက်",
+                                    textScaleFactor: 1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Text(
+                              "၃ ပိုင်း",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 2,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                MetaIcon(
+                                  "video_duration",
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    // value.label,
+                                    "၃ နာရီ",
+                                    textScaleFactor: 1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Text(
+                              "၁၀၀၀ ယောက်",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 2,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                MetaIcon(
+                                  "level",
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(
+                                    // value.label,
+                                    "သင်ခန်းစာအဆင့်",
+                                    textScaleFactor: 1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Text(
+                              "အလယ်အလတ်",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(fontWeight: FontWeight.w600),
                             )
                           ],
                         ),
@@ -102,11 +222,11 @@ class _OverviewWidgetState extends State<OverviewWidget>
                       color: Colors.black.withOpacity(0.1),
                     ),
                   ],
-                );
-              }).toList(),
+                )
+              ],
             ),
-            // _buildAnnoncement(widget.response.announcement),
-            _buildReviewsStat(widget.response.rating),
+            // // _buildAnnoncement(widget.response.announcement),
+            _buildReviewsStat(null),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: new MaterialButton(
@@ -115,8 +235,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     ReviewWriteScreen.routeName,
-                    arguments: ReviewWriteScreenArgs(
-                        widget.response.id, widget.response.title),
+                    arguments: ReviewWriteScreenArgs(null, null),
                   );
                 },
                 child: Text(
@@ -127,7 +246,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
                 textColor: Colors.white,
               ),
             ),
-            _buildReviewList(widget.reviewResponse.posts),
+            // _buildReviewList(widget.reviewResponse.posts),
           ],
         ),
       ),
@@ -139,11 +258,11 @@ class _OverviewWidgetState extends State<OverviewWidget>
 
   _buildDescription() {
     double webContainerHeight;
-    // String decription =
-    //     "<p style='font-size:55px'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed, malesuada a lorem. Aliquam pulvinar sem vitae maximus imperdiet. Ut mattis mi tortor, sed mollis augue tristique sed. In suscipit sodales tellus, eu dapibus dolor. Pellentesque vel erat sapien. Donec et massa in erat sodales accumsan. Donec at tortor ligula. Cras euismod volutpat auctor. Vivamus vitae placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed consequat viverra dapibus. Maecenas ac ipsum quis sem blandit aliquet. Cras eget placerat nisi. Duis ut quam in nisl pellentesque ultrices ut eget leo. Sed in semper risus. Aenean ultrices vel nisi id molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras sagittis non nulla vel molestie. Duis mollis ornare velit, eget rutrum odio rutrum non. Etiam convallis justo justo, a lacinia tortor euismod non. Nunc tempus hendrerit nibh at vulputate. Curabitur eu placerat mauris, id placerat velit. Praesent rutrum vulputate leo scelerisque gravida. Duis nulla massa, aliquet eget aliquet sit amet, vehicula quis nunc. Nulla nulla odio, malesuada non lorem at, placerat varius nunc.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vitae vulputate purus. Sed sit amet magna lacinia, semper enim sed, rutrum leo. Nam a quam velit. Nam velit metus, luctus ac volutpat eget, interdum id felis. Etiam semper justo vitae viverra dignissim. Donec rutrum enim vitae libero facilisis, vel venenatis magna scelerisque. Aenean eget metus feugiat, lacinia odio ut, rutrum quam. Aliquam eget fringilla lacus.</p>";
+    String decription =
+        "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed, malesuada a lorem. Aliquam pulvinar sem vitae maximus imperdiet. Ut mattis mi tortor, sed mollis augue tristique sed. In suscipit sodales tellus, eu dapibus dolor. Pellentesque vel erat sapien. Donec et massa in erat sodales accumsan. Donec at tortor ligula. Cras euismod volutpat auctor. Vivamus vitae placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed consequat viverra dapibus. Maecenas ac ipsum quis sem blandit aliquet. Cras eget placerat nisi. Duis ut quam in nisl pellentesque ultrices ut eget leo. Sed in semper risus. Aenean ultrices vel nisi id molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras sagittis non nulla vel molestie. Duis mollis ornare velit, eget rutrum odio rutrum non. Etiam convallis justo justo, a lacinia tortor euismod non. Nunc tempus hendrerit nibh at vulputate. Curabitur eu placerat mauris, id placerat velit. Praesent rutrum vulputate leo scelerisque gravida. Duis nulla massa, aliquet eget aliquet sit amet, vehicula quis nunc. Nulla nulla odio, malesuada non lorem at, placerat varius nunc.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vitae vulputate purus. Sed sit amet magna lacinia, semper enim sed, rutrum leo. Nam a quam velit. Nam velit metus, luctus ac volutpat eget, interdum id felis. Etiam semper justo vitae viverra dignissim. Donec rutrum enim vitae libero facilisis, vel venenatis magna scelerisque. Aenean eget metus feugiat, lacinia odio ut, rutrum quam. Aliquam eget fringilla lacus.</p>";
     if (descriptionHeight != null && descTextShowFlag) {
       // webContainerHeight = descriptionHeight;
-      webContainerHeight = 1000;
+      webContainerHeight = 900;
     } else {
       webContainerHeight = 100;
     }
@@ -156,7 +275,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
           child: WebView(
             javascriptMode: JavascriptMode.unrestricted,
             initialUrl:
-                'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(widget.response.description))}',
+                'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(decription))}',
             onPageFinished: (some) async {
               double height = double.parse(
                   await _descriptionWebViewController.evaluateJavascript(
@@ -277,7 +396,7 @@ class _OverviewWidgetState extends State<OverviewWidget>
   }
 
   _buildReviewsStat(RatingBean rating) {
-    var total = rating.total;
+    var total = 568;
     var onePercent = total / 100;
 
     return Column(
@@ -301,16 +420,11 @@ class _OverviewWidgetState extends State<OverviewWidget>
           children: <Widget>[
             Column(
               children: <Widget>[
-                _buildStatRow(
-                    "5", rating.details.five / onePercent, rating.details.five),
-                _buildStatRow(
-                    "4", rating.details.four / onePercent, rating.details.four),
-                _buildStatRow("3", rating.details.three / onePercent,
-                    rating.details.three),
-                _buildStatRow(
-                    "2", rating.details.two / onePercent, rating.details.two),
-                _buildStatRow(
-                    "1", rating.details.one / onePercent, rating.details.one),
+                _buildStatRow("5", 80, 8),
+                _buildStatRow("4", 50, 5),
+                _buildStatRow("3", 40, 4),
+                _buildStatRow("2", 20, 2),
+                _buildStatRow("1", 0 / onePercent, 0),
               ],
             ),
             Column(
@@ -327,12 +441,12 @@ class _OverviewWidgetState extends State<OverviewWidget>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          rating.average.toDouble().toString().substring(0, 3),
+                          "၄.၀",
                           textScaleFactor: 1.0,
-                          style: TextStyle(fontSize: 50),
+                          style: TextStyle(fontSize: 30),
                         ),
                         RatingBar(
-                          initialRating: rating.average.toDouble(),
+                          initialRating: 4.0,
                           minRating: 0,
                           direction: Axis.horizontal,
                           allowHalfRating: true,
@@ -350,7 +464,8 @@ class _OverviewWidgetState extends State<OverviewWidget>
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Text(
-                            "(${rating.total} ${localizations.getLocalization("reviews_count")})",
+                            // "(${rating.total} ${localizations.getLocalization("reviews_count")})",
+                            "(၁၉ ဦး)",
                             textScaleFactor: 1.0,
                             style:
                                 TextStyle(color: HexColor.fromHex("#AAAAAA")),

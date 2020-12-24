@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/data/models/OrdersResponse.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/orders/bloc.dart';
+import 'package:myanmar_political_studies/data/models/OrdersResponse.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/orders/bloc.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class OrdersScreen extends StatelessWidget {

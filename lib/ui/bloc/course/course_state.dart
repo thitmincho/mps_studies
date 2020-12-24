@@ -1,12 +1,13 @@
-import 'package:masterstudy_app/data/models/ReviewResponse.dart';
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
+import 'package:myanmar_political_studies/data/models/ReviewResponse.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/data/models/purchase/UserPlansResponse.dart';
 import 'package:meta/meta.dart';
 
 @immutable
 abstract class CourseState {}
 
 class InitialCourseState extends CourseState {}
+
 class OpenPurchaseState extends CourseState {
   final String url;
 
@@ -18,7 +19,8 @@ class LoadedCourseState extends CourseState {
   final ReviewResponse reviewResponse;
   final List<UserPlansBean> userPlans;
 
-  LoadedCourseState(this.courseDetailResponse, this.reviewResponse, this.userPlans);
+  LoadedCourseState(
+      this.courseDetailResponse, this.reviewResponse, this.userPlans);
 }
 
 class ErrorCourseState extends CourseState {}

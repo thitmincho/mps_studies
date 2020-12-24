@@ -1,24 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:dio_flutter_transformer/dio_flutter_transformer.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
-import 'package:masterstudy_app/data/network/interceptors/interceptor.dart';
-import 'package:masterstudy_app/data/network/interceptors/loggining_interceptor.dart';
-import 'package:masterstudy_app/data/repository/account_repository.dart';
-import 'package:masterstudy_app/data/repository/assignment_repository.dart';
-import 'package:masterstudy_app/data/repository/auth_repository.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
-import 'package:masterstudy_app/data/repository/home_repository.dart';
-import 'package:masterstudy_app/data/repository/instructors_repository.dart';
-import 'package:masterstudy_app/data/repository/lesson_repository.dart';
-import 'package:masterstudy_app/data/repository/purchase_repository.dart';
-import 'package:masterstudy_app/data/repository/review_respository.dart';
-import 'package:masterstudy_app/data/repository/user_course_repository.dart';
-import 'package:masterstudy_app/data/repository/questions_repository.dart';
-import 'package:masterstudy_app/data/repository/final_repository.dart';
-import 'package:masterstudy_app/ui/bloc/auth/auth_bloc.dart';
-import 'package:masterstudy_app/ui/bloc/quiz_screen/bloc.dart';
-import 'package:masterstudy_app/ui/bloc/splash/bloc.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/network/interceptors/interceptor.dart';
+import 'package:myanmar_political_studies/data/network/interceptors/loggining_interceptor.dart';
+import 'package:myanmar_political_studies/data/repository/account_repository.dart';
+import 'package:myanmar_political_studies/data/repository/assignment_repository.dart';
+import 'package:myanmar_political_studies/data/repository/auth_repository.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/home_repository.dart';
+import 'package:myanmar_political_studies/data/repository/instructors_repository.dart';
+import 'package:myanmar_political_studies/data/repository/lesson_repository.dart';
+import 'package:myanmar_political_studies/data/repository/purchase_repository.dart';
+import 'package:myanmar_political_studies/data/repository/review_respository.dart';
+import 'package:myanmar_political_studies/data/repository/user_course_repository.dart';
+import 'package:myanmar_political_studies/data/repository/questions_repository.dart';
+import 'package:myanmar_political_studies/data/repository/final_repository.dart';
+import 'package:myanmar_political_studies/ui/bloc/auth/auth_bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/quiz_screen/bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/splash/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @module
@@ -31,7 +31,8 @@ class AppModule {
 
   @singleton
   @provide
-  HomeRepository homeRepository(UserApiProvider apiProvider, SharedPreferences sharedPreferences) =>
+  HomeRepository homeRepository(
+          UserApiProvider apiProvider, SharedPreferences sharedPreferences) =>
       new HomeRepositoryImpl(apiProvider, sharedPreferences);
 
   @singleton
@@ -102,7 +103,8 @@ class AppModule {
       new LessonRepositoryImpl(apiProvider);
 
   @provide
-  SplashBloc provideSplashBloc(AuthRepository repository, HomeRepository homeRepository,UserApiProvider apiProvider) =>
+  SplashBloc provideSplashBloc(AuthRepository repository,
+          HomeRepository homeRepository, UserApiProvider apiProvider) =>
       new SplashBloc(repository, homeRepository, apiProvider);
 
   @provide

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/lesson_repository.dart';
+import 'package:myanmar_political_studies/data/repository/lesson_repository.dart';
 
 import './bloc.dart';
 
@@ -20,18 +20,20 @@ class TextLessonBloc extends Bloc<TextLessonEvent, TextLessonState> {
     TextLessonEvent event,
   ) async* {
     if (event is FetchEvent) {
-      try{
-        var response = await repository.getLesson(event.courseId, event.lessonId);
+      try {
+        var response =
+            await repository.getLesson(event.courseId, event.lessonId);
         print(response);
         yield LoadedTextLessonState(response);
-      }catch(e,s){
+      } catch (e, s) {
         print(e);
         print(s);
       }
-    }else if (event is CompleteLessonEvent){
-      try{
-        var response = await repository.completeLesson(event.courseId, event.lessonId);
-      }catch(e,s){
+    } else if (event is CompleteLessonEvent) {
+      try {
+        var response =
+            await repository.completeLesson(event.courseId, event.lessonId);
+      } catch (e, s) {
         print(e);
         print(s);
       }

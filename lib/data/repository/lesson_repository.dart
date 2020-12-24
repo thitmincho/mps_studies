@@ -1,7 +1,7 @@
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/LessonResponse.dart';
-import 'package:masterstudy_app/data/models/QuizResponse.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/models/LessonResponse.dart';
+import 'package:myanmar_political_studies/data/models/QuizResponse.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
 
 abstract class LessonRepository {
   Future<LessonResponse> getLesson(int courseId, int lessonId);

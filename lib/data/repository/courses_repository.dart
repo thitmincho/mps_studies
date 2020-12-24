@@ -1,9 +1,9 @@
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/PopularSearchesResponse.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
-import 'package:masterstudy_app/data/utils.dart';
+import 'package:myanmar_political_studies/data/models/PopularSearchesResponse.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/utils.dart';
 
 enum Sort { free, date_low, price_low, price_high, rating, popular, favorite }
 

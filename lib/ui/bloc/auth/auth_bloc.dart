@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/auth_repository.dart';
+import 'package:myanmar_political_studies/data/repository/auth_repository.dart';
 
 import './bloc.dart';
 
@@ -55,7 +55,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await _repository.authUser(event.login, event.password);
       yield SuccessAuthState();
     } catch (error, stacktrace) {
-
       var errorData = json.decode(error.response.toString());
 
       yield* _errorToState(errorData['message']);

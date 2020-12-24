@@ -4,16 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/quiz_lesson/bloc.dart';
-import 'package:masterstudy_app/ui/bloc/quiz_lesson/quiz_lesson_bloc.dart';
-import 'package:masterstudy_app/ui/screen/assignment/assignment_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_stream/lesson_stream_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_video/lesson_video_screen.dart';
-import 'package:masterstudy_app/ui/screen/questions/questions_screen.dart';
-import 'package:masterstudy_app/ui/screen/quiz_screen/quiz_screen.dart';
-import 'package:masterstudy_app/ui/screen/text_lesson/text_lesson_screen.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/quiz_lesson/bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/quiz_lesson/quiz_lesson_bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/assignment/assignment_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_stream/lesson_stream_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_video/lesson_video_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/questions/questions_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/quiz_screen/quiz_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/text_lesson/text_lesson_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class QuizLessonScreenArgs {
@@ -22,7 +22,8 @@ class QuizLessonScreenArgs {
   final String authorAva;
   final String authorName;
 
-  QuizLessonScreenArgs(this.courseId, this.lessonId, this.authorAva, this.authorName);
+  QuizLessonScreenArgs(
+      this.courseId, this.lessonId, this.authorAva, this.authorName);
 }
 
 class QuizLessonScreen extends StatelessWidget {
@@ -36,7 +37,8 @@ class QuizLessonScreen extends StatelessWidget {
     QuizLessonScreenArgs args = ModalRoute.of(context).settings.arguments;
     return BlocProvider<QuizLessonBloc>(
         create: (context) => bloc,
-        child: QuizLessonWidget(args.courseId, args.lessonId, args.authorAva, args.authorName));
+        child: QuizLessonWidget(
+            args.courseId, args.lessonId, args.authorAva, args.authorName));
   }
 }
 
@@ -47,11 +49,8 @@ class QuizLessonWidget extends StatefulWidget {
   final String authorName;
 
   const QuizLessonWidget(
-      this.courseId,
-      this.lessonId,
-      this.authorAva,
-      this.authorName
-      ) : super();
+      this.courseId, this.lessonId, this.authorAva, this.authorName)
+      : super();
 
   @override
   State<StatefulWidget> createState() {
@@ -153,15 +152,14 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
   }
 
   _buildLoading() => Center(
-    child: CircularProgressIndicator(),
-  );
+        child: CircularProgressIndicator(),
+      );
 
   WebViewController _webViewController;
   bool showLoadingWebview = true;
 
   _buildWebView(LoadedQuizLessonState state) {
     return Stack(
-
       children: <Widget>[
         Visibility(
           visible: showLoadingWebview,
@@ -172,7 +170,7 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
         WebView(
           javascriptMode: JavascriptMode.unrestricted,
           initialUrl:
-          'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(state.quizResponse.content))}',
+              'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(state.quizResponse.content))}',
           onPageFinished: (some) async {
             setState(() {
               showLoadingWebview = false;
@@ -184,7 +182,6 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
           },
         ),
       ],
-
     );
   }
 
@@ -193,7 +190,7 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
       return Center();
     }
 
-    if(state is LoadedQuizLessonState) {
+    if (state is LoadedQuizLessonState) {
       return Container(
         decoration:
             BoxDecoration(color: HexColor.fromHex("#FFFFFF"), boxShadow: [
@@ -211,49 +208,78 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
               SizedBox(
                   width: 35,
                   height: 35,
-                  child: (state.quizResponse.next_lesson != "") ? FlatButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(20.0),
-                        side: BorderSide(color: mainColor)),
-                    onPressed: () {
-                      switch (state.quizResponse.prev_lesson_type) {
-                        case "video":
-                          Navigator.of(context).pushReplacementNamed(LessonVideoScreen.routeName,
-                            arguments: LessonVideoScreenArgs(widget.courseId, int.tryParse(state.quizResponse.prev_lesson), widget.authorAva, widget.authorName, false, true),
-                          );
-                          break;
-                        case "quiz":
-                          Navigator.of(context).pushReplacementNamed(QuizLessonScreen.routeName,
-                            arguments: QuizLessonScreenArgs(widget.courseId, int.tryParse(state.quizResponse.prev_lesson), widget.authorAva, widget.authorName
-                            ),
-                          );
-                          break;
-                        case "assignment":
-                          Navigator.of(context).pushReplacementNamed(
-                            AssignmentScreen.routeName,
-                            arguments: AssignmentScreenArgs(widget.courseId, int.tryParse(state.quizResponse.prev_lesson), widget.authorAva, widget.authorName
-                            ),
-                          );
-                          break;
-                        case "stream":
-                          Navigator.of(context).pushReplacementNamed(
-                            LessonStreamScreen.routeName,
-                            arguments: LessonStreamScreenArgs(widget.courseId, int.tryParse(state.quizResponse.prev_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        default:
-                          Navigator.of(context).pushReplacementNamed(
-                            TextLessonScreen.routeName,
-                            arguments: TextLessonScreenArgs(widget.courseId, int.tryParse(state.quizResponse.prev_lesson), widget.authorAva, widget.authorName, false, true
-                            ),
-                          );
-                      }
-                    },
-                    padding: EdgeInsets.all(0.0),
-                    color: mainColor,
-                    child: Icon(Icons.chevron_left),
-                  ) : Center()
-              ),
+                  child: (state.quizResponse.next_lesson != "")
+                      ? FlatButton(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0),
+                              side: BorderSide(color: mainColor)),
+                          onPressed: () {
+                            switch (state.quizResponse.prev_lesson_type) {
+                              case "video":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonVideoScreen.routeName,
+                                  arguments: LessonVideoScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.quizResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      false,
+                                      true),
+                                );
+                                break;
+                              case "quiz":
+                                Navigator.of(context).pushReplacementNamed(
+                                  QuizLessonScreen.routeName,
+                                  arguments: QuizLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.quizResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "assignment":
+                                Navigator.of(context).pushReplacementNamed(
+                                  AssignmentScreen.routeName,
+                                  arguments: AssignmentScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.quizResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "stream":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonStreamScreen.routeName,
+                                  arguments: LessonStreamScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.quizResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              default:
+                                Navigator.of(context).pushReplacementNamed(
+                                  TextLessonScreen.routeName,
+                                  arguments: TextLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.quizResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      false,
+                                      true),
+                                );
+                            }
+                          },
+                          padding: EdgeInsets.all(0.0),
+                          color: mainColor,
+                          child: Icon(Icons.chevron_left),
+                        )
+                      : Center()),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
@@ -272,47 +298,78 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
               SizedBox(
                 width: 35,
                 height: 35,
-                child: (state.quizResponse.next_lesson != "") ? FlatButton(
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(20.0),
-                      side: BorderSide(color: mainColor)),
-                  onPressed: () {
-                    switch (state.quizResponse.next_lesson_type) {
-                      case "video":
-                        Navigator.of(context).pushReplacementNamed(LessonVideoScreen.routeName,
-                          arguments: LessonVideoScreenArgs(widget.courseId, int.tryParse(state.quizResponse.next_lesson), widget.authorAva, widget.authorName, false, true
-                          ),
-                        );
-                        break;
-                      case "quiz":
-                        Navigator.of(context).pushReplacementNamed(QuizLessonScreen.routeName,
-                          arguments: QuizLessonScreenArgs(widget.courseId, int.tryParse(state.quizResponse.next_lesson), widget.authorAva, widget.authorName
-                          ),
-                        );
-                        break;
-                      case "assignment":
-                        Navigator.of(context).pushReplacementNamed(
-                          AssignmentScreen.routeName,
-                          arguments: AssignmentScreenArgs(widget.courseId, int.tryParse(state.quizResponse.next_lesson), widget.authorAva, widget.authorName),
-                        );
-                        break;
-                      case "stream":
-                        Navigator.of(context).pushReplacementNamed(
-                          LessonStreamScreen.routeName,
-                          arguments: LessonStreamScreenArgs(widget.courseId, int.tryParse(state.quizResponse.next_lesson), widget.authorAva, widget.authorName),
-                        );
-                        break;
-                      default:
-                        Navigator.of(context).pushReplacementNamed(TextLessonScreen.routeName,
-                          arguments: TextLessonScreenArgs(widget.courseId, int.tryParse(state.quizResponse.next_lesson), widget.authorAva, widget.authorName, false, true
-                          ),
-                        );
-                    }
-                  },
-                  padding: EdgeInsets.all(0.0),
-                  color: mainColor,
-                  child: Icon(Icons.chevron_right),
-                ) : Center(),
+                child: (state.quizResponse.next_lesson != "")
+                    ? FlatButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(20.0),
+                            side: BorderSide(color: mainColor)),
+                        onPressed: () {
+                          switch (state.quizResponse.next_lesson_type) {
+                            case "video":
+                              Navigator.of(context).pushReplacementNamed(
+                                LessonVideoScreen.routeName,
+                                arguments: LessonVideoScreenArgs(
+                                    widget.courseId,
+                                    int.tryParse(
+                                        state.quizResponse.next_lesson),
+                                    widget.authorAva,
+                                    widget.authorName,
+                                    false,
+                                    true),
+                              );
+                              break;
+                            case "quiz":
+                              Navigator.of(context).pushReplacementNamed(
+                                QuizLessonScreen.routeName,
+                                arguments: QuizLessonScreenArgs(
+                                    widget.courseId,
+                                    int.tryParse(
+                                        state.quizResponse.next_lesson),
+                                    widget.authorAva,
+                                    widget.authorName),
+                              );
+                              break;
+                            case "assignment":
+                              Navigator.of(context).pushReplacementNamed(
+                                AssignmentScreen.routeName,
+                                arguments: AssignmentScreenArgs(
+                                    widget.courseId,
+                                    int.tryParse(
+                                        state.quizResponse.next_lesson),
+                                    widget.authorAva,
+                                    widget.authorName),
+                              );
+                              break;
+                            case "stream":
+                              Navigator.of(context).pushReplacementNamed(
+                                LessonStreamScreen.routeName,
+                                arguments: LessonStreamScreenArgs(
+                                    widget.courseId,
+                                    int.tryParse(
+                                        state.quizResponse.next_lesson),
+                                    widget.authorAva,
+                                    widget.authorName),
+                              );
+                              break;
+                            default:
+                              Navigator.of(context).pushReplacementNamed(
+                                TextLessonScreen.routeName,
+                                arguments: TextLessonScreenArgs(
+                                    widget.courseId,
+                                    int.tryParse(
+                                        state.quizResponse.next_lesson),
+                                    widget.authorAva,
+                                    widget.authorName,
+                                    false,
+                                    true),
+                              );
+                          }
+                        },
+                        padding: EdgeInsets.all(0.0),
+                        color: mainColor,
+                        child: Icon(Icons.chevron_right),
+                      )
+                    : Center(),
               )
             ],
           ),
@@ -330,7 +387,9 @@ class QuizLessonWidgetState extends State<QuizLessonWidget> {
           valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
         ),
       );
-    return Text(localizations.getLocalization("start_quiz"), textScaleFactor: 1.0,);
+    return Text(
+      localizations.getLocalization("start_quiz"),
+      textScaleFactor: 1.0,
+    );
   }
 }
-

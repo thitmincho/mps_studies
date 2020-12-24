@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
 
 import './bloc.dart';
 
@@ -19,13 +19,13 @@ class HomeSimpleBloc extends Bloc<HomeSimpleEvent, HomeSimpleState> {
   Stream<HomeSimpleState> mapEventToState(
     HomeSimpleEvent event,
   ) async* {
-    if(event is FetchHomeSimpleEvent) {
+    if (event is FetchHomeSimpleEvent) {
       try {
-        var coursesNew = await _coursesRepository.getCourses(sort: Sort.date_low);
+        var coursesNew =
+            await _coursesRepository.getCourses(sort: Sort.date_low);
 
         yield LoadedHomeSimpleState(coursesNew.courses);
-
-      } catch(error, stackTrace) {
+      } catch (error, stackTrace) {
         print(error);
         print(stackTrace);
       }

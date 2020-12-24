@@ -1,7 +1,7 @@
-import 'package:masterstudy_app/data/models/AddToCartResponse.dart';
-import 'package:masterstudy_app/data/models/OrdersResponse.dart';
-import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/models/AddToCartResponse.dart';
+import 'package:myanmar_political_studies/data/models/OrdersResponse.dart';
+import 'package:myanmar_political_studies/data/models/purchase/UserPlansResponse.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
 
 abstract class PurchaseRepository {
   Future<List<UserPlansBean>> getUserPlans();

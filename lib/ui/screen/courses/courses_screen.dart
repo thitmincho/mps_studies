@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/courses/bloc.dart';
-import 'package:masterstudy_app/ui/screen/category_detail/category_detail_screen.dart';
-import 'package:masterstudy_app/ui/screen/user_course/user_course.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/courses/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/user_course/user_course.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CoursesScreen extends StatelessWidget {

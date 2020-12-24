@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:masterstudy_app/data/models/QuizResponse.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/quiz_screen/bloc.dart';
+import 'package:myanmar_political_studies/data/models/QuizResponse.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/quiz_screen/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -55,7 +55,6 @@ class QuizScreenWidgetState extends State<QuizScreenWidget> {
   QuizScreenBloc _bloc;
 
   WebViewController _webViewController;
-
 
   int courseId;
   int lessonId;
@@ -131,22 +130,14 @@ class QuizScreenWidgetState extends State<QuizScreenWidget> {
     return _buildWebView();
   }
 
-
-
-
   _buildWebView() {
     return Stack(
-      children: <Widget>[ 
+      children: <Widget>[
         WebView(
           initialUrl: widget.quizResponse.view_link,
           javascriptMode: JavascriptMode.unrestricted,
-          onPageFinished: (some) async {
-
-
-          },
-          onPageStarted: (some) {
-
-          },
+          onPageFinished: (some) async {},
+          onPageStarted: (some) {},
           onWebViewCreated: (controller) async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
             String header = prefs.get("apiToken");

@@ -1,37 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:masterstudy_app/data/models/InstructorsResponse.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/detail_profile/detail_profile_screen.dart';
+import 'package:myanmar_political_studies/data/models/InstructorsResponse.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/detail_profile/detail_profile_screen.dart';
 
 class TopInstructorsWidget extends StatelessWidget {
   final List<InstructorBean> list;
   final String title;
 
   TopInstructorsWidget(
-      this.title,
+    this.title,
     this.list, {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return (list.length != 0) ? Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-            padding: const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 20),
-            child: Text(title,
-                textScaleFactor: 1.0,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .title
-                    .copyWith(color: dark, fontStyle: FontStyle.normal))),
-        _buildList(context)
-      ],
-    ) : Center();
+    return (list.length != 0)
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                  padding:
+                      const EdgeInsets.only(top: 30.0, left: 30.0, bottom: 20),
+                  child: Text(title,
+                      textScaleFactor: 1.0,
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .title
+                          .copyWith(color: dark, fontStyle: FontStyle.normal))),
+              _buildList(context)
+            ],
+          )
+        : Center();
   }
 
   _buildList(context) {
@@ -67,11 +70,11 @@ class TopInstructorsWidget extends StatelessWidget {
   }
 
   _buildCard(
-      context,id, avatar, firstName, lastName, position, stars, reviewsCount) {
+      context, id, avatar, firstName, lastName, position, stars, reviewsCount) {
     return SizedBox(
       width: 160,
       child: InkWell(
-        onTap: (){
+        onTap: () {
           Navigator.pushNamed(
             context,
             DetailProfileScreen.routeName,

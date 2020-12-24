@@ -3,49 +3,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:masterstudy_app/data/models/category.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/category_detail/category_detail_screen.dart';
-import 'package:masterstudy_app/ui/screen/course/course_screen.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/course/course_screen.dart';
 
 class NewCoursesWidget extends StatelessWidget {
   final String title;
-  final List<CoursesBean> courses;
+  // final List<CoursesBean> courses;
 
   NewCoursesWidget(
     this.title,
-    this.courses, {
+    // this.courses,
+    {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return (courses.length != 0)
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
-                child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20.0, left: 15.0, bottom: 20),
-                    child: Text("Current Affairs",
-                        textScaleFactor: 1.0,
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .title
-                            .copyWith(
-                                color: dark,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold))),
-              ),
-              _buildList(context)
-            ],
-          )
-        : Center();
+    return
+        // (courses.length != 0)        ?
+        Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+          child: Padding(
+              padding: const EdgeInsets.only(top: 20.0, left: 15.0, bottom: 20),
+              child: Text("Current Affairs",
+                  textScaleFactor: 1.0,
+                  style: Theme.of(context).primaryTextTheme.title.copyWith(
+                      color: dark, fontSize: 22, fontWeight: FontWeight.bold))),
+        ),
+        _buildList(context)
+      ],
+    );
+    // : Center();
   }
 
   _buildList(context) {
@@ -54,82 +50,148 @@ class NewCoursesWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 0.0, bottom: 20),
         child: ConstrainedBox(
-          constraints: new BoxConstraints(minHeight: 420, maxHeight: 450),
-          // child: ListView(
-          //   padding: const EdgeInsets.all(8.0),
-          //   scrollDirection: Axis.horizontal,
-          //   children: [
-          //     GestureDetector(
-          //       onTap: () {
-          //         Navigator.pushNamed(
-          //           context,
-          //           CourseScreen.routeName,
-          //           // arguments: CourseScreenArgs(item),
-          //         );
-          //       },
-          //       child: Padding(
-          //         padding: EdgeInsets.only(left: 20),
-          //         child: _buildCard(
-          //             context,
-          //             "assets/images/postimage.jpg",
-          //             null,
-          //             "title",
-          //             4.5,
-          //             "reviews",
-          //             "item.price.price",
-          //             "item.price.old_price",
-          //             "item.price.free"),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          child: new ListView.builder(
-            itemCount: courses.length,
-            itemBuilder: (context, index) {
-              var item = courses[index];
-              var padding = (index == 0) ? 0.0 : 0.0;
-
-              var rating = 0.0;
-              var reviews = 0;
-              if (item.rating.total != null) {
-                rating = item.rating.average.toDouble();
-              }
-              if (item.rating.total != null) {
-                reviews = item.rating.total;
-              }
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    CourseScreen.routeName,
-                    arguments: CourseScreenArgs(item),
-                  );
-                },
-                child: Padding(
-                  padding: EdgeInsets.only(left: padding),
-                  child: _buildCard(
+            constraints: new BoxConstraints(minHeight: 420, maxHeight: 450),
+            child: ListView(
+              padding: const EdgeInsets.all(8.0),
+              scrollDirection: Axis.horizontal,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
                       context,
-                      item.images.small,
-                      item.categories_object.first,
-                      "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
-                      rating,
-                      "",
-                      item.price.price,
-                      item.price.old_price,
-                      item.price.free),
+                      CourseScreen.routeName,
+                      arguments: CourseScreenArgs(null),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: _buildCard(
+                        context,
+                        "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                        // item.categories_object.first,
+                        "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                        4.5,
+                        "",
+                        "item.price.price",
+                        "item.price.old_price",
+                        "item.price.free"),
+                  ),
                 ),
-              );
-            },
-            padding: const EdgeInsets.all(8.0),
-            scrollDirection: Axis.horizontal,
-          ),
-        ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      CourseScreen.routeName,
+                      // arguments: CourseScreenArgs(item),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: _buildCard(
+                        context,
+                        "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                        // item.categories_object.first,
+                        "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                        4.5,
+                        "",
+                        "item.price.price",
+                        "item.price.old_price",
+                        "item.price.free"),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      CourseScreen.routeName,
+                      // arguments: CourseScreenArgs(item),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: _buildCard(
+                        context,
+                        "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                        // item.categories_object.first,
+                        "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                        4.5,
+                        "",
+                        "item.price.price",
+                        "item.price.old_price",
+                        "item.price.free"),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      CourseScreen.routeName,
+                      // arguments: CourseScreenArgs(item),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0),
+                    child: _buildCard(
+                        context,
+                        "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                        // item.categories_object.first,
+                        "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                        4.5,
+                        "",
+                        "item.price.price",
+                        "item.price.old_price",
+                        "item.price.free"),
+                  ),
+                )
+              ],
+            )
+            // new ListView.builder(
+            //   itemCount: courses.length,
+            //   itemBuilder: (context, index) {
+            //     var item = courses[index];
+            //     var padding = (index == 0) ? 0.0 : 0.0;
+
+            //     var rating = 0.0;
+            //     var reviews = 0;
+            //     if (item.rating.total != null) {
+            //       rating = item.rating.average.toDouble();
+            //     }
+            //     if (item.rating.total != null) {
+            //       reviews = item.rating.total;
+            //     }
+            //     return GestureDetector(
+            //       onTap: () {
+            //         Navigator.pushNamed(
+            //           context,
+            //           CourseScreen.routeName,
+            //           arguments: CourseScreenArgs(item),
+            //         );
+            //       },
+            //       child: Padding(
+            //         padding: EdgeInsets.only(left: padding),
+            //         child: _buildCard(
+            //             context,
+            //             item.images.small,
+            //             item.categories_object.first,
+            //             "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+            //             rating,
+            //             "",
+            //             item.price.price,
+            //             item.price.old_price,
+            //             item.price.free),
+            //       ),
+            //     );
+            //   },
+            //   padding: const EdgeInsets.all(8.0),
+            //   scrollDirection: Axis.horizontal,
+            // ),
+            ),
       ),
     );
   }
 
-  _buildCard(context, image, Category category, title, stars, reviews, price,
-      oldPrice, free) {
+  _buildCard(context, image, title, stars, reviews, price, oldPrice, free) {
+    // Category category,
     var unescape = new HtmlUnescape();
 
     return SizedBox(

@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/course/bloc.dart';
-import 'package:masterstudy_app/ui/bloc/user_course_locked/bloc.dart';
-import 'package:masterstudy_app/ui/screen/detail_profile/detail_profile_screen.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/course/bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/user_course_locked/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/detail_profile/detail_profile_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DialogAuthorWidget extends StatelessWidget {

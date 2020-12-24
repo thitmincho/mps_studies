@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:masterstudy_app/ui/screen/custom/account_settings.dart';
-import 'package:masterstudy_app/ui/screen/custom/login.dart';
-import 'package:masterstudy_app/ui/screen/custom/utils/button_three.dart';
-import 'package:masterstudy_app/ui/screen/custom/utils/button_two.dart';
-import 'package:masterstudy_app/ui/screen/main/main_screen.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/custom/utils/button_one.dart';
+// import 'package:myanmar_political_studies/ui/screen/custom/account_settings.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/login.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/utils/button_three.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/utils/button_two.dart';
+import 'package:myanmar_political_studies/ui/screen/main/main_screen.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/utils/button_one.dart';
 
 // import 'forget_password.dart';
 
-import 'package:masterstudy_app/ui/screen/custom/register.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/register.dart';
 
 // import '../utils/progressdialog.dart';
 

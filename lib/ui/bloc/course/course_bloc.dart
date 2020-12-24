@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/data/models/purchase/UserPlansResponse.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
-import 'package:masterstudy_app/data/repository/purchase_repository.dart';
-import 'package:masterstudy_app/data/repository/review_respository.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/data/models/purchase/UserPlansResponse.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/purchase_repository.dart';
+import 'package:myanmar_political_studies/data/repository/review_respository.dart';
 
 import './bloc.dart';
 
@@ -61,7 +61,8 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
   }
 
   Stream<CourseState> _fetchCourse(courseId) async* {
-    if (courseDetailResponse == null || state is ErrorCourseState) yield InitialCourseState();
+    if (courseDetailResponse == null || state is ErrorCourseState)
+      yield InitialCourseState();
     try {
       courseDetailResponse = await _coursesRepository.getCourse(courseId);
       var reviews = await _reviewRepository.getReviews(courseId);

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/user_course_repository.dart';
+import 'package:myanmar_political_studies/data/repository/user_course_repository.dart';
 
 import './bloc.dart';
 
@@ -20,7 +20,7 @@ class UserCourseBloc extends Bloc<UserCourseEvent, UserCourseState> {
     UserCourseEvent event,
   ) async* {
     if (event is FetchEvent) {
-      if(state is ErrorUserCourseState) yield InitialUserCourseState();
+      if (state is ErrorUserCourseState) yield InitialUserCourseState();
       try {
         var response = await _repository.getCourseCurriculum(event.courseId);
         yield LoadedUserCourseState(
@@ -31,7 +31,7 @@ class UserCourseBloc extends Bloc<UserCourseEvent, UserCourseState> {
       } catch (e, s) {
         print(e);
         print(s);
-        yield(ErrorUserCourseState());
+        yield (ErrorUserCourseState());
       }
     }
   }

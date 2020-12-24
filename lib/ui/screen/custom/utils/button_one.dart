@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:masterstudy_app/theme/theme.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
 
 class Button_One extends StatelessWidget {
   const Button_One({

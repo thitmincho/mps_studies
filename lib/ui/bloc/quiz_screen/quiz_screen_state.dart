@@ -1,4 +1,4 @@
-import 'package:masterstudy_app/data/models/QuizResponse.dart';
+import 'package:myanmar_political_studies/data/models/QuizResponse.dart';
 import 'package:meta/meta.dart';
 
 @immutable

@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/review_write/bloc.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/review_write/bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ReviewWriteScreenArgs {
@@ -24,11 +24,12 @@ class ReviewWriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ReviewWriteScreenArgs args =
-        ModalRoute.of(context).settings.arguments;
-    return BlocProvider<ReviewWriteBloc>(
-        create: (c) => _bloc,
-        child: _ReviewWriteScreenWidget(args.courseId, args.courseTitle));
+    return _ReviewWriteScreenWidget(132, "Sample");
+    // final ReviewWriteScreenArgs args =
+    //     ModalRoute.of(context).settings.arguments;
+    // return BlocProvider<ReviewWriteBloc>(
+    //     create: (c) => _bloc,
+    //     child: _ReviewWriteScreenWidget(args.courseId, args.courseTitle));
   }
 }
 
@@ -54,17 +55,18 @@ class _ReviewWriteScreenWidgetState extends State<_ReviewWriteScreenWidget> {
   void initState() {
     super.initState();
 
-    id = widget.courseId;
-    _bloc = BlocProvider.of<ReviewWriteBloc>(context)
-      ..add(FetchEvent(widget.courseId));
+    // id = widget.courseId;
+    // _bloc = BlocProvider.of<ReviewWriteBloc>(context)
+    //   ..add(FetchEvent(widget.courseId));
   }
 
-  _saveForm() {
-    if (this._review.text.isNotEmpty && this._rating != 0) {
-      _bloc.add(
-          SaveReviewEvent(this.id, this._rating.toInt(), this._review.text));
-    }
-  }
+  // _saveForm(BuildContext context) {
+  //   // Navigator.of(context).pop();
+  //   // if (this._review.text.isNotEmpty && this._rating != 0) {
+  //   //   _bloc.add(
+  //   //       SaveReviewEvent(this.id, this._rating.toInt(), this._review.text));
+  //   // }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -87,112 +89,190 @@ class _ReviewWriteScreenWidgetState extends State<_ReviewWriteScreenWidget> {
               textScaleFactor: 1.0,
               style: TextStyle(fontSize: 16.0, color: Colors.white),
             )),
-        body: BlocListener(
-          bloc: _bloc,
-          listener: (context, state) {
-            if (state is ReviewResponseState) {
-              _review.clear();
-              _rating = 0;
-
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text(
-                  state.reviewAddResponse.message,
-                  textScaleFactor: 1.0,
-                ),
-                duration: Duration(seconds: 4),
-                action: SnackBarAction(
-                  label: localizations.getLocalization("ok_dialog_button"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ));
-            }
-          },
-          child: BlocBuilder(
-              bloc: _bloc,
-              builder: (context, state) {
-                return SingleChildScrollView(
-                  child: Padding(
-                      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          // _loadAvatar(state),
-                          SizedBox(height: 30),
-                          SvgPicture.asset(
-                            "assets/icons/review_logo.svg",
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                            child: Text(widget.courseTitle,
-                                textScaleFactor: 1.0,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600)),
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                              child: TextFormField(
-                                textInputAction: TextInputAction.done,
-                                controller: _review,
-                                maxLines: 8,
-                                textAlignVertical: TextAlignVertical.top,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  // labelText: localizations
-                                  //     .getLocalization("enter_review"),
-                                  labelText: "ဝင်ရောက်သုံးသပ်ပါ",
-                                  labelStyle:
-                                      TextStyle(fontSize: 13, color: Gray3),
-                                  alignLabelWithHint: true,
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(top: 10.0),
-                              child: RatingBar(
-                                initialRating: _rating,
-                                minRating: 0,
-                                direction: Axis.horizontal,
-                                allowHalfRating: false,
-                                itemCount: 5,
-                                itemPadding:
-                                    EdgeInsets.symmetric(horizontal: 2.0),
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star,
-                                  color: Orange,
-                                ),
-                                unratedColor: HexColor.fromHex("#D7DAE2"),
-                                onRatingUpdate: (rating) {
-                                  _rating = rating;
-                                },
-                              )),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 50.0, bottom: 20.0),
-                            child: new MaterialButton(
-                              minWidth: double.infinity,
-                              color: Primary,
-                              onPressed: () {
-                                _saveForm();
-                              },
-                              child: Text(
-                                "တင်သွင်းရန်",
-                                // localizations.getLocalization("submit_button"),
-                                textScaleFactor: 1.0,
-                              ),
-                              textColor: Colors.white,
-                            ),
-                          ),
-                        ],
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  // _loadAvatar(state),
+                  SizedBox(height: 30),
+                  SvgPicture.asset(
+                    "assets/icons/review_logo.svg",
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                    child: Text(widget.courseTitle,
+                        textScaleFactor: 1.0,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      child: TextFormField(
+                        textInputAction: TextInputAction.done,
+                        controller: _review,
+                        maxLines: 8,
+                        textAlignVertical: TextAlignVertical.top,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          // labelText: localizations
+                          //     .getLocalization("enter_review"),
+                          labelText: "ဝင်ရောက်သုံးသပ်ပါ",
+                          labelStyle: TextStyle(fontSize: 13, color: Gray3),
+                          alignLabelWithHint: true,
+                        ),
                       )),
-                );
-              }),
-        ));
+                  Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: RatingBar(
+                        initialRating: _rating,
+                        minRating: 0,
+                        direction: Axis.horizontal,
+                        allowHalfRating: false,
+                        itemCount: 5,
+                        itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Orange,
+                        ),
+                        unratedColor: HexColor.fromHex("#D7DAE2"),
+                        onRatingUpdate: (rating) {
+                          _rating = rating;
+                        },
+                      )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
+                    child: new MaterialButton(
+                      minWidth: double.infinity,
+                      color: Primary,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        // _saveForm(context);
+                      },
+                      child: Text(
+                        "တင်သွင်းရန်",
+                        // localizations.getLocalization("submit_button"),
+                        textScaleFactor: 1.0,
+                      ),
+                      textColor: Colors.white,
+                    ),
+                  ),
+                ],
+              )),
+        )
+        // body: BlocListener(
+        //   bloc: _bloc,
+        //   listener: (context, state) {
+        //     if (state is ReviewResponseState) {
+        //       _review.clear();
+        //       _rating = 0;
+
+        //       Scaffold.of(context).showSnackBar(SnackBar(
+        //         content: Text(
+        //           state.reviewAddResponse.message,
+        //           textScaleFactor: 1.0,
+        //         ),
+        //         duration: Duration(seconds: 4),
+        //         action: SnackBarAction(
+        //           label: localizations.getLocalization("ok_dialog_button"),
+        //           onPressed: () {
+        //             Navigator.of(context).pop();
+        //           },
+        //         ),
+        //       ));
+        //     }
+        //   },
+        //   child: BlocBuilder(
+        //       bloc: _bloc,
+        //       builder: (context, state) {
+        //         return SingleChildScrollView(
+        //           child: Padding(
+        //               padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+        //               child: Column(
+        //                 mainAxisAlignment: MainAxisAlignment.center,
+        //                 crossAxisAlignment: CrossAxisAlignment.center,
+        //                 mainAxisSize: MainAxisSize.max,
+        //                 children: <Widget>[
+        //                   // _loadAvatar(state),
+        //                   SizedBox(height: 30),
+        //                   SvgPicture.asset(
+        //                     "assets/icons/review_logo.svg",
+        //                   ),
+        //                   Padding(
+        //                     padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+        //                     child: Text(widget.courseTitle,
+        //                         textScaleFactor: 1.0,
+        //                         textAlign: TextAlign.center,
+        //                         style: TextStyle(
+        //                             fontSize: 18.0,
+        //                             color: Colors.black,
+        //                             fontWeight: FontWeight.w600)),
+        //                   ),
+        //                   Padding(
+        //                       padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+        //                       child: TextFormField(
+        //                         textInputAction: TextInputAction.done,
+        //                         controller: _review,
+        //                         maxLines: 8,
+        //                         textAlignVertical: TextAlignVertical.top,
+        //                         decoration: InputDecoration(
+        //                           border: OutlineInputBorder(),
+        //                           // labelText: localizations
+        //                           //     .getLocalization("enter_review"),
+        //                           labelText: "ဝင်ရောက်သုံးသပ်ပါ",
+        //                           labelStyle:
+        //                               TextStyle(fontSize: 13, color: Gray3),
+        //                           alignLabelWithHint: true,
+        //                         ),
+        //                       )),
+        //                   Padding(
+        //                       padding: EdgeInsets.only(top: 10.0),
+        //                       child: RatingBar(
+        //                         initialRating: _rating,
+        //                         minRating: 0,
+        //                         direction: Axis.horizontal,
+        //                         allowHalfRating: false,
+        //                         itemCount: 5,
+        //                         itemPadding:
+        //                             EdgeInsets.symmetric(horizontal: 2.0),
+        //                         itemBuilder: (context, _) => Icon(
+        //                           Icons.star,
+        //                           color: Orange,
+        //                         ),
+        //                         unratedColor: HexColor.fromHex("#D7DAE2"),
+        //                         onRatingUpdate: (rating) {
+        //                           _rating = rating;
+        //                         },
+        //                       )),
+        //                   Padding(
+        //                     padding:
+        //                         const EdgeInsets.only(top: 50.0, bottom: 20.0),
+        //                     child: new MaterialButton(
+        //                       minWidth: double.infinity,
+        //                       color: Primary,
+        //                       onPressed: () {
+        //                         _saveForm(context);
+        //                       },
+        //                       child: Text(
+        //                         "တင်သွင်းရန်",
+        //                         // localizations.getLocalization("submit_button"),
+        //                         textScaleFactor: 1.0,
+        //                       ),
+        //                       textColor: Colors.white,
+        //                     ),
+        //                   ),
+        //                 ],
+        //               )),
+        //         );
+        //       }),
+        // )
+        );
   }
 
   _buildAva(String avatarUrl) {

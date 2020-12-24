@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/ui/screen/orders/orders.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/ui/screen/orders/orders.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -19,10 +19,7 @@ class WebCheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final WebCheckoutScreenArgs args =
-        ModalRoute
-            .of(context)
-            .settings
-            .arguments;
+        ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -74,7 +71,7 @@ class WebCheckoutWidgetState extends State<WebCheckoutWidget> {
       children: <Widget>[
         WebView(
             javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: widget.url+"&app=123",
+            initialUrl: widget.url + "&app=123",
             onPageFinished: (some) async {
               print("page finished");
               setState(() {
@@ -93,7 +90,7 @@ class WebCheckoutWidgetState extends State<WebCheckoutWidget> {
               this._webViewController = controller;
               controller.clearCache();
               _webViewController
-                  .loadUrl(widget.url+"&app=123", headers: {"token": header});
+                  .loadUrl(widget.url + "&app=123", headers: {"token": header});
               print("MYHEADER: $header");
             },
             javascriptChannels: Set.from([

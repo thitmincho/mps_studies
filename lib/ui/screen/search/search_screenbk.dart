@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/search/bloc.dart';
-import 'package:masterstudy_app/ui/screen/search_detail/search_detail_screen.dart';
-import 'package:masterstudy_app/ui/widgets/course_grid_item.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/search/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/search_detail/search_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/widgets/course_grid_item.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   @override

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
-import 'package:masterstudy_app/data/repository/home_repository.dart';
-import 'package:masterstudy_app/data/repository/instructors_repository.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/home_repository.dart';
+import 'package:myanmar_political_studies/data/repository/instructors_repository.dart';
 
 import './bloc.dart';
 
@@ -35,11 +35,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         var coursesTrending =
             await _coursesRepository.getCourses(sort: Sort.rating);
 
-        var instructors =
-            await _instructorsRepository.getInstructors(InstructorsSort.rating);
+        // var instructors =
+        //     await _instructorsRepository.getInstructors(InstructorsSort.rating);
 
         yield LoadedHomeState(categories, coursesTrending.courses, layouts,
-            coursesNew.courses, coursesFree.courses, instructors);
+            coursesNew.courses, coursesFree.courses);
+        // instructors
       } catch (error, stacktrace) {
         print(error);
         print(stacktrace);

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
 
 abstract class UserCoursesState extends Equatable {
   const UserCoursesState();
@@ -9,6 +9,7 @@ class InitialUserCoursesState extends UserCoursesState {
   @override
   List<Object> get props => [];
 }
+
 class ErrorUserCoursesState extends UserCoursesState {
   @override
   List<Object> get props => [];

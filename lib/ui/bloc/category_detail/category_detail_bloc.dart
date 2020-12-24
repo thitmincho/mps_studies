@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/category.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
-import 'package:masterstudy_app/data/repository/home_repository.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/home_repository.dart';
 
 import './bloc.dart';
 
 @provide
-class CategoryDetailBloc extends Bloc<CategoryDetailEvent, CategoryDetailState> {
+class CategoryDetailBloc
+    extends Bloc<CategoryDetailEvent, CategoryDetailState> {
   final HomeRepository _homeRepository;
   final CoursesRepository _coursesRepository;
 
@@ -19,19 +20,17 @@ class CategoryDetailBloc extends Bloc<CategoryDetailEvent, CategoryDetailState> 
   CategoryDetailState get initialState => InitialCategoryDetailState();
 
   @override
-  Stream<CategoryDetailState> mapEventToState (
-      CategoryDetailEvent event,
+  Stream<CategoryDetailState> mapEventToState(
+    CategoryDetailEvent event,
   ) async* {
-    if(event is FetchEvent) {
+    if (event is FetchEvent) {
       yield InitialCategoryDetailState();
       try {
         var categories = await _homeRepository.getCategories();
-        var courses = await _coursesRepository.getCourses(categoryId: event.categoryId);
+        var courses =
+            await _coursesRepository.getCourses(categoryId: event.categoryId);
 
-        yield LoadedCategoryDetailState(
-          categories,
-          courses.courses
-        );
+        yield LoadedCategoryDetailState(categories, courses.courses);
       } catch (error, stackTrace) {
         print(error);
         print(stackTrace);

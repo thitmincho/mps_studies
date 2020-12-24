@@ -1,42 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html_unescape/html_unescape.dart';
-import 'package:masterstudy_app/data/models/category.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/category_detail/category_detail_screen.dart';
-import 'package:masterstudy_app/ui/screen/final/final_screen.dart';
-import 'package:masterstudy_app/ui/screen/user_course_locked/user_course_locked_screen.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/final/final_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/user_course_locked/user_course_locked_screen.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  final List<Category> categories;
+  // final List<Category> categories;
   final String title;
 
   CategoriesWidget(
     this.title,
-    this.categories, {
+    // this.categories,
+    {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return (categories.length != 0)
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.only(top: 20.0, left: 15.0),
-                  child: Text("သင်ခန်းစာများ",
-                      textScaleFactor: 1.0,
-                      style: Theme.of(context).primaryTextTheme.title.copyWith(
-                            color: dark,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ))),
-              _buildList(context)
-            ],
-          )
-        : Center();
+    return
+        // (categories.length != 0) ?
+        Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+            padding: const EdgeInsets.only(top: 20.0, left: 15.0),
+            child: Text("သင်ခန်းစာများ",
+                textScaleFactor: 1.0,
+                style: Theme.of(context).primaryTextTheme.title.copyWith(
+                      color: dark,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ))),
+        _buildList(context)
+      ],
+    );
+    // : Center();
   }
 
   _buildList(context) {

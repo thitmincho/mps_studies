@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/purchase_repository.dart';
+import 'package:myanmar_political_studies/data/repository/purchase_repository.dart';
 
 import './bloc.dart';
 
@@ -22,9 +22,10 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     if (event is FetchEvent) {
       try {
         var orders = await _repository.getOrders();
-        if(orders!=null && orders.isNotEmpty) {
+        if (orders != null && orders.isNotEmpty) {
           yield LoadedOrdersState(orders);
-        }else yield EmptyOrdersState();
+        } else
+          yield EmptyOrdersState();
       } catch (e, s) {
         print(e);
         print(s);

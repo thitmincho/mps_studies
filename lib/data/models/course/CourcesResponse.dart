@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:masterstudy_app/data/models/category.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
 
 part 'CourcesResponse.g.dart';
 
@@ -40,8 +40,7 @@ class CoursesBean {
       this.rating,
       this.featured,
       this.status,
-      this.categories_object
-      });
+      this.categories_object});
 
   factory CoursesBean.fromJson(Map<String, dynamic> json) =>
       _$CoursesBeanFromJson(json);

@@ -1,7 +1,7 @@
-import 'package:masterstudy_app/data/models/course/CourseDetailResponse.dart';
-import 'package:masterstudy_app/data/models/curriculum.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/models/course/CourseDetailResponse.dart';
+import 'package:myanmar_political_studies/data/models/curriculum.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
 
 abstract class UserCourseRepository {
   Future<UserCourseResponse> getUserCourses();

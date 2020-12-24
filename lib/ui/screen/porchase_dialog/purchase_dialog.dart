@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/course/course_bloc.dart';
-import 'package:masterstudy_app/ui/bloc/course/course_event.dart';
-import 'package:masterstudy_app/ui/bloc/course/course_state.dart';
-import 'package:masterstudy_app/ui/screen/plans/plans_screen.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/course/course_bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/course/course_event.dart';
+import 'package:myanmar_political_studies/ui/bloc/course/course_state.dart';
+import 'package:myanmar_political_studies/ui/screen/plans/plans_screen.dart';
 
 class PurchaseDialog extends StatefulWidget {
   @override
@@ -24,20 +24,22 @@ class PurchaseDialogState extends State<PurchaseDialog> {
   void initState() {
     super.initState();
     _bloc = BlocProvider.of<CourseBloc>(context);
-    selectedId = _bloc.selectedPaymetId;
+    // selectedId = _bloc.selectedPaymetId;
+    selectedId = 1;
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      bloc: _bloc,
-      builder: (context, state) {
-        if (state is LoadedCourseState) return _buildPrices(state);
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
+    return _buildPrices(null);
+    // return BlocBuilder(
+    //   bloc: _bloc,
+    //   builder: (context, state) {
+    //     if (state is LoadedCourseState) return _buildPrices(state);
+    //     return Center(
+    //       child: CircularProgressIndicator(),
+    //     );
+    //   },
+    // );
   }
 
   _buildPrices(LoadedCourseState state) {

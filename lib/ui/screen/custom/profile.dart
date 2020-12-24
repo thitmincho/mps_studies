@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:masterstudy_app/ui/screen/custom/account_settings.dart';
-// import 'package:masterstudy_app/ui/screen/main/main_screen.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/screen/custom/utils/button_one.dart';
-// import 'package:masterstudy_app/ui/screen/custom/utils/constant.dart';
-// import 'package:masterstudy_app/ui/screen/custom/utils/storeicon_icons.dart';
+// import 'package:myanmar_political_studies/ui/screen/custom/account_settings.dart';
+// import 'package:myanmar_political_studies/ui/screen/main/main_screen.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/screen/custom/utils/button_one.dart';
+// import 'package:myanmar_political_studies/ui/screen/custom/utils/constant.dart';
+// import 'package:myanmar_political_studies/ui/screen/custom/utils/storeicon_icons.dart';
 
 class ProfileScreen_Custom extends StatefulWidget {
   @override

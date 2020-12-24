@@ -1,4 +1,4 @@
-import 'package:masterstudy_app/data/models/AppSettings.dart';
+import 'package:myanmar_political_studies/data/models/AppSettings.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -14,4 +14,3 @@ class CloseSplash extends SplashState {
 }
 
 class ErrorSplashState extends SplashState {}
-

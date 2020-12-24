@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:masterstudy_app/data/models/account.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/edit_profile_bloc/bloc.dart';
+import 'package:myanmar_political_studies/data/models/account.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/edit_profile_bloc/bloc.dart';
 
 class ProfileEditScreenArgs {
   final Account account;
@@ -25,10 +25,7 @@ class ProfileEditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute
-        .of(context)
-        .settings
-        .arguments;
+    args = ModalRoute.of(context).settings.arguments;
     return BlocProvider(
       create: (context) => bloc..account = args.account,
       child: _ProfileEditWidget(),
@@ -95,37 +92,39 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          localizations.getLocalization("edit_profile_title"),
-          textScaleFactor: 1.0,
-          style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            localizations.getLocalization("edit_profile_title"),
+            textScaleFactor: 1.0,
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      body: BlocListener(
-        bloc: _bloc,
-        listener: (context, state) {
-          if(state is CloseEditProfileState) {
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text(localizations.getLocalization("profile_updated_message"),
-                textScaleFactor: 1.0,),
-              duration: Duration(seconds: 2),
-            ))
-            .closed
-            .then((reason) {
-              Navigator.of(context).pop(true);
-            });
-          }
-        },
-        child: BlocBuilder(
+        body: BlocListener(
           bloc: _bloc,
-          builder: (context, state) {
-            return _buildBody(state);
+          listener: (context, state) {
+            if (state is CloseEditProfileState) {
+              Scaffold.of(context)
+                  .showSnackBar(SnackBar(
+                    content: Text(
+                      localizations.getLocalization("profile_updated_message"),
+                      textScaleFactor: 1.0,
+                    ),
+                    duration: Duration(seconds: 2),
+                  ))
+                  .closed
+                  .then((reason) {
+                Navigator.of(context).pop(true);
+              });
+            }
           },
-        ),
-      )
-    );
+          child: BlocBuilder(
+            bloc: _bloc,
+            builder: (context, state) {
+              return _buildBody(state);
+            },
+          ),
+        ));
   }
 
   File _image;
@@ -216,7 +215,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
             child: TextFormField(
               controller: _firstNameController,
               enabled: enableInputs,
-              decoration: InputDecoration(labelText: localizations.getLocalization("first_name"), filled: true),
+              decoration: InputDecoration(
+                  labelText: localizations.getLocalization("first_name"),
+                  filled: true),
             ),
           ),
           Padding(
@@ -224,7 +225,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
             child: TextFormField(
               controller: _lastNameController,
               enabled: enableInputs,
-              decoration: InputDecoration(labelText: localizations.getLocalization("last_name"), filled: true),
+              decoration: InputDecoration(
+                  labelText: localizations.getLocalization("last_name"),
+                  filled: true),
             ),
           ),
           Padding(
@@ -232,8 +235,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
             child: TextFormField(
               controller: _occupationController,
               enabled: enableInputs,
-              decoration:
-              InputDecoration(labelText: localizations.getLocalization("occupation"), filled: true),
+              decoration: InputDecoration(
+                  labelText: localizations.getLocalization("occupation"),
+                  filled: true),
             ),
           ),
           Padding(
@@ -244,7 +248,8 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
               validator: _validateEmail,
               decoration: InputDecoration(
                   labelText: localizations.getLocalization("email_label_text"),
-                  helperText: localizations.getLocalization("email_helper_text"),
+                  helperText:
+                      localizations.getLocalization("email_helper_text"),
                   filled: true),
             ),
           ),
@@ -255,8 +260,10 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
               enabled: enableInputs,
               obscureText: passwordVisible,
               decoration: InputDecoration(
-                  labelText: localizations.getLocalization("password_label_text"),
-                  helperText: localizations.getLocalization("password_registration_helper_text"),
+                  labelText:
+                      localizations.getLocalization("password_label_text"),
+                  helperText: localizations
+                      .getLocalization("password_registration_helper_text"),
                   filled: true,
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -267,16 +274,15 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
                         passwordVisible = !passwordVisible;
                       });
                     },
-                    color: Theme
-                        .of(context)
-                        .primaryColorDark,
+                    color: Theme.of(context).primaryColorDark,
                   )),
               validator: (value) {
                 if (value.isEmpty) {
                   return null;
                 } else {
                   if (value.length < 8) {
-                    return localizations.getLocalization("password_register_characters_count_error_text");
+                    return localizations.getLocalization(
+                        "password_register_characters_count_error_text");
                   }
                 }
 
@@ -291,7 +297,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
               enabled: enableInputs,
               maxLines: 5,
               decoration: InputDecoration(
-                  labelText: localizations.getLocalization("bio"), helperText: localizations.getLocalization("bio_helper"), filled: true),
+                  labelText: localizations.getLocalization("bio"),
+                  helperText: localizations.getLocalization("bio_helper"),
+                  filled: true),
             ),
           ),
           Padding(
@@ -311,7 +319,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
               controller: _twitterController,
               enabled: enableInputs,
               decoration: InputDecoration(
-                  labelText: 'Twitter', hintText: localizations.getLocalization("enter_url"), filled: true),
+                  labelText: 'Twitter',
+                  hintText: localizations.getLocalization("enter_url"),
+                  filled: true),
             ),
           ),
           Padding(
@@ -320,7 +330,9 @@ class _ProfileEditWidgetState extends State<_ProfileEditWidget> {
               controller: _instagramController,
               enabled: enableInputs,
               decoration: InputDecoration(
-                  labelText: 'Instagram', hintText: localizations.getLocalization("enter_url"), filled: true),
+                  labelText: 'Instagram',
+                  hintText: localizations.getLocalization("enter_url"),
+                  filled: true),
             ),
           ),
           Padding(

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
 
 import './bloc.dart';
 
@@ -28,9 +28,8 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   }
 
   Stream<FavoritesState> _mapFetchToState() async* {
-    if(state is ErrorFavoritesState) yield InitialFavoritesState();
+    if (state is ErrorFavoritesState) yield InitialFavoritesState();
     try {
-
       var courses = await coursesRepository.getFavoriteCourses();
       if (courses.courses.isNotEmpty) {
         yield LoadedFavoritesState(courses.courses);

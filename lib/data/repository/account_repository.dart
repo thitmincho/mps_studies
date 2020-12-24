@@ -1,16 +1,22 @@
 import 'dart:io';
 
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/account.dart';
-import 'package:masterstudy_app/data/network/api_provider.dart';
+import 'package:myanmar_political_studies/data/models/account.dart';
+import 'package:myanmar_political_studies/data/network/api_provider.dart';
 
 abstract class AccountRepository {
   Future<Account> getUserAccount();
 
   Future<Account> getAccountById(int userId);
 
-  Future editProfile(String firstName, String lastName, String password,
-      String description, String position, String facebook, String twitter,
+  Future editProfile(
+      String firstName,
+      String lastName,
+      String password,
+      String description,
+      String position,
+      String facebook,
+      String twitter,
       String instagram,
       {File photo});
 }
@@ -32,8 +38,15 @@ class AccountRepositoryImpl implements AccountRepository {
   }
 
   @override
-  Future editProfile(String firstName, String lastName, String password,
-      String description, String position, String facebook, String twitter,String instagram,
+  Future editProfile(
+      String firstName,
+      String lastName,
+      String password,
+      String description,
+      String position,
+      String facebook,
+      String twitter,
+      String instagram,
       {File photo}) async {
     await _apiProvider.editProfile(firstName, lastName, password, description,
         position, facebook, instagram, twitter);

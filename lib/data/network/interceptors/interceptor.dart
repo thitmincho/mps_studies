@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:masterstudy_app/ui/screen/splash/splash_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/splash/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../main.dart';

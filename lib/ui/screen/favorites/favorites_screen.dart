@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/favorites/bloc.dart';
-import 'package:masterstudy_app/ui/widgets/course_grid_item.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/favorites/bloc.dart';
+import 'package:myanmar_political_studies/ui/widgets/course_grid_item.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 
 class FavoritesScreen extends StatelessWidget {
   @override

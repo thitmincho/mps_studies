@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 import './bloc.dart';
+
 @provide
 class SearchDetailBloc extends Bloc<SearchDetailEvent, SearchDetailState> {
   final CoursesRepository _coursesRepository;
@@ -31,8 +32,7 @@ class SearchDetailBloc extends Bloc<SearchDetailEvent, SearchDetailState> {
 
   @override
   void onTransition(
-      Transition<SearchDetailEvent, SearchDetailState> transition) {
-  }
+      Transition<SearchDetailEvent, SearchDetailState> transition) {}
 
   @override
   Stream<SearchDetailState> mapEventToState(

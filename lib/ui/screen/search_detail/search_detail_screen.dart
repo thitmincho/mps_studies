@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/search_detail/bloc.dart';
-import 'package:masterstudy_app/ui/widgets/course_grid_item.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/search_detail/bloc.dart';
+import 'package:myanmar_political_studies/ui/widgets/course_grid_item.dart';
 
 class SearchDetailScreenArgs {
   final String searchText;
@@ -49,12 +49,12 @@ class _SearchDetailWidgetState extends State<SearchDetailWidget> {
   void initState() {
     super.initState();
 
-    if(widget.searchText != "") {
+    if (widget.searchText != "") {
       this._searchQuery.text = widget.searchText;
     }
 
-    _bloc = BlocProvider.of<SearchDetailBloc>(context)..add(FetchEvent(this._searchQuery.text));
-
+    _bloc = BlocProvider.of<SearchDetailBloc>(context)
+      ..add(FetchEvent(this._searchQuery.text));
   }
 
   @override

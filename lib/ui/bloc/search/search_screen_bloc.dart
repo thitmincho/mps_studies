@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
-import 'package:masterstudy_app/data/repository/courses_repository.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/data/repository/courses_repository.dart';
 
 import './bloc.dart';
 
@@ -41,6 +41,5 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
         yield ErrorSearchScreenState();
       }
     }
-
   }
 }

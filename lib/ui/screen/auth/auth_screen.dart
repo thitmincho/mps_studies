@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/AppSettings.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/ui/bloc/auth/auth_bloc.dart';
-import 'package:masterstudy_app/ui/bloc/auth/auth_event.dart';
-import 'package:masterstudy_app/ui/bloc/auth/auth_state.dart';
-import 'package:masterstudy_app/ui/screen/main/main_screen.dart';
-import 'package:masterstudy_app/ui/screen/splash/splash_screen.dart';
+import 'package:myanmar_political_studies/data/models/AppSettings.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/ui/bloc/auth/auth_bloc.dart';
+import 'package:myanmar_political_studies/ui/bloc/auth/auth_event.dart';
+import 'package:myanmar_political_studies/ui/bloc/auth/auth_state.dart';
+import 'package:myanmar_political_studies/ui/screen/main/main_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/splash/splash_screen.dart';
 
 class AuthScreenArgs {
   final OptionsBean optionsBean;
@@ -27,7 +27,8 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthScreenArgs args = ModalRoute.of(context).settings.arguments;
-    return BlocProvider(child: AuthScreenWidget(args.optionsBean), create: (context) => _bloc);
+    return BlocProvider(
+        child: AuthScreenWidget(args.optionsBean), create: (context) => _bloc);
   }
 }
 
@@ -60,16 +61,13 @@ class AuthScreenWidgetState extends State<AuthScreenWidget> {
             brightness: Brightness.light,
             title: Center(
               child: Padding(
-                padding: const EdgeInsets.only(top:0.0),
+                padding: const EdgeInsets.only(top: 0.0),
                 child: CachedNetworkImage(
                   imageUrl: appLogoUrl,
                   placeholder: (context, url) => CircularProgressIndicator(),
                   errorWidget: (context, url, error) => SizedBox(
                       width: 50.0,
-                      child: Image(
-                          image: AssetImage('assets/icons/logo.png')
-                      )
-                  ),
+                      child: Image(image: AssetImage('assets/icons/logo.png'))),
                   width: 50.0,
                 ),
               ),
@@ -91,8 +89,8 @@ class AuthScreenWidgetState extends State<AuthScreenWidget> {
                 ),
                 Tab(
                     icon: Text(
-                      localizations.getLocalization("auth_sign_in_tab"),
-                      textScaleFactor: 1.0,
+                  localizations.getLocalization("auth_sign_in_tab"),
+                  textScaleFactor: 1.0,
                   style: TextStyle(color: mainColor),
                 )),
               ],
@@ -113,7 +111,6 @@ class AuthScreenWidgetState extends State<AuthScreenWidget> {
 }
 
 class _SignUpPage extends StatefulWidget {
-
   final OptionsBean optionsBean;
 
   const _SignUpPage(this.optionsBean) : super();
@@ -168,12 +165,15 @@ class _SignUpPageState extends State<_SignUpPage> {
                   controller: _loginController,
                   enabled: enableInputs,
                   decoration: InputDecoration(
-                      labelText: localizations.getLocalization("login_label_text"),
-                      helperText: localizations.getLocalization("login_registration_helper_text"),
+                      labelText:
+                          localizations.getLocalization("login_label_text"),
+                      helperText: localizations
+                          .getLocalization("login_registration_helper_text"),
                       filled: true),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return localizations.getLocalization("login_empty_error_text");
+                      return localizations
+                          .getLocalization("login_empty_error_text");
                     }
                     return null;
                   },
@@ -186,8 +186,10 @@ class _SignUpPageState extends State<_SignUpPage> {
                   controller: _emailController,
                   enabled: enableInputs,
                   decoration: InputDecoration(
-                      labelText: localizations.getLocalization("email_label_text"),
-                      helperText: localizations.getLocalization("email_helper_text"),
+                      labelText:
+                          localizations.getLocalization("email_label_text"),
+                      helperText:
+                          localizations.getLocalization("email_helper_text"),
                       filled: true),
                   validator: _validateEmail,
                 ),
@@ -200,8 +202,10 @@ class _SignUpPageState extends State<_SignUpPage> {
                   enabled: enableInputs,
                   obscureText: passwordVisible,
                   decoration: InputDecoration(
-                      labelText: localizations.getLocalization("password_label_text"),
-                      helperText: localizations.getLocalization("password_registration_helper_text"),
+                      labelText:
+                          localizations.getLocalization("password_label_text"),
+                      helperText: localizations
+                          .getLocalization("password_registration_helper_text"),
                       filled: true,
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -218,10 +222,12 @@ class _SignUpPageState extends State<_SignUpPage> {
                       )),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return localizations.getLocalization("password_empty_error_text");
+                      return localizations
+                          .getLocalization("password_empty_error_text");
                     }
                     if (value.length < 8) {
-                      return localizations.getLocalization("password_characters_count_error_text");
+                      return localizations.getLocalization(
+                          "password_characters_count_error_text");
                     }
 
                     return null;
@@ -251,11 +257,9 @@ class _SignUpPageState extends State<_SignUpPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
-                localizations.getLocalization("error_dialog_title"),
+            title: Text(localizations.getLocalization("error_dialog_title"),
                 textScaleFactor: 1.0,
-                style: TextStyle(color: Colors.black, fontSize: 20.0)
-            ),
+                style: TextStyle(color: Colors.black, fontSize: 20.0)),
             content: Text(
               text,
               textScaleFactor: 1.0,
@@ -263,7 +267,7 @@ class _SignUpPageState extends State<_SignUpPage> {
             actions: <Widget>[
               FlatButton(
                 child: Text(
-                    localizations.getLocalization("ok_dialog_button"),
+                  localizations.getLocalization("ok_dialog_button"),
                   textScaleFactor: 1.0,
                 ),
                 onPressed: () {
@@ -377,12 +381,15 @@ class _SignInPageState extends State<_SignInPage> {
                   controller: _loginController,
                   enabled: enableInputs,
                   decoration: InputDecoration(
-                      labelText: localizations.getLocalization("login_label_text"),
-                      helperText: localizations.getLocalization("login_sign_in_helper_text"),
+                      labelText:
+                          localizations.getLocalization("login_label_text"),
+                      helperText: localizations
+                          .getLocalization("login_sign_in_helper_text"),
                       filled: true),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return localizations.getLocalization("login_sign_in_helper_text");
+                      return localizations
+                          .getLocalization("login_sign_in_helper_text");
                     }
                     return null;
                   },
@@ -396,8 +403,10 @@ class _SignInPageState extends State<_SignInPage> {
                   enabled: enableInputs,
                   obscureText: passwordVisible,
                   decoration: InputDecoration(
-                      labelText: localizations.getLocalization("password_label_text"),
-                      helperText: localizations.getLocalization("password_sign_in_helper_text"),
+                      labelText:
+                          localizations.getLocalization("password_label_text"),
+                      helperText: localizations
+                          .getLocalization("password_sign_in_helper_text"),
                       filled: true,
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -414,10 +423,12 @@ class _SignInPageState extends State<_SignInPage> {
                       )),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return localizations.getLocalization("password_sign_in_helper_text");
+                      return localizations
+                          .getLocalization("password_sign_in_helper_text");
                     }
                     if (value.length < 4) {
-                      return localizations.getLocalization("password_sign_in_characters_count_error_text");
+                      return localizations.getLocalization(
+                          "password_sign_in_characters_count_error_text");
                     }
 
                     return null;
@@ -447,16 +458,14 @@ class _SignInPageState extends State<_SignInPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
-                localizations.getLocalization("error_dialog_title"),
+            title: Text(localizations.getLocalization("error_dialog_title"),
                 textScaleFactor: 1.0,
-                style: TextStyle(color: Colors.black, fontSize: 20.0)
-            ),
+                style: TextStyle(color: Colors.black, fontSize: 20.0)),
             content: Text(text),
             actions: <Widget>[
               FlatButton(
                 child: Text(
-                    localizations.getLocalization("ok_dialog_button"),
+                  localizations.getLocalization("ok_dialog_button"),
                   textScaleFactor: 1.0,
                 ),
                 onPressed: () {

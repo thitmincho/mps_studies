@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:masterstudy_app/data/models/category.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
 
 part 'CourseDetailResponse.g.dart';
 
@@ -28,30 +28,30 @@ class CourseDetailResponse {
   bool has_access;
   List<Category> categories_object;
 
-  CourseDetailResponse(
-      {this.id,
-      this.title,
-      this.images,
-      this.categories,
-      this.price,
-      this.rating,
-      this.featured,
-      this.status,
-      this.author,
-      this.url,
-      this.description,
-      this.meta,
-      this.announcement,
-      this.purchase_label,
-      this.curriculum,
-      this.faq,
-      this.is_favorite,
-      this.trial,
-      this.first_lesson,
-      this.first_lesson_type,
-      this.has_access,
-      this.categories_object,
-      });
+  CourseDetailResponse({
+    this.id,
+    this.title,
+    this.images,
+    this.categories,
+    this.price,
+    this.rating,
+    this.featured,
+    this.status,
+    this.author,
+    this.url,
+    this.description,
+    this.meta,
+    this.announcement,
+    this.purchase_label,
+    this.curriculum,
+    this.faq,
+    this.is_favorite,
+    this.trial,
+    this.first_lesson,
+    this.first_lesson_type,
+    this.has_access,
+    this.categories_object,
+  });
 
   factory CourseDetailResponse.fromJson(Map<String, dynamic> json) =>
       _$CourseDetailResponseFromJson(json);

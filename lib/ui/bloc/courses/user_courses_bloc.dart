@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:inject/inject.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
-import 'package:masterstudy_app/data/repository/user_course_repository.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
+import 'package:myanmar_political_studies/data/repository/user_course_repository.dart';
 
 import './bloc.dart';
 
@@ -26,7 +26,7 @@ class UserCoursesBloc extends Bloc<UserCoursesEvent, UserCoursesState> {
   }
 
   Stream<UserCoursesState> _mapFetchToState() async* {
-    if(state is ErrorUserCoursesState) yield InitialUserCoursesState();
+    if (state is ErrorUserCoursesState) yield InitialUserCoursesState();
     try {
       UserCourseResponse response =
           await _userCourseRepository.getUserCourses();

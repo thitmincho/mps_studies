@@ -4,15 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/text_lesson/bloc.dart';
-import 'package:masterstudy_app/ui/screen/assignment/assignment_screen.dart';
-import 'package:masterstudy_app/ui/screen/final/final_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_stream/lesson_stream_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_video/lesson_video_screen.dart';
-import 'package:masterstudy_app/ui/screen/questions/questions_screen.dart';
-import 'package:masterstudy_app/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
-import 'package:masterstudy_app/ui/screen/user_course_locked/user_course_locked_screen.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/text_lesson/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/assignment/assignment_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/final/final_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_stream/lesson_stream_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_video/lesson_video_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/questions/questions_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/user_course_locked/user_course_locked_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../main.dart';
@@ -25,7 +25,8 @@ class TextLessonScreenArgs {
   final bool hasPreview;
   final bool trial;
 
-  TextLessonScreenArgs(this.courseId, this.lessonId, this.authorAva, this.authorName, this.hasPreview, this.trial);
+  TextLessonScreenArgs(this.courseId, this.lessonId, this.authorAva,
+      this.authorName, this.hasPreview, this.trial);
 }
 
 class TextLessonScreen extends StatelessWidget {
@@ -39,7 +40,8 @@ class TextLessonScreen extends StatelessWidget {
     TextLessonScreenArgs args = ModalRoute.of(context).settings.arguments;
     return BlocProvider<TextLessonBloc>(
         create: (context) => bloc,
-        child: TextLessonWidget(args.courseId, args.lessonId, args.authorAva, args.authorName, args.hasPreview, args.trial));
+        child: TextLessonWidget(args.courseId, args.lessonId, args.authorAva,
+            args.authorName, args.hasPreview, args.trial));
   }
 }
 
@@ -51,14 +53,9 @@ class TextLessonWidget extends StatefulWidget {
   final bool hasPreview;
   final bool trial;
 
-  const TextLessonWidget(
-    this.courseId,
-    this.lessonId,
-      this.authorAva,
-      this.authorName,
-      this.hasPreview,
-      this.trial
-  ) : super();
+  const TextLessonWidget(this.courseId, this.lessonId, this.authorAva,
+      this.authorName, this.hasPreview, this.trial)
+      : super();
 
   @override
   State<StatefulWidget> createState() {
@@ -88,7 +85,8 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
             title: _buildTitle(state),
           ),
           body: _buildBody(state),
-          bottomNavigationBar: (!widget.trial) ? null : _buildBottomNavigation(state),
+          bottomNavigationBar:
+              (!widget.trial) ? null : _buildBottomNavigation(state),
         );
       },
     );
@@ -100,7 +98,7 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-            Flexible(
+          Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -125,30 +123,32 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
               ],
             ),
           ),
-          (widget.hasPreview) ? Center() : SizedBox(
-            width: 40,
-            height: 40,
-            child: FlatButton(
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(20.0),
-                  side: BorderSide(color: HexColor.fromHex("#3E4555"))),
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  QuestionsScreen.routeName,
-                  arguments: QuestionsScreenArgs(widget.lessonId, 1),
-                );
-              },
-              padding: EdgeInsets.all(0.0),
-              color: HexColor.fromHex("#3E4555"),
-              child: SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: SvgPicture.asset(
-                    "assets/icons/question_icon.svg",
-                    color: Colors.white,
-                  )),
-            ),
-          )
+          (widget.hasPreview)
+              ? Center()
+              : SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: FlatButton(
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0),
+                        side: BorderSide(color: HexColor.fromHex("#3E4555"))),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(
+                        QuestionsScreen.routeName,
+                        arguments: QuestionsScreenArgs(widget.lessonId, 1),
+                      );
+                    },
+                    padding: EdgeInsets.all(0.0),
+                    color: HexColor.fromHex("#3E4555"),
+                    child: SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: SvgPicture.asset(
+                          "assets/icons/question_icon.svg",
+                          color: Colors.white,
+                        )),
+                  ),
+                )
         ],
       );
     }
@@ -180,10 +180,10 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
   }
 
   _buildBottomNavigation(TextLessonState state) {
-    if(state is InitialTextLessonState)
+    if (state is InitialTextLessonState)
       return Center(child: CircularProgressIndicator());
 
-    if(state is LoadedTextLessonState) {
+    if (state is LoadedTextLessonState) {
       return Container(
         decoration:
             BoxDecoration(color: HexColor.fromHex("#FFFFFF"), boxShadow: [
@@ -201,47 +201,78 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
               SizedBox(
                   width: 35,
                   height: 35,
-                  child: (state.lessonResponse.prev_lesson !=
-                      "") ? FlatButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(20.0),
-                        side: BorderSide(color: mainColor)),
-                    onPressed: () {
-                      switch (state.lessonResponse.prev_lesson_type) {
-                        case "video":
-                          Navigator.of(context).pushReplacementNamed(LessonVideoScreen.routeName,
-                            arguments: LessonVideoScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.prev_lesson), widget.authorAva, widget.authorName, widget.hasPreview, widget.trial),
-                          );
-                          break;
-                        case "quiz":
-                          Navigator.of(context).pushReplacementNamed(QuizLessonScreen.routeName,
-                            arguments: QuizLessonScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.prev_lesson), widget.authorAva, widget.authorName
-                            ),
-                          );
-                          break;
-                        case "assignment":
-                          Navigator.of(context).pushReplacementNamed(
-                            AssignmentScreen.routeName,
-                            arguments: AssignmentScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.prev_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        case "stream":
-                          Navigator.of(context).pushReplacementNamed(
-                            LessonStreamScreen.routeName,
-                            arguments: LessonStreamScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.prev_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        default:
-                          Navigator.of(context).pushReplacementNamed(TextLessonScreen.routeName,
-                            arguments: TextLessonScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.prev_lesson), widget.authorAva, widget.authorName, widget.hasPreview, widget.trial),
-                          );
-                      }
-                    },
-                    padding: EdgeInsets.all(0.0),
-                    color: mainColor,
-                    child: Icon(Icons.chevron_left),
-                  ) : Center()
-              ),
+                  child: (state.lessonResponse.prev_lesson != "")
+                      ? FlatButton(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0),
+                              side: BorderSide(color: mainColor)),
+                          onPressed: () {
+                            switch (state.lessonResponse.prev_lesson_type) {
+                              case "video":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonVideoScreen.routeName,
+                                  arguments: LessonVideoScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      widget.hasPreview,
+                                      widget.trial),
+                                );
+                                break;
+                              case "quiz":
+                                Navigator.of(context).pushReplacementNamed(
+                                  QuizLessonScreen.routeName,
+                                  arguments: QuizLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "assignment":
+                                Navigator.of(context).pushReplacementNamed(
+                                  AssignmentScreen.routeName,
+                                  arguments: AssignmentScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "stream":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonStreamScreen.routeName,
+                                  arguments: LessonStreamScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              default:
+                                Navigator.of(context).pushReplacementNamed(
+                                  TextLessonScreen.routeName,
+                                  arguments: TextLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.prev_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      widget.hasPreview,
+                                      widget.trial),
+                                );
+                            }
+                          },
+                          padding: EdgeInsets.all(0.0),
+                          color: mainColor,
+                          child: Icon(Icons.chevron_left),
+                        )
+                      : Center()),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
@@ -257,7 +288,8 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
                           setState(() {
                             completed = true;
                           });
-                        } else if(state.lessonResponse.completed && !state.lessonResponse.next_lesson_available) {
+                        } else if (state.lessonResponse.completed &&
+                            !state.lessonResponse.next_lesson_available) {
                           /*Navigator.of(context).pushNamed(FinalScreen.routeName,
                             arguments: FinalScreenArgs(widget.courseId),
                           );*/
@@ -269,52 +301,86 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
               SizedBox(
                 width: 35,
                 height: 35,
-                child: (state.lessonResponse.next_lesson !=
-                    "") ? FlatButton(
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(20.0),
-                      side: BorderSide(color: mainColor)),
-                  onPressed: () {
-                    if(state.lessonResponse.next_lesson_available) {
-                      switch (state.lessonResponse.next_lesson_type) {
-                        case "video":
-                          Navigator.of(context).pushReplacementNamed(LessonVideoScreen.routeName,
-                            arguments: LessonVideoScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.next_lesson), widget.authorAva, widget.authorName, widget.hasPreview, widget.trial),
-                          );
-                          break;
-                        case "quiz":
-                          Navigator.of(context).pushReplacementNamed(QuizLessonScreen.routeName,
-                            arguments: QuizLessonScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.next_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        case "assignment":
-                          Navigator.of(context).pushReplacementNamed(
-                            AssignmentScreen.routeName,
-                            arguments: AssignmentScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.next_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        case "stream":
-                          Navigator.of(context).pushReplacementNamed(
-                            LessonStreamScreen.routeName,
-                            arguments: LessonStreamScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.next_lesson), widget.authorAva, widget.authorName),
-                          );
-                          break;
-                        default:
-                          Navigator.of(context).pushReplacementNamed(TextLessonScreen.routeName,
-                            arguments: TextLessonScreenArgs(widget.courseId, int.tryParse(state.lessonResponse.next_lesson), widget.authorAva, widget.authorName, widget.hasPreview, widget.trial),
-                          );
-                      }
-                    } else {
-                      Navigator.of(context).pushNamed(
-                        UserCourseLockedScreen.routeName,
-                        arguments: UserCourseLockedScreenArgs(widget.courseId),
-                      );
-                    }
-                  },
-                  padding: EdgeInsets.all(0.0),
-                  color: mainColor,
-                  child: Icon(Icons.chevron_right),
-                ) : Center(),
+                child: (state.lessonResponse.next_lesson != "")
+                    ? FlatButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(20.0),
+                            side: BorderSide(color: mainColor)),
+                        onPressed: () {
+                          if (state.lessonResponse.next_lesson_available) {
+                            switch (state.lessonResponse.next_lesson_type) {
+                              case "video":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonVideoScreen.routeName,
+                                  arguments: LessonVideoScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.next_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      widget.hasPreview,
+                                      widget.trial),
+                                );
+                                break;
+                              case "quiz":
+                                Navigator.of(context).pushReplacementNamed(
+                                  QuizLessonScreen.routeName,
+                                  arguments: QuizLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.next_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "assignment":
+                                Navigator.of(context).pushReplacementNamed(
+                                  AssignmentScreen.routeName,
+                                  arguments: AssignmentScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.next_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              case "stream":
+                                Navigator.of(context).pushReplacementNamed(
+                                  LessonStreamScreen.routeName,
+                                  arguments: LessonStreamScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.next_lesson),
+                                      widget.authorAva,
+                                      widget.authorName),
+                                );
+                                break;
+                              default:
+                                Navigator.of(context).pushReplacementNamed(
+                                  TextLessonScreen.routeName,
+                                  arguments: TextLessonScreenArgs(
+                                      widget.courseId,
+                                      int.tryParse(
+                                          state.lessonResponse.next_lesson),
+                                      widget.authorAva,
+                                      widget.authorName,
+                                      widget.hasPreview,
+                                      widget.trial),
+                                );
+                            }
+                          } else {
+                            Navigator.of(context).pushNamed(
+                              UserCourseLockedScreen.routeName,
+                              arguments:
+                                  UserCourseLockedScreenArgs(widget.courseId),
+                            );
+                          }
+                        },
+                        padding: EdgeInsets.all(0.0),
+                        color: mainColor,
+                        child: Icon(Icons.chevron_right),
+                      )
+                    : Center(),
               )
             ],
           ),
@@ -324,7 +390,6 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
   }
 
   _buildButtonChild(TextLessonState state) {
-
     if (state is InitialTextLessonState)
       return SizedBox(
         width: 30,
@@ -350,7 +415,6 @@ class TextLessonWidgetState extends State<TextLessonWidget> {
             child: Text(
               localizations.getLocalization("complete_lesson_button"),
               textScaleFactor: 1.0,
-              
             ),
           )
         ],

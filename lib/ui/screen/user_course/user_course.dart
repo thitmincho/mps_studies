@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:masterstudy_app/data/models/curriculum.dart';
-import 'package:masterstudy_app/data/models/user_course.dart';
-import 'package:masterstudy_app/main.dart';
-import 'package:masterstudy_app/theme/theme.dart';
-import 'package:masterstudy_app/ui/bloc/user_course/bloc.dart';
-import 'package:masterstudy_app/ui/screen/assignment/assignment_screen.dart';
-import 'package:masterstudy_app/ui/screen/detail_profile/detail_profile_screen.dart';
-import 'package:masterstudy_app/ui/screen/lesson_video/lesson_video_screen.dart';
-import 'package:masterstudy_app/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
-import 'package:masterstudy_app/ui/screen/text_lesson/text_lesson_screen.dart';
-import 'package:masterstudy_app/ui/widgets/loading_error_widget.dart';
+import 'package:myanmar_political_studies/data/models/curriculum.dart';
+import 'package:myanmar_political_studies/data/models/user_course.dart';
+import 'package:myanmar_political_studies/main.dart';
+import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:myanmar_political_studies/ui/bloc/user_course/bloc.dart';
+import 'package:myanmar_political_studies/ui/screen/assignment/assignment_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/detail_profile/detail_profile_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/lesson_video/lesson_video_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/quiz_lesson/quiz_lesson_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/text_lesson/text_lesson_screen.dart';
+import 'package:myanmar_political_studies/ui/widgets/loading_error_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class UserCourseScreenArgs {

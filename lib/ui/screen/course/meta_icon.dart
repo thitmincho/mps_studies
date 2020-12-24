@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masterstudy_app/main.dart';
+import 'package:myanmar_political_studies/main.dart';
 
 class MetaIcon extends StatelessWidget {
   final String tag;

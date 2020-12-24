@@ -1,5 +1,5 @@
-import 'package:masterstudy_app/data/models/category.dart';
-import 'package:masterstudy_app/data/models/course/CourcesResponse.dart';
+import 'package:myanmar_political_studies/data/models/category.dart';
+import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
 import 'package:meta/meta.dart';
 
 import '../../../data/models/course/CourcesResponse.dart';
