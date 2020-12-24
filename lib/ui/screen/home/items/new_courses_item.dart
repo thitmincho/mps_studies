@@ -237,20 +237,21 @@ class NewCoursesWidget extends StatelessWidget {
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed,",
                     textScaleFactor: 1.0,
                     maxLines: 3,
-                    style: TextStyle(fontSize: 16, color: dark),
+                    style: GoogleFonts.roboto(
+                        fontSize: 13, color: Gray2, height: 1.3),
                   ),
                 ),
               ),
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 0, left: 16.0, right: 16.0, bottom: 10),
+                      top: 10, left: 16.0, right: 16.0, bottom: 10),
                   child: Text(
                     "Continue Reading",
                     textScaleFactor: 1.0,
                     // maxLines: ,
                     style: GoogleFonts.roboto(
-                        fontSize: 13, color: Gray2, height: 1.3),
+                        fontSize: 13, color: Blue1, height: 1.3),
                   ),
                 ),
               ),
