@@ -21,115 +21,171 @@ class NewCoursesWidget2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (courses.length != 0)
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
-                child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20.0, left: 15.0, bottom: 20),
-                    child: Text("Categories",
-                        textScaleFactor: 1.0,
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .title
-                            .copyWith(
-                                color: dark,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold))),
-              ),
-              _buildList(context)
-            ],
-          )
-        : Center();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+          child: Padding(
+              padding: const EdgeInsets.only(top: 20.0, left: 15.0, bottom: 20),
+              child: Text("Categories",
+                  textScaleFactor: 1.0,
+                  style: Theme.of(context).primaryTextTheme.title.copyWith(
+                      color: dark, fontSize: 22, fontWeight: FontWeight.bold))),
+        ),
+        _buildList(context)
+      ],
+    );
   }
 
   _buildList(context) {
     return Container(
-      // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
       child: Padding(
         padding: const EdgeInsets.only(top: 0.0, bottom: 20),
         child: ConstrainedBox(
           constraints: new BoxConstraints(minHeight: 300, maxHeight: 350),
-          // child: ListView(
-          //   padding: const EdgeInsets.all(8.0),
-          //   scrollDirection: Axis.horizontal,
-          //   children: [
-          //     GestureDetector(
-          //       onTap: () {
-          //         Navigator.pushNamed(
-          //           context,
-          //           CourseScreen.routeName,
-          //           // arguments: CourseScreenArgs(item),
-          //         );
-          //       },
-          //       child: Padding(
-          //         padding: EdgeInsets.only(left: 20),
-          //         child: _buildCard(
-          //             context,
-          //             "assets/images/postimage.jpg",
-          //             null,
-          //             "title",
-          //             4.5,
-          //             "reviews",
-          //             "item.price.price",
-          //             "item.price.old_price",
-          //             "item.price.free"),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          child: new ListView.builder(
-            itemCount: courses.length,
-            itemBuilder: (context, index) {
-              var item = courses[index];
-              var padding = (index == 0) ? 0.0 : 0.0;
-
-              var rating = 0.0;
-              var reviews = 0;
-              if (item.rating.total != null) {
-                rating = item.rating.average.toDouble();
-              }
-              if (item.rating.total != null) {
-                reviews = item.rating.total;
-              }
-              return GestureDetector(
+          child: ListView(
+            padding: const EdgeInsets.all(8.0),
+            scrollDirection: Axis.horizontal,
+            children: [
+              GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(
                     context,
                     CourseScreen.routeName,
-                    arguments: CourseScreenArgs(item),
+                    arguments: CourseScreenArgs(null),
                   );
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(left: padding),
+                  padding: EdgeInsets.only(left: 0),
                   child: _buildCard(
                       context,
-                      item.images.small,
-                      item.categories_object.first,
+                      "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                      // item.categories_object.first,
                       "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
-                      rating,
+                      4.0,
                       "",
-                      item.price.price,
-                      item.price.old_price,
-                      item.price.free),
+                      "item.price.price",
+                      "item.price.old_price",
+                      "item.price.free"),
                 ),
-              );
-            },
-            padding: const EdgeInsets.all(8.0),
-            scrollDirection: Axis.horizontal,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CourseScreen.routeName,
+                    arguments: CourseScreenArgs(null),
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0),
+                  child: _buildCard(
+                      context,
+                      "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                      // item.categories_object.first,
+                      "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                      4.0,
+                      "",
+                      "item.price.price",
+                      "item.price.old_price",
+                      "item.price.free"),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CourseScreen.routeName,
+                    arguments: CourseScreenArgs(null),
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0),
+                  child: _buildCard(
+                      context,
+                      "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                      // item.categories_object.first,
+                      "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                      4.0,
+                      "",
+                      "item.price.price",
+                      "item.price.old_price",
+                      "item.price.free"),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CourseScreen.routeName,
+                    arguments: CourseScreenArgs(null),
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0),
+                  child: _buildCard(
+                      context,
+                      "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                      // item.categories_object.first,
+                      "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+                      4.0,
+                      "",
+                      "item.price.price",
+                      "item.price.old_price",
+                      "item.price.free"),
+                ),
+              ),
+            ],
           ),
+          // child: new ListView.builder(
+          //   itemCount: courses.length,
+          //   itemBuilder: (context, index) {
+          //     var item = courses[index];
+          //     var padding = (index == 0) ? 0.0 : 0.0;
+
+          //     var rating = 0.0;
+          //     var reviews = 0;
+          //     if (item.rating.total != null) {
+          //       rating = item.rating.average.toDouble();
+          //     }
+          //     if (item.rating.total != null) {
+          //       reviews = item.rating.total;
+          //     }
+          //     return GestureDetector(
+          //       onTap: () {
+          //         Navigator.pushNamed(
+          //           context,
+          //           CourseScreen.routeName,
+          //           arguments: CourseScreenArgs(item),
+          //         );
+          //       },
+          //       child: Padding(
+          //         padding: EdgeInsets.only(left: padding),
+          //         child: _buildCard(
+          //             context,
+          //             item.images.small,
+          //             item.categories_object.first,
+          //             "Lorem Ipsum dolor sit amet, consectetur adipicsing elit.",
+          //             rating,
+          //             "",
+          //             item.price.price,
+          //             item.price.old_price,
+          //             item.price.free),
+          //       ),
+          //     );
+          //   },
+          //   padding: const EdgeInsets.all(8.0),
+          //   scrollDirection: Axis.horizontal,
+          // ),
         ),
       ),
     );
   }
 
-  _buildCard(context, image, Category category, title, stars, reviews, price,
-      oldPrice, free) {
+  _buildCard(context, image, title, stars, reviews, price, oldPrice, free) {
     var unescape = new HtmlUnescape();
 
     return SizedBox(
@@ -142,26 +198,6 @@ class NewCoursesWidget2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Navigator.pushNamed(
-              //         context,
-              //         CategoryDetailScreen.routeName,
-              //         arguments: CategoryDetailScreenArgs(category),
-              //       );
-              //     },
-              //     child: Text(
-              //       "${unescape.convert(category.name)} >",
-              //       textScaleFactor: 1.0,
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: HexColor.fromHex("#2a3045").withOpacity(0.5)),
-              //     ),
-              //   ),
-              // ),
               Image.network(
                 image,
                 width: 320,
@@ -182,22 +218,6 @@ class NewCoursesWidget2 extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Container(
-              //   decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
-              //   width: MediaQuery.of(context).size.width,
-              //   child: Padding(
-              //     padding: const EdgeInsets.only(
-              //         top: 10, left: 16.0, right: 16.0, bottom: 10),
-              //     child: Text(
-              //       "250 Likes, 50 Comments, 10 Share",
-              //       textScaleFactor: 1.0,
-              //       // maxLines: ,
-              //       style: TextStyle(fontSize: 16, color: Gray1),
-              //     ),
-              //   ),
-              // ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 5, left: 16.0, right: 16.0),
                 child: Divider(
@@ -205,29 +225,6 @@ class NewCoursesWidget2 extends StatelessWidget {
                   thickness: 1.3,
                 ),
               ),
-              // Row(
-              //   children: [
-              //     Expanded(
-              //       child: SvgPicture.asset(
-              //         "assets/icons/heart.svg",
-              //         color: Colors.red,
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: SvgPicture.asset(
-              //         "assets/icons/message.svg",
-              //         color: Colors.orange,
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: SvgPicture.asset(
-              //         "assets/icons/share.svg",
-              //         color: Colors.green,
-              //       ),
-              //     ),
-              //   ],
-              // )
-              //
               Padding(
                 padding:
                     const EdgeInsets.only(top: 0.0, left: 15.0, right: 16.0),
@@ -278,51 +275,9 @@ class NewCoursesWidget2 extends StatelessWidget {
                   ),
                 ),
               ),
-              // Container(
-              //   child: Text("သင်ယူရန်"),
-              // )
-              // Padding(
-              //   padding: null,
-              //   child: Text("သင်ယူရန်"),
-              // )
-              // _buildPrice(context, price, oldPrice, free)
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  _buildPrice(context, price, oldPrice, free) {
-    if (free) return Center();
-    print(oldPrice.toString());
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
-      child: Row(
-        children: <Widget>[
-          Text(
-            price,
-            textScaleFactor: 1.0,
-            style: Theme.of(context).primaryTextTheme.headline.copyWith(
-                color: dark,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.bold),
-          ),
-          Visibility(
-            visible: oldPrice != null,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                oldPrice.toString(),
-                textScaleFactor: 1.0,
-                style: Theme.of(context).primaryTextTheme.headline.copyWith(
-                    color: HexColor.fromHex("#999999"),
-                    fontStyle: FontStyle.normal,
-                    decoration: TextDecoration.lineThrough),
-              ),
-            ),
-          )
-        ],
       ),
     );
   }

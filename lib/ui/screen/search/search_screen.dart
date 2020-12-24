@@ -36,74 +36,8 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: HexColor.fromHex("#F3F5F9"),
-        // appBar: AppBar(
-        //   title: Text(
-        //     localizations.getLocalization("search_title"),
-        //     textScaleFactor: 1.0,
-        //     style: TextStyle(color: Colors.white),
-        //   ),
-        //   bottom: PreferredSize(
-        //       preferredSize: const Size.fromHeight(kToolbarHeight + 16),
-        //       child: Padding(
-        //         padding: const EdgeInsets.only(bottom: 16.0, left: 2, right: 2),
-        //         child: InkWell(
-        //           onTap: () {
-        //             Navigator.of(context).pushNamed(
-        //                 SearchDetailScreen.routeName,
-        //                 arguments: SearchDetailScreenArgs(""));
-        //           },
-        //           child: new Card(
-        //             shape: RoundedRectangleBorder(
-        //               borderRadius: BorderRadius.circular(2.0),
-        //             ),
-        //             elevation: 4,
-        //             color: Colors.white,
-        //             child: Padding(
-        //               padding: const EdgeInsets.all(4.0),
-        //               child: new Container(
-        //                 padding: EdgeInsets.all(8.0),
-        //                 child: new Column(
-        //                   children: <Widget>[
-        //                     new Row(
-        //                       children: <Widget>[
-        //                         new Expanded(
-        //                             child: new Text(
-        //                           localizations
-        //                               .getLocalization("search_bar_title"),
-        //                           textScaleFactor: 1.0,
-        //                           style: TextStyle(
-        //                               color: Colors.black.withOpacity(0.5)),
-        //                         )),
-        //                         Icon(
-        //                           Icons.search,
-        //                           color: Colors.grey,
-        //                         ),
-        //                       ],
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       )),
-        // ),
-
-        body: BlocBuilder<SearchScreenBloc, SearchScreenState>(
-          // ignore: missing_return
-          builder: (context, state) {
-            if (state is ErrorSearchScreenState) {
-              return LoadingErrorWidget(() {
-                _bloc.add(FetchEvent());
-              });
-            }
-            if (state is InitialSearchScreenState) return _buildLoading();
-            if (state is LoadedSearchScreenState) {
-              return _buildBody(state);
-            }
-          },
-        ));
+      body: _buildCourses(null),
+    );
   }
 
   _buildLoading() {
@@ -148,22 +82,32 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, right: 15.0),
       child: Container(
-        child: StaggeredGridView.countBuilder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 1,
-          staggeredTileBuilder: (_) => StaggeredTile.fit(1),
-          mainAxisSpacing: 4.0,
-          crossAxisSpacing: 4.0,
-          padding: const EdgeInsets.all(2.0),
-          itemCount: state.newCourses.length,
-          itemBuilder: (context, index) {
-            var item = state.newCourses[index];
-            return CourseGridItem(item);
-          },
+        child: ListView(
+          children: [
+            CourseGridItem(null),
+          ],
         ),
       ),
     );
+    // return Padding(
+    //   padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+    //   child: Container(
+    //     child: StaggeredGridView.countBuilder(
+    //       shrinkWrap: true,
+    //       physics: const NeverScrollableScrollPhysics(),
+    //       crossAxisCount: 1,
+    //       staggeredTileBuilder: (_) => StaggeredTile.fit(1),
+    //       mainAxisSpacing: 4.0,
+    //       crossAxisSpacing: 4.0,
+    //       padding: const EdgeInsets.all(2.0),
+    //       itemCount: state.newCourses.length,
+    //       itemBuilder: (context, index) {
+    //         var item = state.newCourses[index];
+    //         return CourseGridItem(item);
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 
   _buildChips(LoadedSearchScreenState state) {

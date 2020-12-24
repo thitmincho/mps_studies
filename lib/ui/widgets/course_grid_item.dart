@@ -28,14 +28,14 @@ class CourseGridItem extends StatelessWidget {
   }
 
   _buildCard(context) {
-    var rating = 0.0;
+    var rating = 4.0;
     var reviews = 0;
-    if (coursesBean.rating.total != null) {
-      rating = coursesBean.rating.average.toDouble();
-    }
-    if (coursesBean.rating.total != null) {
-      reviews = coursesBean.rating.total;
-    }
+    // if (coursesBean.rating.total != null) {
+    //   rating = coursesBean.rating.average.toDouble();
+    // }
+    // if (coursesBean.rating.total != null) {
+    //   reviews = coursesBean.rating.total;
+    // }
 
     var unescape = new HtmlUnescape();
     double imgHeight = (MediaQuery.of(context).size.width > 450) ? 220.0 : 85.0;
@@ -92,8 +92,8 @@ class CourseGridItem extends StatelessWidget {
                 ),
                 // Text("Continue Reading"),
                 Image.network(
-                  coursesBean.images.small,
-                  width: 320,
+                  "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                  width: MediaQuery.of(context).size.width,
                   height: 160,
                   fit: BoxFit.cover,
                 ),
