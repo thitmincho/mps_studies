@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:myanmar_political_studies/data/models/category.dart';
 import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dart';
@@ -30,13 +31,15 @@ class NewCoursesWidget extends StatelessWidget {
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+          // decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
           child: Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0, bottom: 20),
               child: Text("Current Affairs",
                   textScaleFactor: 1.0,
-                  style: Theme.of(context).primaryTextTheme.title.copyWith(
-                      color: dark, fontSize: 22, fontWeight: FontWeight.bold))),
+                  style: GoogleFonts.roboto(
+                      color: Gray1,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w700))),
         ),
         _buildList(context)
       ],
@@ -46,7 +49,7 @@ class NewCoursesWidget extends StatelessWidget {
 
   _buildList(context) {
     return Container(
-      decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+      decoration: BoxDecoration(color: Gray6),
       child: Padding(
         padding: const EdgeInsets.only(top: 0.0, bottom: 20),
         child: ConstrainedBox(
@@ -64,7 +67,7 @@ class NewCoursesWidget extends StatelessWidget {
                     );
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(left: 0),
+                    padding: EdgeInsets.only(left: 0, right: 10),
                     child: _buildCard(
                         context,
                         "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
@@ -195,55 +198,41 @@ class NewCoursesWidget extends StatelessWidget {
     var unescape = new HtmlUnescape();
 
     return SizedBox(
-      width: 300,
+      width: 310,
+      height: 427,
       child: Card(
         borderOnForeground: true,
-        elevation: 3,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Gray5, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              // Padding(
-              //   padding:
-              //       const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       Navigator.pushNamed(
-              //         context,
-              //         CategoryDetailScreen.routeName,
-              //         arguments: CategoryDetailScreenArgs(category),
-              //       );
-              //     },
-              //     child: Text(
-              //       "${unescape.convert(category.name)} >",
-              //       textScaleFactor: 1.0,
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: HexColor.fromHex("#2a3045").withOpacity(0.5)),
-              //     ),
-              //   ),
-              // ),
-
               Container(
                 height: 60,
                 child: Padding(
                   padding:
-                      const EdgeInsets.only(top: 20.0, left: 16.0, right: 16.0),
+                      const EdgeInsets.only(top: 17.0, left: 16.0, right: 16.0),
                   child: Text(
                     unescape.convert(title),
                     textScaleFactor: 1.0,
                     maxLines: 2,
-                    style: TextStyle(
-                        fontSize: 18, color: dark, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.roboto(
+                        fontSize: 15,
+                        color: Gray2,
+                        height: 1.2,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
               Container(
                 // height: 100,
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10.0, left: 16.0, right: 16.0, bottom: 5),
+                  padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                   child: Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel varius neque. Praesent ornare at mi ut iaculis. Praesent id turpis fringilla, scelerisque dui vel, venenatis neque. Mauris ultrices consectetur tristique. Nullam consequat pharetra lectus vitae ullamcorper. Quisque diam lacus, maximus sit amet fringilla sed,",
                     textScaleFactor: 1.0,
@@ -260,19 +249,20 @@ class NewCoursesWidget extends StatelessWidget {
                     "Continue Reading",
                     textScaleFactor: 1.0,
                     // maxLines: ,
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                    style: GoogleFonts.roboto(
+                        fontSize: 13, color: Gray2, height: 1.3),
                   ),
                 ),
               ),
               // Text("Continue Reading"),
               Image.network(
                 image,
-                width: 320,
-                height: 160,
+                width: MediaQuery.of(context).size.width,
+                height: 170,
                 fit: BoxFit.cover,
               ),
               Container(
-                decoration: BoxDecoration(color: HexColor.fromHex("#eef1f7")),
+                decoration: BoxDecoration(color: Gray5),
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -281,36 +271,35 @@ class NewCoursesWidget extends StatelessWidget {
                     "250 Likes, 50 Comments, 10 Share",
                     textScaleFactor: 1.0,
                     // maxLines: ,
-                    style: TextStyle(fontSize: 16, color: Gray1),
+                    style: GoogleFonts.roboto(
+                        fontSize: 11,
+                        color: Gray2,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 0, left: 16.0, right: 16.0),
-                child: Divider(
-                  color: HexColor.fromHex("#fff"),
-                  thickness: 1.3,
-                ),
+                padding: const EdgeInsets.only(top: 20),
               ),
               Row(
                 children: [
                   Expanded(
                     child: SvgPicture.asset(
                       "assets/icons/heart.svg",
-                      color: Colors.red,
+                      color: Red,
                     ),
                   ),
                   Expanded(
                     child: SvgPicture.asset(
                       "assets/icons/message.svg",
-                      color: Colors.orange,
+                      color: Orange,
                     ),
                   ),
                   Expanded(
                     child: SvgPicture.asset(
                       "assets/icons/share.svg",
-                      color: Colors.green,
+                      color: Green,
                     ),
                   ),
                 ],

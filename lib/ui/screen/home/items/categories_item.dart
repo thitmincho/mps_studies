@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:myanmar_political_studies/data/models/category.dart';
 import 'package:myanmar_political_studies/theme/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
 import 'package:myanmar_political_studies/ui/screen/final/final_screen.dart';
 import 'package:myanmar_political_studies/ui/screen/user_course_locked/user_course_locked_screen.dart';
@@ -30,11 +31,12 @@ class CategoriesWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20.0, left: 15.0),
             child: Text("သင်ခန်းစာများ",
                 textScaleFactor: 1.0,
-                style: Theme.of(context).primaryTextTheme.title.copyWith(
-                      color: dark,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ))),
+                style: TextStyle(
+                  fontFamily: "Pyidaungsu",
+                  color: Gray1,
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ))),
         _buildList(context)
       ],
     );
@@ -43,11 +45,14 @@ class CategoriesWidget extends StatelessWidget {
 
   _buildList(context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 20.0),
       child: ConstrainedBox(
-        constraints: new BoxConstraints(minHeight: 100, maxHeight: 130),
+        constraints: new BoxConstraints(
+          minHeight: 85,
+          maxHeight: 94,
+        ),
         child: ListView(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(5),
           scrollDirection: Axis.horizontal,
           children: [
             GestureDetector(
@@ -58,10 +63,7 @@ class CategoriesWidget extends StatelessWidget {
                 //   // arguments: CategoryDetailScreenArgs(item),
                 // );
               },
-              child: Padding(
-                padding: EdgeInsets.only(left: 5),
-                child: _buildRow("", Colors.green, "Political Studies"),
-              ),
+              child: _buildRow("", Colors.green, "Political Studies"),
             ),
             GestureDetector(
               onTap: () {
@@ -71,10 +73,7 @@ class CategoriesWidget extends StatelessWidget {
                 //   // arguments: CategoryDetailScreenArgs(item),
                 // );
               },
-              child: Padding(
-                padding: EdgeInsets.only(left: 5),
-                child: _buildRow("", Colors.blue, "Social Studies"),
-              ),
+              child: _buildRow("", Colors.blue, "Social Studies"),
             ),
             GestureDetector(
               onTap: () {
@@ -84,10 +83,7 @@ class CategoriesWidget extends StatelessWidget {
                 //   // arguments: CategoryDetailScreenArgs(item),
                 // );
               },
-              child: Padding(
-                padding: EdgeInsets.only(left: 5),
-                child: _buildRow("", Colors.orange, "Professional Development"),
-              ),
+              child: _buildRow("", Colors.orange, "Professional Development"),
             )
           ],
         ),
@@ -127,8 +123,8 @@ class CategoriesWidget extends StatelessWidget {
     return Card(
         color: color,
         child: new Container(
-          width: 160,
-          height: 100,
+          width: 127,
+          height: 94,
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -149,12 +145,14 @@ class CategoriesWidget extends StatelessWidget {
                               ))
                     : Center(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
+                  // padding: const EdgeInsets.only(top: 8.0, left: 16, right: 16),
+                  padding: EdgeInsets.all(0),
                   child: Text(
                     unescape.convert(title),
                     textScaleFactor: 1.0,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                    style:
+                        GoogleFonts.roboto(fontSize: 13, color: Colors.white),
                   ),
                 )
               ],

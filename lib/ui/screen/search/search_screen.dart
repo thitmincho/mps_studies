@@ -85,6 +85,9 @@ class SearchScreenWidgetState extends State<SearchScreenWidget> {
         child: ListView(
           children: [
             CourseGridItem(null),
+            CourseGridItem(null),
+            CourseGridItem(null),
+            CourseGridItem(null),
           ],
         ),
       ),

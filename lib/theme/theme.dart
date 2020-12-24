@@ -96,12 +96,17 @@ const Color Primary3 = Color(0xFFE2E2ED);
 
 const Color Orange = Color(0xFFFF9912);
 const Color Yellow = Color(0xFFFFD700);
+const Color Red = Color(0xFFEE031E);
+const Color Green = Color(0xFF1E9E05);
 
 const Color Blue1 = Color(0xFF3D59AB);
 const Color Blue2 = Color(0xFF3B7CB9);
 
 const Color Gray1 = Color(0xFF333333);
+const Color Gray2 = Color(0xFF4F4F4F);
 const Color Gray3 = Color(0xFF828282);
+const Color Gray5 = Color(0xFFE0E0E0);
+const Color Gray6 = Color(0xFFF2F2F2);
 
 const Color seaweed = const Color(0xff17d292);
 const Color pale_grey = const Color(0xffeef1f7);
