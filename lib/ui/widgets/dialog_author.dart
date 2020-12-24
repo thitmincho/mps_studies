@@ -44,200 +44,121 @@ class DialogAuthorWidget extends StatelessWidget {
   }
 
   _buildBody(BuildContext context, dynamic state) {
-    if (state is LoadedCourseState || state is LoadedUserCourseLockedState) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                  flex: 10,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        state.courseDetailResponse.author.meta.position,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+                flex: 10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "ဆရာ",
+                      textScaleFactor: 1.0,
+                      style: TextStyle(
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w500,
+                          color: HexColor.fromHex("#AAAAAA")),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                      child: Text(
+                        "ဆရာ ဦးအောင်အောင်",
                         textScaleFactor: 1.0,
                         style: TextStyle(
-                            fontSize: 13.0,
-                            fontWeight: FontWeight.w500,
-                            color: HexColor.fromHex("#AAAAAA")),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                        child: Text(
-                          (state.courseDetailResponse.author.meta.first_name !=
-                                  "")
-                              ? state.courseDetailResponse.author.meta
-                                      .first_name +
-                                  " " +
-                                  state.courseDetailResponse.author.meta
-                                      .last_name
-                              : state.courseDetailResponse.author.login,
-                          textScaleFactor: 1.0,
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w600,
-                              color: HexColor.fromHex("#273044")),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: Row(
-                          children: <Widget>[
-                            RatingBar(
-                              initialRating: state
-                                  .courseDetailResponse.author.rating.average
-                                  .toDouble(),
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              tapOnlyMode: true,
-                              glow: false,
-                              allowHalfRating: true,
-                              ignoreGestures: true,
-                              unratedColor: HexColor.fromHex("#CCCCCC"),
-                              itemCount: 5,
-                              itemSize: 19,
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Text(
-                                  "${state.courseDetailResponse.author.rating.average.toDouble()}",
-                                  textScaleFactor: 1.0,
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w600,
-                                      color: HexColor.fromHex("#273044"))),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 3.0),
-                              child: Text(
-                                "(${state.courseDetailResponse.author.rating.total_marks})",
-                                textScaleFactor: 1.0,
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600,
-                                    color: HexColor.fromHex("#AAAAAA")),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        //TODO: ADD FIELD FROM API
-                        "3 courses",
-                        textScaleFactor: 1.0,
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
                             color: HexColor.fromHex("#273044")),
-                      )
-                    ],
-                  )),
-              Expanded(
-                flex: 2,
-                child: CircleAvatar(
-                    radius: 24,
-                    backgroundImage: NetworkImage(
-                        state.courseDetailResponse.author.avatar_url)),
-              )
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Row(
+                        children: <Widget>[
+                          RatingBar(
+                            initialRating: 4.5,
+                            minRating: 0,
+                            direction: Axis.horizontal,
+                            tapOnlyMode: true,
+                            glow: false,
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            unratedColor: HexColor.fromHex("#CCCCCC"),
+                            itemCount: 5,
+                            itemSize: 19,
+                            itemBuilder: (context, _) => Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            onRatingUpdate: (rating) {
+                              print(rating);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+            Expanded(
+              flex: 2,
+              child: CircleAvatar(
+                  radius: 24,
+                  backgroundImage: NetworkImage(
+                      "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg")),
+            )
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10.0),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: MaterialButton(
+                    height: 36,
+                    color: Primary,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        DetailProfileScreen.routeName,
+                        arguments: DetailProfileScreenArgs.fromId(1),
+                      );
+                    },
+                    child: Text(
+                      "View Profile".toUpperCase(),
+                      textScaleFactor: 1.0,
+                    )),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 5.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                      width: 36,
+                      height: 36,
+                      child: SvgPicture.asset('assets/icons/facebook.svg')),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                      width: 36,
+                      height: 36,
+                      child: Image(
+                          image: AssetImage('assets/icons/soc_twit.png'))),
+                ),
+              ),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 10.0),
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: MaterialButton(
-                      height: 36,
-                      color: Primary,
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          DetailProfileScreen.routeName,
-                          arguments: DetailProfileScreenArgs.fromId(
-                              state.courseDetailResponse.author.id),
-                        );
-                      },
-                      child: Text(
-                        localizations.getLocalization("profile_button"),
-                        textScaleFactor: 1.0,
-                      )),
-                ),
-                if (state.courseDetailResponse.author.meta.facebook != "")
-                  Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: 5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        _launchURL(
-                            state.courseDetailResponse.author.meta.facebook);
-                      },
-                      child: SizedBox(
-                          width: 36,
-                          height: 36,
-                          child: SvgPicture.asset('assets/icons/facebook.svg')),
-                    ),
-                  ),
-                // if (state.courseDetailResponse.author.meta.twitter != "")
-                //   Padding(
-                //     padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                //     child: GestureDetector(
-                //       onTap: () {
-                //         _launchURL(
-                //             state.courseDetailResponse.author.meta.twitter);
-                //       },
-                //       child: SizedBox(
-                //           width: 36,
-                //           height: 36,
-                //           child: Image(
-                //               image: AssetImage('assets/icons/soc_twit.png'))),
-                //     ),
-                //   ),
-                if (state.courseDetailResponse.author.meta.instagram != "")
-                  Padding(
-                    padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        _launchURL(
-                            state.courseDetailResponse.author.meta.instagram);
-                      },
-                      child: SizedBox(
-                          width: 36,
-                          height: 36,
-                          child:
-                              SvgPicture.asset('assets/icons/instagram.svg')),
-                    ),
-                  ),
-              ],
-            ),
-          )
-        ],
-      );
-    }
-
-    return Center(
-      child: SizedBox(
-        width: 20,
-        height: 20,
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-        ),
-      ),
+        )
+      ],
     );
-  }
-
-  _launchURL(String url) async {
-    await launch(url);
   }
 }

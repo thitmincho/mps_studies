@@ -34,15 +34,16 @@ class DetailProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DetailProfileScreenArgs args =
-        ModalRoute.of(context).settings.arguments;
-    if (args.teacherId != null) {
-      _bloc.setTeacherId(args.teacherId);
-    } else {
-      _bloc.setAccount(args.account);
-    }
-    return BlocProvider<DetailProfileBloc>(
-        create: (context) => _bloc, child: DetailProfileWidget());
+    return DetailProfileWidget();
+    // final DetailProfileScreenArgs args =
+    //     ModalRoute.of(context).settings.arguments;
+    // if (args.teacherId != null) {
+    //   _bloc.setTeacherId(args.teacherId);
+    // } else {
+    //   _bloc.setAccount(args.account);
+    // }
+    // return BlocProvider<DetailProfileBloc>(
+    //     create: (context) => _bloc, child: DetailProfileWidget());
   }
 }
 
@@ -71,14 +72,13 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
         } else {
           if (_bloc.account != null) {
             setState(() {
-              title =
-                  "${_bloc.account.meta.first_name} ${_bloc.account.meta.last_name}";
+              title = "ဆရာ ဦးအောင်အောင်";
             });
           }
         }
       });
-    _bloc = BlocProvider.of<DetailProfileBloc>(context)
-      ..add(LoadDetailProfile());
+    // _bloc = BlocProvider.of<DetailProfileBloc>(context)
+    //   ..add(LoadDetailProfile());
   }
 
   bool get _isAppBarExpanded {
@@ -91,262 +91,192 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
   Widget build(BuildContext context) {
     kef = (MediaQuery.of(context).size.height > 690) ? kef : 1.8;
 
-    return BlocBuilder<DetailProfileBloc, DetailProfileState>(
-      builder: (context, state) {
-        var isTeacher = false;
+    var isTeacher = true;
 
-        var tabsCount = 0;
-        if (state is LoadedDetailProfileState) {
-          isTeacher = state.isTeacher;
-          if (isTeacher) tabsCount = 2;
-        }
-        return DefaultTabController(
-          length: tabsCount,
-          child: Scaffold(
-            body: (state is LoadedDetailProfileState)
-                ? NestedScrollView(
-                    controller: _scrollController,
-                    headerSliverBuilder:
-                        (BuildContext context, bool innerBoxIsScrolled) {
-                      var avatar = ClipRRect(
-                        borderRadius: BorderRadius.circular(60.0),
-                        child: Image.network(
-                          (_bloc.account.avatar_url == null)
-                              ? ""
-                              : _bloc.account.avatar_url,
-                          fit: BoxFit.cover,
-                          height: 100.0,
-                          width: 100.0,
-                        ),
-                      );
+    var tabsCount = 2;
 
-                      return <Widget>[
-                        SliverAppBar(
-                          leading: IconButton(
-                            icon: SvgPicture.asset(
-                                'assets/icons/arrow_back_appbar.svg'),
-                            onPressed: () => Navigator.of(context).pop(),
-                          ),
-                          title: Text(
-                            title,
-                            textScaleFactor: 1.0,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                          expandedHeight:
-                              MediaQuery.of(context).size.height / kef,
-                          floating: false,
-                          // <--- this is required if you want the appbar to come back into view when you scroll up
-                          pinned: true,
-                          // <--- this will make the appbar disappear on scrolling down
-                          snap: false,
-                          actions: <Widget>[
-                            // Visibility(
-                            //   visible: isTeacher,
-                            //   child: IconButton(
-                            //     icon: Icon(Icons.share),
-                            //     onPressed: () {},
-                            //   ),
-                            // ),
-                            Visibility(
-                              visible: false,
-                              child: IconButton(
-                                icon: Icon(Icons.favorite),
-                                onPressed: () {},
-                              ),
-                            ),
-                            IconButton(
-                              icon: SvgPicture.asset("assets/icons/search.svg"),
-                              onPressed: () {
-                                Navigator.of(context).pushNamed(
-                                    SearchDetailScreen.routeName,
-                                    arguments: SearchDetailScreenArgs(""));
-                              },
-                            ),
-                          ],
-                          bottom: (isTeacher)
-                              ? ColoredTabBar(
-                                  Colors.white,
-                                  TabBar(
-                                    indicatorColor: Blue1,
-                                    tabs: _getTabs(state),
+    // return BlocBuilder<DetailProfileBloc, DetailProfileState>(
+    //   builder: (context, state) {
+    return DefaultTabController(
+      length: tabsCount,
+      child: Scaffold(
+        body: NestedScrollView(
+            controller: _scrollController,
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              var avatar = ClipRRect(
+                borderRadius: BorderRadius.circular(60.0),
+                child: Image.network(
+                  "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
+                  fit: BoxFit.cover,
+                  height: 100.0,
+                  width: 100.0,
+                ),
+              );
+
+              return <Widget>[
+                SliverAppBar(
+                  leading: IconButton(
+                    icon:
+                        SvgPicture.asset('assets/icons/arrow_back_appbar.svg'),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  title: Text(
+                    "ဆရာ ဦးအောင်အောင်",
+                    textScaleFactor: 1.0,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  expandedHeight: MediaQuery.of(context).size.height / kef + 50,
+                  floating: false,
+                  // <--- this is required if you want the appbar to come back into view when you scroll up
+                  pinned: true,
+                  // <--- this will make the appbar disappear on scrolling down
+                  snap: false,
+                  actions: <Widget>[
+                    // Visibility(
+                    //   visible: isTeacher,
+                    //   child: IconButton(
+                    //     icon: Icon(Icons.share),
+                    //     onPressed: () {},
+                    //   ),
+                    // ),
+                    Visibility(
+                      visible: false,
+                      child: IconButton(
+                        icon: Icon(Icons.favorite),
+                        onPressed: () {},
+                      ),
+                    ),
+                    IconButton(
+                      icon: SvgPicture.asset("assets/icons/search.svg"),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                            SearchDetailScreen.routeName,
+                            arguments: SearchDetailScreenArgs(""));
+                      },
+                    ),
+                  ],
+                  bottom: ColoredTabBar(
+                    Colors.white,
+                    TabBar(
+                      indicatorColor: Blue1,
+                      tabs: _getTabs(null),
+                    ),
+                  ),
+                  flexibleSpace: FlexibleSpaceBar(
+                      collapseMode: CollapseMode.parallax,
+                      centerTitle: true,
+                      background: SafeArea(
+                        child: Container(
+                          color: Primary,
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Padding(
+                                    padding: const EdgeInsets.only(top: 50.0),
+                                    child: avatar),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Text(
+                                    "ဆရာ ဦးအောင်အောင်",
+                                    // textScaleFactor: 1.0,
+                                    style: TextStyle(
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                )
-                              : null,
-                          flexibleSpace: FlexibleSpaceBar(
-                              collapseMode: CollapseMode.parallax,
-                              centerTitle: true,
-                              background: SafeArea(
-                                child: Container(
-                                  color: Primary,
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
+                                ),
+                                Visibility(
+                                  visible: isTeacher,
+                                  child: Text(
+                                    "ဆရာ",
+                                    textScaleFactor: 1.0,
+                                    style: TextStyle(
+                                        color: Colors.white.withOpacity(0.5)),
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: isTeacher,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 5.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 30.0),
-                                            child: avatar),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 8.0),
-                                          child: Text(
-                                            "${_bloc.account.meta.first_name} ${_bloc.account.meta.last_name}",
-                                            textScaleFactor: 1.0,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .display1
-                                                .copyWith(color: Colors.white),
+                                        RatingBar(
+                                          initialRating: 4.5,
+                                          minRating: 0,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 5,
+                                          itemSize: 16,
+                                          itemBuilder: (context, _) => Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
                                           ),
+                                          glow: false,
                                         ),
-                                        Visibility(
-                                          visible: isTeacher,
-                                          child: Text(
-                                            isTeacher
-                                                ? _bloc.account.meta.position
-                                                : "",
-                                            textScaleFactor: 1.0,
-                                            style: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.5)),
-                                          ),
-                                        ),
-                                        Visibility(
-                                          visible: isTeacher,
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 6.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                RatingBar(
-                                                  initialRating: _bloc
-                                                      .account.rating.average
-                                                      .toDouble(),
-                                                  minRating: 0,
-                                                  direction: Axis.horizontal,
-                                                  allowHalfRating: true,
-                                                  itemCount: 5,
-                                                  itemSize: 16,
-                                                  itemBuilder: (context, _) =>
-                                                      Icon(
-                                                    Icons.star,
-                                                    color: Colors.amber,
-                                                  ),
-                                                  glow: false,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8.0),
-                                                  child: Text(
-                                                    "${_bloc.account.rating.average.toDouble()} (${_bloc.account.rating.total_marks})",
-                                                    textScaleFactor: 1.0,
-                                                    style: TextStyle(
-                                                        fontSize: 16,
-                                                        color: Colors.white
-                                                            .withOpacity(0.5)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 25.0, bottom: 50),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                3,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                if (_bloc.account.meta
-                                                        .facebook !=
-                                                    "")
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 5.0, right: 5.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        _launchURL(_bloc.account
-                                                            .meta.facebook);
-                                                      },
-                                                      child: SizedBox(
-                                                          width: 32,
-                                                          height: 32,
-                                                          child: SvgPicture.asset(
-                                                              "assets/icons/social_facebook_circle.svg",
-                                                              color: Colors
-                                                                  .white)),
-                                                    ),
-                                                  ),
-                                                // if (_bloc
-                                                //         .account.meta.twitter !=
-                                                //     "")
-                                                //   Padding(
-                                                //     padding: EdgeInsets.only(
-                                                //         left: 5.0, right: 5.0),
-                                                //     child: GestureDetector(
-                                                //       onTap: () {
-                                                //         _launchURL(_bloc.account
-                                                //             .meta.twitter);
-                                                //       },
-                                                //       child: SizedBox(
-                                                //           width: 20,
-                                                //           height: 20,
-                                                //           child: SvgPicture.asset(
-                                                //               "assets/icons/ico_twit.svg",
-                                                //               color: Colors
-                                                //                   .white)),
-                                                //     ),
-                                                //   ),
-                                                SizedBox(
-                                                  width: 10,
-                                                ),
-                                                if (_bloc.account.meta
-                                                        .instagram !=
-                                                    "")
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 5.0, right: 5.0),
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        _launchURL(_bloc.account
-                                                            .meta.instagram);
-                                                      },
-                                                      child: SizedBox(
-                                                          width: 32,
-                                                          height: 32,
-                                                          child: SvgPicture.asset(
-                                                              "assets/icons/social_instagram_circle.svg",
-                                                              color: Colors
-                                                                  .white)),
-                                                    ),
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
                                       ],
                                     ),
                                   ),
                                 ),
-                              )),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0, bottom: 50),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 5.0, right: 5.0),
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: SizedBox(
+                                                width: 32,
+                                                height: 32,
+                                                child: SvgPicture.asset(
+                                                    "assets/icons/social_facebook_circle.svg",
+                                                    color: Colors.white)),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 5.0, right: 5.0),
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: SizedBox(
+                                                width: 32,
+                                                height: 32,
+                                                child: SvgPicture.asset(
+                                                    "assets/icons/social_instagram_circle.svg",
+                                                    color: Colors.white)),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                      ];
-                    },
-                    body: getBody(state))
-                : Center(
-                    child: CircularProgressIndicator(),
-                  ),
-          ),
-        );
-      },
+                      )),
+                ),
+              ];
+            },
+            body: getBody(null)),
+      ),
     );
+    // },
+    // );
   }
 
   _launchURL(String url) async {
@@ -354,101 +284,76 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
   }
 
   Widget getBody(state) {
-    if (state is LoadedDetailProfileState) {
-      if (state.isTeacher) {
-        return TabBarView(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Text(
-                _bloc.account.meta.description,
-                textScaleFactor: 1.0,
-              ),
-            ),
-            ListView.builder(
-              itemCount: state.courses.length,
-              itemBuilder: (BuildContext context, int index) {
-                var item = state.courses[index];
-                var padding = (index == 0) ? 20.0 : 0.0;
-
-                var rating = 0.0;
-                var reviews = 0;
-                if (item.rating.total != null) {
-                  rating = item.rating.average.toDouble();
-                }
-                if (item.rating.total != null) {
-                  reviews = item.rating.total;
-                }
-                return GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        CourseScreen.routeName,
-                        arguments: CourseScreenArgs(item),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          left: 20.0, right: 20.0, bottom: 20.0),
-                      child: _buildCard(
-                          context,
-                          item.images.full,
-                          item.categories_object.first,
-                          "${item.title}",
-                          rating,
-                          reviews,
-                          item.price.price,
-                          item.price.old_price,
-                          item.price.free),
-                    ));
-              },
-            ),
-          ],
-        );
-      } else {
-        return Padding(
+    return TabBarView(
+      children: <Widget>[
+        Padding(
           padding: const EdgeInsets.all(32.0),
           child: Text(
-            _bloc.account.meta.description,
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget tempus ex. Mauris sollicitudin arcu eu lacinia tincidunt. In eu commodo quam. Curabitur convallis lectus ac nulla dignissim, id pulvinar nisi fringilla. Sed sollicitudin est sed dolor sagittis, in iaculis risus blandit. Nunc ut massa sed felis fermentum interdum nec quis velit. Nunc nisl sem, congue a eleifend vel, auctor quis nisl. Nullam non arcu venenatis, gravida est a, ullamcorper lacus. Sed eros nunc, euismod ut lacus id, malesuada interdum tellus. Sed malesuada pharetra lacus a vehicula. In rutrum risus neque, vitae rhoncus sem auctor sit amet. Sed sed erat velit. Nullam rutrum augue non ante cursus, sed placerat dolor accumsan. Maecenas rutrum ex id velit semper aliquam. Cras id ultrices ex. Nam ac tortor maximus, pretium turpis eget, malesuada felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent non velit gravida nibh rhoncus viverra. In sit amet ante eget quam bibendum vestibulum. Donec commodo risus a ipsum malesuada lacinia. Nulla elementum est odio, eu placerat eros tincidunt id. Aliquam vel ultrices lorem. Nullam non ultricies arcu, sit amet tincidunt justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean malesuada at leo ut malesuada. Praesent cursus ultricies ultricies. In hac habitasse platea dictumst.Vivamus et maximus arcu, vitae lacinia sapien. Cras molestie libero sed aliquam ullamcorper. Nunc at erat et arcu tincidunt porta. Nam et pulvinar nulla, in rutrum enim. Pellentesque posuere dolor id nunc tristique aliquam. Quisque nec tristique nisi. Sed rutrum lorem diam, vestibulum malesuada erat lobortis et. Donec non turpis et mauris tincidunt vestibulum. Nulla tempus, mauris efficitur scelerisque egestas, magna lorem bibendum ex, sed feugiat elit metus eu orci. Curabitur blandit mi eget quam volutpat tempor. Nam volutpat auctor nulla in ultricies.",
             textScaleFactor: 1.0,
           ),
-        );
-      }
-    } else
-      return Center(
-        child: CircularProgressIndicator(),
-      );
+        ),
+        ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
+            var item = index;
+            var padding = (index == 0) ? 20.0 : 0.0;
+
+            var rating = 4.0;
+            var reviews = 0;
+
+            return GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  CourseScreen.routeName,
+                  // arguments: CourseScreenArgs(item),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                // child: Text("hi"),
+                child: _buildCard(
+                    context,
+                    "https://stylemixthemes.com/masterstudy/academy/wp-content/uploads/sites/9/2018/08/photo-1475452779376-caebfb988090-1949x1299.jpeg",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    4.5,
+                    reviews,
+                    "item.price.price",
+                    "item.price.old_price",
+                    true),
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 
   List<Widget> _getTabs(state) {
     List<Widget> tabs = List();
 
-    if (state is LoadedDetailProfileState) {
-      if (state.isTeacher) {
-        tabs.addAll([
-          Tab(
-            // text: localizations.getLocalization("profile_bio_tab"),
-            child: Text(
-              'ဆရာမ အကြောင်း',
-              style: TextStyle(color: Colors.black, fontSize: 11),
-            ),
-          ),
-          Tab(
-            // text: localizations.getLocalization("profile_courses_tab")
-            child: Text(
-              'သင်ခန်းစာများ',
-              style: TextStyle(color: Colors.black, fontSize: 11),
-            ),
-          ),
-        ]);
-      }
-    }
+    tabs.addAll([
+      Tab(
+        // text: localizations.getLocalization("profile_bio_tab"),
+        child: Text(
+          'ဆရာ အကြောင်း',
+          style: TextStyle(color: Colors.black, fontSize: 11),
+        ),
+      ),
+      Tab(
+        // text: localizations.getLocalization("profile_courses_tab")
+        child: Text(
+          'သင်ခန်းစာများ',
+          style: TextStyle(color: Colors.black, fontSize: 11),
+        ),
+      ),
+    ]);
 
     return tabs;
   }
 
-  _buildCard(context, image, Category category, title, stars, reviews, price,
-      oldPrice, free) {
+  _buildCard(context, image, title, stars, reviews, price, oldPrice, free) {
     var unescape = new HtmlUnescape();
 
     return SizedBox(
@@ -473,15 +378,9 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                   padding:
                       const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        CategoryDetailScreen.routeName,
-                        arguments: CategoryDetailScreenArgs(category),
-                      );
-                    },
+                    onTap: () {},
                     child: Text(
-                      "${unescape.convert(category.name)} >",
+                      "Political Studies",
                       textScaleFactor: 1.0,
                       style: TextStyle(
                           fontSize: 18,
@@ -496,7 +395,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                     title,
                     textScaleFactor: 1.0,
                     maxLines: 2,
-                    style: TextStyle(fontSize: 22, color: dark),
+                    style: TextStyle(fontSize: 20, color: dark),
                   ),
                 ),
                 Padding(
@@ -509,7 +408,7 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(top: 16.0, left: 15.0, right: 16.0),
+                      const EdgeInsets.only(top: 0.0, left: 15.0, right: 16.0),
                   child: Row(
                     children: <Widget>[
                       RatingBar(
@@ -531,12 +430,27 @@ class _DetailProfileWidgetState extends State<DetailProfileWidget> {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          "$stars ($reviews)",
+                          "၄.၅ (၅ ဦး)",
                           textScaleFactor: 1.0,
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Orange),
+                  // width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 15),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 0, left: 10.0, right: 10.0, bottom: 0),
+                    child: Text(
+                      "သင်ယူရန်",
+                      textScaleFactor: 1.0,
+                      // maxLines: ,
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
                   ),
                 ),
                 Padding(
