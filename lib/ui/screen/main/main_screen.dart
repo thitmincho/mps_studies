@@ -280,17 +280,6 @@ class MainScreenState extends State<MainScreenWidget> {
                             ),
                           ),
                           onTap: () {
-                            // ProfileState pstate = new Proi
-                            // Navigator.of(context).pushNamed(
-                            //   // ProfileScreen,
-                            // );
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => ProfileScreen(null)),
-                            // );
-
-                            // press: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

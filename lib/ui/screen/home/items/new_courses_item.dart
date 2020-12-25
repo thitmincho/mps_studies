@@ -63,7 +63,7 @@ class NewCoursesWidget extends StatelessWidget {
                     Navigator.pushNamed(
                       context,
                       CourseScreen.routeName,
-                      arguments: CourseScreenArgs(null),
+                      // arguments: CourseScreenArgs(null),
                     );
                   },
                   child: Padding(

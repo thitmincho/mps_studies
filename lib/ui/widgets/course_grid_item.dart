@@ -8,6 +8,7 @@ import 'package:myanmar_political_studies/data/models/course/CourcesResponse.dar
 import 'package:myanmar_political_studies/theme/theme.dart';
 import 'package:myanmar_political_studies/ui/screen/category_detail/category_detail_screen.dart';
 import 'package:myanmar_political_studies/ui/screen/course/course_screen.dart';
+import 'package:myanmar_political_studies/ui/screen/new_detail/new_detail.dart';
 
 class CourseGridItem extends StatelessWidget {
   final CoursesBean coursesBean;
@@ -18,11 +19,8 @@ class CourseGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          CourseScreen.routeName,
-          arguments: CourseScreenArgs(coursesBean),
-        );
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NewsDetailScreen()));
       },
       child: _buildCard(context),
     );

@@ -361,16 +361,6 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
   }
 
   _buildBottom(CourseState state) {
-    // if (state is LoadedCourseState && state.courseDetailResponse.has_access) {
-    //   return Container(
-    //       decoration: BoxDecoration(
-    //         color: HexColor.fromHex("#F6F6F6"),
-    //       ),
-    //       child: Padding(
-    //           padding: const EdgeInsets.all(20.0),
-    //           child: _buildStartButton(state)));
-    // }
-
     return Container(
       decoration: BoxDecoration(
         color: HexColor.fromHex("#F6F6F6"),
@@ -381,22 +371,6 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _buildPrice(null),
-            // MaterialButton(
-            //   height: 40,
-            //   color: mainColor,
-            //   onPressed: () {
-            //     if (state is LoadedCourseState) {
-            //       if (!state.courseDetailResponse.has_access) {
-            //         if (_bloc.selectedPaymetId == -1) {
-            //           _bloc.add(AddToCart(state.courseDetailResponse.id));
-            //         } else {
-            //           _bloc.add(UsePlan(state.courseDetailResponse.id));
-            //         }
-            //       }
-            //     }
-            //   },
-            //   child: setUpButtonChild(state),
-            // )
           ],
         ),
       ),
@@ -404,91 +378,6 @@ class _CourseScreenWidgetState extends State<_CourseScreenWidget>
   }
 
   _buildPrice(CourseState state) {
-    // if (state is LoadedCourseState) {
-    //   if (!state.courseDetailResponse.has_access) {
-    //     if (state.courseDetailResponse.price.free) {
-    //       return Row(
-    //         mainAxisSize: MainAxisSize.min,
-    //         children: <Widget>[
-    //           Text(
-    //             localizations.getLocalization("course_free_price"),
-    //             textScaleFactor: 1.0,
-    //           ),
-    //           Icon(Icons.arrow_drop_down)
-    //         ],
-    //       );
-    //     } else {
-    //       String selectedPlan;
-    //       if (_bloc.selectedPaymetId == -1) selectedPlan = "အသင်းဝင်မယ်";
-    //       // "${localizations.getLocalization("course_regular_price")} ${state.courseDetailResponse.price.price}";
-    //       if (state.userPlans.isNotEmpty) {
-    //         state.userPlans.forEach((value) {
-    //           if (int.parse(value.subscription_id) == _bloc.selectedPaymetId)
-    //             selectedPlan = value.name;
-    //         });
-    //       }
-    //       return GestureDetector(
-    //         onTap: () async {
-    //           var dialog = showDialog(
-    //               context: context,
-    //               builder: (builder) {
-    //                 return BlocProvider.value(
-    //                   child: Dialog(
-    //                     child: PurchaseDialog(),
-    //                   ),
-    //                   value: _bloc,
-    //                 );
-    //               });
-
-    //           dialog.then((value) {
-    //             if (value == "update") {
-    //               _bloc.add(FetchEvent(widget.coursesBean.id));
-    //             } else {
-    //               setState(() {});
-    //             }
-    //           });
-    //         },
-    //         child: Row(
-    //           mainAxisSize: MainAxisSize.max,
-    //           children: <Widget>[
-    //             Container(
-    //               width: 300,
-    //               // height: 5,
-    //               padding: const EdgeInsets.all(0),
-    //               decoration: BoxDecoration(border: Border.all(color: Orange)),
-    //               child: Row(
-    //                 children: [
-    //                   Padding(
-    //                     padding: EdgeInsets.only(left: 10, right: 10),
-    //                     child: Text(
-    //                       selectedPlan,
-    //                       textScaleFactor: 1.0,
-    //                       style: TextStyle(
-    //                         color: Orange,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                   Spacer(),
-    //                   Container(
-    //                     width: 40,
-    //                     height: 40,
-    //                     color: Orange,
-    //                     child: Icon(Icons.arrow_drop_down, color: Colors.white),
-    //                   )
-    //                 ],
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       );
-    //     }
-    //   } else {
-    //     return Row(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: <Widget>[],
-    //     );
-    //   }
-    // }
     return GestureDetector(
       onTap: () async {
         var dialog = showDialog(
